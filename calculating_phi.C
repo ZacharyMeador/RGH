@@ -9,8 +9,8 @@ for(int i=0; i<ndchit; i++) {
          const double pi = 3.14159265358979323846;
          int nsect;
          double phi;
-         double x = (*vx)[it];
-         double y = (*vy)[it];
+         int x = (*vx)[it];
+         int y = (*vy)[it];
          phi = atan2(y,x)*180/pi;
 //         cout << it << " has an angle of "<<phi << endl;
             if(0<y){
@@ -18,7 +18,7 @@ for(int i=0; i<ndchit; i++) {
                  if(0>x){
 //                      cout << "x-component is negative " << (*vx)[it] << endl;
                      phi = phi + 180;
-                 // cout << it << "'s true angle " << phi << endl;
+                 // cout << it << "'s angle in degrees = " << phi << endl;
                  }
                 else {
                     phi = phi;
@@ -27,11 +27,11 @@ for(int i=0; i<ndchit; i++) {
              else if(0>y){
                  if(0>x){
                  phi = phi + 180;
-//                  cout << it << "'s true angle " << phi << endl;
+//                  cout << it << "'s angle in degrees = " << phi << endl;
                  }
                  else{
                  phi = phi + 360;
-                 cout << it << "'s true angle " << phi << endl;
+//                cout << it << "'s angle in degrees = " << phi << endl;
                  }
              }
             if(30<phi && phi<=90){
