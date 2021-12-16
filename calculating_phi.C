@@ -1,25 +1,7 @@
-#include <cstdlib>
-#include <iostream>
-#include <cmath>
-#include <TH1.h>
-#include <TH2.h>
-#include <TH3.h>
-#include <TF1.h>
-#include <TLine.h>
-#include <TGraph.h>
-#include <TStyle.h>
-#include <TCanvas.h>
-#include <TChain.h>
-#include <TColor.h>
-#include "TFile.h"
-#include <TLegend.h>
-#include "TApplication.h"
-#include <TROOT.h>
+//This is just a block from the entire code
 
-using namespace std;
-TApplication gui("GUI",0,NULL);
 
-int main() {
+
 for(int i=0; i<ndchit; i++) {
 	    int it=(*hitn)[i]-1;
         
@@ -82,5 +64,5 @@ for(int i=0; i<ndchit; i++) {
                 count_sect1 += 1;
 //                 cout << it << " is in sector " << nsect << " with " << phi << " deg " << " x-component = " << (*vx)[it] << " y-component = "<<(*vy)[it]<< endl;
            }
-}           
+           
    
