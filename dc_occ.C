@@ -429,145 +429,176 @@ int main() {
     c1->cd(7);
 //     gPad->SetLogz();
     hi_dcocc_tgt->Draw("COLZ");
-    c1->Print("dc_occ.pdf(");
+    c1->Print("dc_occ.pdf");
      
     TCanvas *m1=new TCanvas("m1","Background Origin Region 1.1",750,1000);
-    for(int i)
-    m1->Divide(1,3);
-    m1->cd(1);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_reg[0]->Draw("COLZ");
-    m1->cd(2);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_vs_ene_reg[0]->SetMinimum(0);
-    hi_bg_r_vs_z_vs_ene_reg[0]->SetMaximum(100);
-    hi_bg_r_vs_z_vs_ene_reg[0]->Draw("COLZ");
-    m1->cd(3);
-     gPad->SetLogy();
-    hi_bg_z_reg[0]->Draw("H");
-    
-    hi_bg_z_e_reg[0]->SetLineColor(2);
-    hi_bg_z_e_reg[0]->Draw("SAMEH");
-    
-    hi_bg_z_g_reg[0]->SetLineColor(4);
-    hi_bg_z_g_reg[0]->Draw("SAMEH");
-    
-    hi_bg_z_p_reg[0]->SetLineColor(91);
-    hi_bg_z_p_reg[0]->Draw("SAMEH");
-
-    hi_bg_z_n_reg[0]->SetLineColor(8);
-    hi_bg_z_n_reg[0]->Draw("SAMEH");
-
-    hi_bg_z_pi_reg[0]->SetLineColor(3);
-    hi_bg_z_pi_reg[0]->Draw("SAMEH");
-    
-    hi_bg_z_o_reg[0]->SetLineColor(6);
-    hi_bg_z_o_reg[0]->Draw("SAMEH");
-    
-     TLegend *leg1 = new TLegend(0.7,0.75,0.96,0.96);
-      leg1->SetTextSize(.04);
-      leg1->AddEntry(hi_bg_z_reg[0],"All","l");
-      leg1->AddEntry(hi_bg_z_e_reg[0],"electrons","l");
-      leg1->AddEntry(hi_bg_z_g_reg[0],"photons","l");
-      leg1->AddEntry(hi_bg_z_p_reg[0],"proton","l");
-      leg1->AddEntry(hi_bg_z_pi_reg[0],"pion","l");
-      leg1->AddEntry(hi_bg_z_n_reg[0],"neutron","l");
-      leg1->AddEntry(hi_bg_z_o_reg[0],"other","l");
-      leg1->Draw();
-    
+    m1->Divide(2,3);
+    for(int i=0; i<6; i++){
+	    m1->cd(i);
+	    gPad->SetLogz();
+	    hi_bg_r_vs_z_reg[i]->Draw("COLZ")
+	    }
     m1->Print("dc_occ.pdf");
-    
-    TCanvas *m2=new TCanvas("m2","Background Origin Region 2",750,1000);
-    m2->Divide(1,3);
-    m2->cd(1);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_reg[1]->Draw("COLZ");
-    m2->cd(2);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_vs_ene_reg[1]->SetMinimum(0);
-    hi_bg_r_vs_z_vs_ene_reg[1]->SetMaximum(100);
-    hi_bg_r_vs_z_vs_ene_reg[1]->Draw("COLZ");
-    m2->cd(3);
-       gPad->SetLogy();
-    hi_bg_z_reg[1]->Draw("H");
-    
-    hi_bg_z_e_reg[1]->SetLineColor(2);
-    hi_bg_z_e_reg[1]->Draw("SAMEH");
-    
-    hi_bg_z_g_reg[1]->SetLineColor(4);
-    hi_bg_z_g_reg[1]->Draw("SAMEH");
-    
-    hi_bg_z_p_reg[1]->SetLineColor(91);
-    hi_bg_z_p_reg[1]->Draw("SAMEH");
-
-    hi_bg_z_n_reg[1]->SetLineColor(8);
-    hi_bg_z_n_reg[1]->Draw("SAMEH");
-
-    hi_bg_z_pi_reg[1]->SetLineColor(3);
-    hi_bg_z_pi_reg[1]->Draw("SAMEH");
-    
-    hi_bg_z_o_reg[1]->SetLineColor(6);
-    hi_bg_z_o_reg[1]->Draw("SAMEH");
-    
-     TLegend *leg2 = new TLegend(0.7,0.75,0.96,0.96);
-      leg2->SetTextSize(.04);
-      leg2->AddEntry(hi_bg_z_reg[1],"All","l");
-      leg2->AddEntry(hi_bg_z_e_reg[1],"electrons","l");
-      leg2->AddEntry(hi_bg_z_g_reg[1],"photons","l");
-      leg2->AddEntry(hi_bg_z_p_reg[1],"proton","l");
-      leg2->AddEntry(hi_bg_z_pi_reg[1],"pion","l");
-      leg2->AddEntry(hi_bg_z_n_reg[1],"neutron","l");
-      leg2->AddEntry(hi_bg_z_o_reg[1],"other","l");
-      leg2->Draw();
-    
-    
+    TCanvas *m2=new TCanvas("m3","Background Origin Region 1.2",750,1000);
+    m2->Divide(2,3);
+    for(int i=0; i<6; i++){
+	    m2->cd(i);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMinimum(0);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMaximum(100);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->Draw("COLZ");
+	    }
     m2->Print("dc_occ.pdf");
-    
-    TCanvas *m3=new TCanvas("m3","Background Origin Region 3",750,1000);
-    m3->Divide(1,3);
-    m3->cd(1);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_reg[2]->Draw("COLZ");
-    m3->cd(2);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_vs_ene_reg[2]->SetMinimum(0);
-    hi_bg_r_vs_z_vs_ene_reg[2]->SetMaximum(100);
-    hi_bg_r_vs_z_vs_ene_reg[2]->Draw("COLZ");
-    m3->cd(3);
-    
-       gPad->SetLogy();
-    
-    hi_bg_z_reg[2]->Draw("H");
-    
-    hi_bg_z_e_reg[2]->SetLineColor(2);
-    hi_bg_z_e_reg[2]->Draw("SAMEH");
-    
-    hi_bg_z_g_reg[2]->SetLineColor(4);
-    hi_bg_z_g_reg[2]->Draw("SAMEH");
-    
-    hi_bg_z_p_reg[2]->SetLineColor(91);
-    hi_bg_z_p_reg[2]->Draw("SAMEH");
+    TCanvas *m3=new TCanvas("m3","Background Origin Region 1.3",750,1000);
+    m2->Divide(2,3);
+    for(int i=0; i<6; i++){
+	    m3->cd(i);
+	    gPad->SetLogy();
+	    hi_bg_z_reg[i]->Draw("H");
 
-    hi_bg_z_n_reg[2]->SetLineColor(8);
-    hi_bg_z_n_reg[2]->Draw("SAMEH");
+	    hi_bg_z_e_reg[i]->SetLineColor(2);
+	    hi_bg_z_e_reg[i]->Draw("SAMEH");
 
-    hi_bg_z_pi_reg[2]->SetLineColor(3);
-    hi_bg_z_pi_reg[2]->Draw("SAMEH");
-    
-    hi_bg_z_o_reg[2]->SetLineColor(6);
-    hi_bg_z_o_reg[2]->Draw("SAMEH");
-    
-     TLegend *leg3 = new TLegend(0.7,0.75,0.96,0.96);
-      leg3->SetTextSize(.04);
-      leg3->AddEntry(hi_bg_z_reg[2],"All","l");
-      leg3->AddEntry(hi_bg_z_e_reg[2],"electrons","l");
-      leg3->AddEntry(hi_bg_z_g_reg[2],"photons","l");
-      leg3->AddEntry(hi_bg_z_p_reg[2],"proton","l");
-      leg3->AddEntry(hi_bg_z_pi_reg[2],"pion","l");
-      leg3->AddEntry(hi_bg_z_n_reg[2],"neutron","l");
-      leg3->AddEntry(hi_bg_z_o_reg[2],"other","l");
-      leg3->Draw();
+	    hi_bg_z_g_reg[i]->SetLineColor(4);
+	    hi_bg_z_g_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_p_reg[i]->SetLineColor(91);
+	    hi_bg_z_p_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_n_reg[i]->SetLineColor(8);
+	    hi_bg_z_n_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_pi_reg[i]->SetLineColor(3);
+	    hi_bg_z_pi_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_o_reg[i]->SetLineColor(6);
+	    hi_bg_z_o_reg[i]->Draw("SAMEH");
+
+	    TLegend *leg[6]; 
+	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96);
+	    leg[i]->SetTextSize(.04);
+	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
+	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
+	    leg[i]->AddEntry(hi_bg_z_g_reg[i],"photons","l");
+	    leg[i]->AddEntry(hi_bg_z_p_reg[i],"proton","l");
+	    leg[i]->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
+	    leg[i]->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
+	    leg[i]->AddEntry(hi_bg_z_o_reg[i],"other","l");
+	    leg[i]->Draw();
+	    }
     m3->Print("dc_occ.pdf");
+    
+    
+    TCanvas *m4=new TCanvas("m4","Background Origin Region 2.1",750,1000);
+    m4->Divide(2,3);
+    for(int i=6; i<12; i++){
+	    m4->cd(i);
+	    gPad->SetLogz();
+	    hi_bg_r_vs_z_reg[i]->Draw("COLZ")
+	    }
+    m4->Print("dc_occ.pdf");
+    TCanvas *m5=new TCanvas("m5","Background Origin Region 2.2",750,1000);
+    m5->Divide(2,3);
+    for(int i=6; i<12; i++){
+	    m5->cd(i);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMinimum(0);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMaximum(100);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->Draw("COLZ");
+	    }
+    m5->Print("dc_occ.pdf");
+    TCanvas *m6=new TCanvas("m6","Background Origin Region 2.3",750,1000);
+    m6->Divide(2,3);
+    for(int i=6; i<12; i++){
+	    m6->cd(i);
+	    gPad->SetLogy();
+	    hi_bg_z_reg[i]->Draw("H");
+
+	    hi_bg_z_e_reg[i]->SetLineColor(2);
+	    hi_bg_z_e_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_g_reg[i]->SetLineColor(4);
+	    hi_bg_z_g_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_p_reg[i]->SetLineColor(91);
+	    hi_bg_z_p_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_n_reg[i]->SetLineColor(8);
+	    hi_bg_z_n_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_pi_reg[i]->SetLineColor(3);
+	    hi_bg_z_pi_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_o_reg[i]->SetLineColor(6);
+	    hi_bg_z_o_reg[i]->Draw("SAMEH");
+
+	    TLegend *leg[6]; 
+	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96);
+	    leg[i]->SetTextSize(.04);
+	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
+	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
+	    leg[i]->AddEntry(hi_bg_z_g_reg[i],"photons","l");
+	    leg[i]->AddEntry(hi_bg_z_p_reg[i],"proton","l");
+	    leg[i]->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
+	    leg[i]->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
+	    leg[i]->AddEntry(hi_bg_z_o_reg[i],"other","l");
+	    leg[i]->Draw();
+	    }
+    m6->Print("dc_occ.pdf");
+
+    TCanvas *m7=new TCanvas("m7","Background Origin Region 3.1",750,1000);
+    m7->Divide(2,3);
+    for(int i=12; i<18; i++){
+	    m7->cd(i);
+	    gPad->SetLogz();
+	    hi_bg_r_vs_z_reg[i]->Draw("COLZ")
+	    }
+    m7->Print("dc_occ.pdf");
+    TCanvas *m8=new TCanvas("m8","Background Origin Region 3.2",750,1000);
+    m8->Divide(2,3);
+    for(int i=12; i<18; i++){
+	    m8->cd(i);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMinimum(0);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMaximum(100);
+	    hi_bg_r_vs_z_vs_ene_reg[i]->Draw("COLZ");
+	    }
+    m8->Print("dc_occ.pdf");
+    TCanvas *m9=new TCanvas("m9","Background Origin Region 2.3",750,1000);
+    m9->Divide(2,3);
+    for(int i=12; i<18; i++){
+	    m9->cd(i);
+	    gPad->SetLogy();
+	    hi_bg_z_reg[i]->Draw("H");
+
+	    hi_bg_z_e_reg[i]->SetLineColor(2);
+	    hi_bg_z_e_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_g_reg[i]->SetLineColor(4);
+	    hi_bg_z_g_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_p_reg[i]->SetLineColor(91);
+	    hi_bg_z_p_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_n_reg[i]->SetLineColor(8);
+	    hi_bg_z_n_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_pi_reg[i]->SetLineColor(3);
+	    hi_bg_z_pi_reg[i]->Draw("SAMEH");
+
+	    hi_bg_z_o_reg[i]->SetLineColor(6);
+	    hi_bg_z_o_reg[i]->Draw("SAMEH");
+
+	    TLegend *leg[6]; 
+	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96);
+	    leg[i]->SetTextSize(.04);
+	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
+	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
+	    leg[i]->AddEntry(hi_bg_z_g_reg[i],"photons","l");
+	    leg[i]->AddEntry(hi_bg_z_p_reg[i],"proton","l");
+	    leg[i]->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
+	    leg[i]->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
+	    leg[i]->AddEntry(hi_bg_z_o_reg[i],"other","l");
+	    leg[i]->Draw();
+	    }
+    m9->Print("dc_occ.pdf");
     
     TCanvas *c3=new TCanvas("c3","Background Origin",750,1000);
     c3->Divide(1,2);
