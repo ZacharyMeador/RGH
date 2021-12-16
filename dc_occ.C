@@ -473,17 +473,17 @@ int main() {
 	    hi_bg_z_o_reg[i]->SetLineColor(6);
 	    hi_bg_z_o_reg[i]->Draw("SAMEH");
 
-	    TLegend *leg[6]; 
-	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96));
-	    leg[i]->SetTextSize(.04);
-	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
-	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
-	    leg[i]->AddEntry(hi_bg_z_g_reg[i],"photons","l");
-	    leg[i]->AddEntry(hi_bg_z_p_reg[i],"proton","l");
-	    leg[i]->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
-	    leg[i]->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
-	    leg[i]->AddEntry(hi_bg_z_o_reg[i],"other","l");
-	    leg[i]->Draw();
+	     
+	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
+	    leg->SetTextSize(.04);
+	    leg->AddEntry(hi_bg_z_reg[i],"All","l");
+	    leg->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
+	    leg->AddEntry(hi_bg_z_g_reg[i],"photons","l");
+	    leg->AddEntry(hi_bg_z_p_reg[i],"proton","l");
+	    leg->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
+	    leg->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
+	    leg->AddEntry(hi_bg_z_o_reg[i],"other","l");
+	    leg->Draw();
 	    }
     m3->Print("dc_occ.pdf");
     
@@ -530,17 +530,16 @@ int main() {
 	    hi_bg_z_o_reg[i]->SetLineColor(6);
 	    hi_bg_z_o_reg[i]->Draw("SAMEH");
 
-	    TLegend *leg[6]; 
-	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96));
-	    leg[i]->SetTextSize(.04);
-	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
-	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
-	    leg[i]->AddEntry(hi_bg_z_g_reg[i],"photons","l");
-	    leg[i]->AddEntry(hi_bg_z_p_reg[i],"proton","l");
-	    leg[i]->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
-	    leg[i]->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
-	    leg[i]->AddEntry(hi_bg_z_o_reg[i],"other","l");
-	    leg[i]->Draw();
+	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
+	    leg->SetTextSize(.04);
+	    leg->AddEntry(hi_bg_z_reg[i],"All","l");
+	    leg->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
+	    leg->AddEntry(hi_bg_z_g_reg[i],"photons","l");
+	    leg->AddEntry(hi_bg_z_p_reg[i],"proton","l");
+	    leg->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
+	    leg->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
+	    leg->AddEntry(hi_bg_z_o_reg[i],"other","l");
+	    leg->Draw();
 	    }
     m6->Print("dc_occ.pdf");
 
@@ -586,17 +585,16 @@ int main() {
 	    hi_bg_z_o_reg[i]->SetLineColor(6);
 	    hi_bg_z_o_reg[i]->Draw("SAMEH");
 
-	    TLegend *leg[6]; 
-	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96));
-	    leg[i]->SetTextSize(.04);
-	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
-	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
-	    leg[i]->AddEntry(hi_bg_z_g_reg[i],"photons","l");
-	    leg[i]->AddEntry(hi_bg_z_p_reg[i],"proton","l");
-	    leg[i]->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
-	    leg[i]->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
-	    leg[i]->AddEntry(hi_bg_z_o_reg[i],"other","l");
-	    leg[i]->Draw();
+	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
+	    leg->SetTextSize(.04);
+	    leg->AddEntry(hi_bg_z_reg[i],"All","l");
+	    leg->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
+	    leg->AddEntry(hi_bg_z_g_reg[i],"photons","l");
+	    leg->AddEntry(hi_bg_z_p_reg[i],"proton","l");
+	    leg->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
+	    leg->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
+	    leg->AddEntry(hi_bg_z_o_reg[i],"other","l");
+	    leg->Draw();
 	    }
     m9->Print("dc_occ.pdf");
     
