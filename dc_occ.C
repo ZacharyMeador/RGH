@@ -436,7 +436,7 @@ int main() {
     for(int i=0; i<6; i++){
 	    m1->cd(i);
 	    gPad->SetLogz();
-	    hi_bg_r_vs_z_reg[i]->Draw("COLZ")
+	    hi_bg_r_vs_z_reg[i]->Draw("COLZ");
 	    }
     m1->Print("dc_occ.pdf");
     TCanvas *m2=new TCanvas("m3","Background Origin Region 1.2",750,1000);
@@ -474,7 +474,7 @@ int main() {
 	    hi_bg_z_o_reg[i]->Draw("SAMEH");
 
 	    TLegend *leg[6]; 
-	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96);
+	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96));
 	    leg[i]->SetTextSize(.04);
 	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
 	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
@@ -493,7 +493,7 @@ int main() {
     for(int i=6; i<12; i++){
 	    m4->cd(i);
 	    gPad->SetLogz();
-	    hi_bg_r_vs_z_reg[i]->Draw("COLZ")
+	    hi_bg_r_vs_z_reg[i]->Draw("COLZ");
 	    }
     m4->Print("dc_occ.pdf");
     TCanvas *m5=new TCanvas("m5","Background Origin Region 2.2",750,1000);
@@ -531,7 +531,7 @@ int main() {
 	    hi_bg_z_o_reg[i]->Draw("SAMEH");
 
 	    TLegend *leg[6]; 
-	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96);
+	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96));
 	    leg[i]->SetTextSize(.04);
 	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
 	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
@@ -549,7 +549,7 @@ int main() {
     for(int i=12; i<18; i++){
 	    m7->cd(i);
 	    gPad->SetLogz();
-	    hi_bg_r_vs_z_reg[i]->Draw("COLZ")
+	    hi_bg_r_vs_z_reg[i]->Draw("COLZ");
 	    }
     m7->Print("dc_occ.pdf");
     TCanvas *m8=new TCanvas("m8","Background Origin Region 3.2",750,1000);
@@ -587,7 +587,7 @@ int main() {
 	    hi_bg_z_o_reg[i]->Draw("SAMEH");
 
 	    TLegend *leg[6]; 
-	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96);
+	    leg[i]= new TLegend(Form("leg%i",i+1),(0.7,0.75,0.96,0.96));
 	    leg[i]->SetTextSize(.04);
 	    leg[i]->AddEntry(hi_bg_z_reg[i],"All","l");
 	    leg[i]->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
