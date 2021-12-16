@@ -337,7 +337,7 @@ int main() {
                     hi_bg_z_reg[i]->Fill((*vz)[it]);
                     }
                 }
-                if(dc_reg==2){
+                else if(dc_reg==2){
                     for(int i=6; i<12; i++)
                     hi_bg_r_vs_z_vs_ene_reg_temp[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
                     hi_bg_r_vs_z_reg[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
@@ -350,7 +350,7 @@ int main() {
                     if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg[i]->Fill((*vz)[it]);
                     hi_bg_z_reg[i]->Fill((*vz)[it]);
                 }
-                if(dc_reg==3){
+                else if(dc_reg==3){
                         for(int i=12; i<18; i++){ 
                         hi_bg_r_vs_z_vs_ene_reg_temp[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
                         hi_bg_r_vs_z_reg[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
