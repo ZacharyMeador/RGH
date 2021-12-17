@@ -144,7 +144,7 @@ int main() {
     
     for(int i=0; i<6; i++) {
        // sprintf(histname,"hi_bg_r_vs_z_region%i",i);
-        hi_bg_r_vs_z_reg1[i]= new TH2F(Form("hi_bg_r_vs_z_reg1_sec%i",i+1),Form("hi_bg_r_vs_z1_reg1_sec%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_reg1[i]= new TH2F(Form("hi_bg_r_vs_z_reg1_sec%i",i+1),Form("hi_bg_r_vs_z_reg1_sec%i",i+1),200, -200., 6500., 200, 0.,2000.);
         hi_bg_r_vs_z_reg1[i]->GetXaxis()->SetTitle("z(mm)");
         hi_bg_r_vs_z_reg1[i]->GetYaxis()->SetTitle("r(mm)");
       //  sprintf(histname,"hi_bg_y_vs_x_region%i",i);
