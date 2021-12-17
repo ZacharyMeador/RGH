@@ -116,7 +116,7 @@ int main() {
 
     
     TH1F *hi_dcocc_region[18];
-    for(int i=0; i<18; i++) {
+    for(int i=0; i<3; i++) {
       //  sprintf(histname,"hi_dcocc_region%i",i);
 	hi_dcocc_region[i]= new TH1F(Form("hi_dcocc_region%i",i+1),"",6,0.5,6.5);
 	hi_dcocc_region[i]->GetXaxis()->SetTitle("Sector");
@@ -128,33 +128,77 @@ int main() {
     hi_bg_origin->GetXaxis()->SetTitle("z(mm)");                                        
     hi_bg_origin->GetYaxis()->SetTitle("r(mm)");                                        
 
-    TH2F *hi_bg_r_vs_z_reg[18];
-    TH2F *hi_bg_r_vs_z_vs_ene_reg[18];
-    TH2F *hi_bg_r_vs_z_vs_ene_reg_temp[18];
+    TH2F *hi_bg_r_vs_z_reg1[6];
+    TH2F *hi_bg_r_vs_z_vs_ene_reg1[6];
+    TH2F *hi_bg_r_vs_z_vs_ene_reg_temp1[6];
+    
+    TH2F *hi_bg_r_vs_z_reg2[6];
+    TH2F *hi_bg_r_vs_z_vs_ene_reg2[6];
+    TH2F *hi_bg_r_vs_z_vs_ene_reg_temp2[6];
+    
+    TH2F *hi_bg_r_vs_z_reg3[6];
+    TH2F *hi_bg_r_vs_z_vs_ene_reg3[6];
+    TH2F *hi_bg_r_vs_z_vs_ene_reg_temp3[6];
+    
     TH2F *hi_bg_y_vs_x_reg[3];
     
     
-    for(int i=0; i<18; i++) {
+    for(int i=0; i<6; i++) {
        // sprintf(histname,"hi_bg_r_vs_z_region%i",i);
-        hi_bg_r_vs_z_reg[i]= new TH2F(Form("hi_bg_r_vs_z%i",i+1),Form("hi_bg_r_vs_z%i",i+1),200, -200., 6500., 200, 0.,2000.);
-        hi_bg_r_vs_z_reg[i]->GetXaxis()->SetTitle("z(mm)");
-        hi_bg_r_vs_z_reg[i]->GetYaxis()->SetTitle("r(mm)");
+        hi_bg_r_vs_z_reg1[i]= new TH2F(Form("hi_bg_r_vs_z1.%i",i+1),Form("hi_bg_r_vs_z1.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_reg1[i]->GetYaxis()->SetTitle("r(mm)");
       //  sprintf(histname,"hi_bg_y_vs_x_region%i",i);
         
         
-        hi_bg_r_vs_z_vs_ene_reg[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene%i",i+1),Form("hi_bg_r_vs_z_vs_ene%i",i+1),200, -200., 6500., 200, 0.,2000.);
-        hi_bg_r_vs_z_vs_ene_reg[i]->GetXaxis()->SetTitle("z(mm)");
-        hi_bg_r_vs_z_vs_ene_reg[i]->GetYaxis()->SetTitle("r(mm)");
-        hi_bg_r_vs_z_vs_ene_reg[i]->GetZaxis()->SetTitle("Energy(MeV)");
+        hi_bg_r_vs_z_vs_ene_reg1[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene1.%i",i+1),Form("hi_bg_r_vs_z_vs_ene1.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_vs_ene_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_vs_ene_reg1[i]->GetYaxis()->SetTitle("r(mm)");
+        hi_bg_r_vs_z_vs_ene_reg1[i]->GetZaxis()->SetTitle("Energy(MeV)");
         
 
-        hi_bg_r_vs_z_vs_ene_reg_temp[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene_temp%i",i+1),Form("hi_bg_r_vs_z_vs_ene_temp%i",i+1),200, -200., 6500., 200, 0.,2000.);
-        hi_bg_r_vs_z_vs_ene_reg_temp[i]->GetXaxis()->SetTitle("z(mm)");
-        hi_bg_r_vs_z_vs_ene_reg_temp[i]->GetYaxis()->SetTitle("r(mm)");
-        hi_bg_r_vs_z_vs_ene_reg_temp[i]->GetZaxis()->SetTitle("Energy(MeV)");
+        hi_bg_r_vs_z_vs_ene_reg_temp1[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene_temp1.%i",i+1),Form("hi_bg_r_vs_z_vs_ene_temp1.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_vs_ene_reg_temp1[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_vs_ene_reg_temp1[i]->GetYaxis()->SetTitle("r(mm)");
+        hi_bg_r_vs_z_vs_ene_reg_temp1[i]->GetZaxis()->SetTitle("Energy(MeV)");
+	
+	// sprintf(histname,"hi_bg_r_vs_z_region%i",i);
+        hi_bg_r_vs_z_reg2[i]= new TH2F(Form("hi_bg_r_vs_z2.%i",i+1),Form("hi_bg_r_vs_z2.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_reg2[i]->GetYaxis()->SetTitle("r(mm)");
+      //  sprintf(histname,"hi_bg_y_vs_x_region%i",i);
         
+        
+        hi_bg_r_vs_z_vs_ene_reg2[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene2.%i",i+1),Form("hi_bg_r_vs_z_vs_ene2.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_vs_ene_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_vs_ene_reg2[i]->GetYaxis()->SetTitle("r(mm)");
+        hi_bg_r_vs_z_vs_ene_reg2[i]->GetZaxis()->SetTitle("Energy(MeV)");
+        
+
+        hi_bg_r_vs_z_vs_ene_reg_temp2[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene_temp2.%i",i+1),Form("hi_bg_r_vs_z_vs_ene_temp2.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_vs_ene_reg_temp2[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_vs_ene_reg_temp2[i]->GetYaxis()->SetTitle("r(mm)");
+        hi_bg_r_vs_z_vs_ene_reg_temp2[i]->GetZaxis()->SetTitle("Energy(MeV)");
+        
+	// sprintf(histname,"hi_bg_r_vs_z_region%i",i);
+        hi_bg_r_vs_z_reg3[i]= new TH2F(Form("hi_bg_r_vs_z3.%i",i+1),Form("hi_bg_r_vs_z3.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_reg3[i]->GetYaxis()->SetTitle("r(mm)");
+      //  sprintf(histname,"hi_bg_y_vs_x_region%i",i);
+        
+        
+        hi_bg_r_vs_z_vs_ene_reg3[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene3.%i",i+1),Form("hi_bg_r_vs_z_vs_ene3.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_vs_ene_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_vs_ene_reg3[i]->GetYaxis()->SetTitle("r(mm)");
+        hi_bg_r_vs_z_vs_ene_reg3[i]->GetZaxis()->SetTitle("Energy(MeV)");
+        
+
+        hi_bg_r_vs_z_vs_ene_reg_temp3[i]= new TH2F(Form("hi_bg_r_vs_z_vs_ene_temp3.%i",i+1),Form("hi_bg_r_vs_z_vs_ene_temp3.%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_vs_ene_reg_temp3[i]->GetXaxis()->SetTitle("z(mm)");
+        hi_bg_r_vs_z_vs_ene_reg_temp3[i]->GetYaxis()->SetTitle("r(mm)");
+        hi_bg_r_vs_z_vs_ene_reg_temp3[i]->GetZaxis()->SetTitle("Energy(MeV)");
     }
-    for(int i=0; i<18; i++){
+    for(int i=0; i<3; i++){
         hi_bg_y_vs_x_reg[i]= new TH2F(Form("hi_bg_y_vs_x_region%i",i+1), Form("hi_bg_y_vs_x_region%i",i+1),200, -1000.,1000., 200, -1000.,1000.);
             hi_bg_y_vs_x_reg[i]->GetXaxis()->SetTitle("x(mm)");
             hi_bg_y_vs_x_reg[i]->GetYaxis()->SetTitle("y(mm)");
@@ -173,46 +217,116 @@ int main() {
     hi_bg_z->GetXaxis()->SetTitle("z(mm)");
     hi_bg_z->GetYaxis()->SetTitle("Rate (MHz)");
 
-    TH1F *hi_bg_z_reg[18];
-    TH1F *hi_bg_z_e_reg[18];
-    TH1F *hi_bg_z_g_reg[18];
-    TH1F *hi_bg_z_p_reg[18];
-    TH1F *hi_bg_z_pi_reg[18];
-    TH1F *hi_bg_z_n_reg[18];
-    TH1F *hi_bg_z_o_reg[18];
+    TH1F *hi_bg_z_reg1[6];
+    TH1F *hi_bg_z_e_reg1[6];
+    TH1F *hi_bg_z_g_reg1[6];
+    TH1F *hi_bg_z_p_reg1[6];
+    TH1F *hi_bg_z_pi_reg1[6];
+    TH1F *hi_bg_z_n_reg1[6];
+    TH1F *hi_bg_z_o_reg1[6];
+    TH1F *hi_bg_z_reg2[6];
+    TH1F *hi_bg_z_e_reg2[6];
+    TH1F *hi_bg_z_g_reg2[6];
+    TH1F *hi_bg_z_p_reg2[6];
+    TH1F *hi_bg_z_pi_reg2[6];
+    TH1F *hi_bg_z_n_reg2[6];
+    TH1F *hi_bg_z_o_reg2[6];
+    TH1F *hi_bg_z_reg3[6];
+    TH1F *hi_bg_z_e_reg3[6];
+    TH1F *hi_bg_z_g_reg3[6];
+    TH1F *hi_bg_z_p_reg3[6];
+    TH1F *hi_bg_z_pi_reg3[6];
+    TH1F *hi_bg_z_n_reg3[6];
+    TH1F *hi_bg_z_o_reg3[6];
     
     for(int i=0; i<18; i++) {
     //    sprintf(histname,"hi_bg_z_region%i",i);
-    hi_bg_z_reg[i]= new TH1F(Form("hi_bg_z%i",i+1), Form("hi_bg_z%i",i+1),200, -200.,6500.);
-	hi_bg_z_reg[i]->GetXaxis()->SetTitle("z(mm)");
-	hi_bg_z_reg[i]->SetTitle("Rate (MHz)");
+    hi_bg_z_reg1[i]= new TH1F(Form("hi_bg_z1.%i",i+1), Form("hi_bg_z1.%i",i+1),200, -200.,6500.);
+	hi_bg_z_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	hi_bg_z_reg1[i]->SetTitle("Rate (MHz)");
 
         
-    hi_bg_z_e_reg[i]= new TH1F(Form("hi_bg_z_e%i",i+1), Form("hi_bg_z_e%i",i+1),200, -200.,6500.);
-    hi_bg_z_e_reg[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_e_reg[i]->SetTitle("Rate (MHz)");
+    hi_bg_z_e_reg1[i]= new TH1F(Form("hi_bg_z_e1.%i",i+1), Form("hi_bg_z_e1.%i",i+1),200, -200.,6500.);
+    hi_bg_z_e_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_e_reg1[i]->SetTitle("Rate (MHz)");
         
-    hi_bg_z_g_reg[i]= new TH1F(Form("hi_bg_z_g%i",i+1), Form("hi_bg_z_g%i",i+1),200, -200.,6500.);
-    hi_bg_z_g_reg[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_g_reg[i]->SetTitle("Rate (MHz)");
+    hi_bg_z_g_reg1[i]= new TH1F(Form("hi_bg_z_g1.%i",i+1), Form("hi_bg_z_g1.%i",i+1),200, -200.,6500.);
+    hi_bg_z_g_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_g_reg1[i]->SetTitle("Rate (MHz)");
     
-    hi_bg_z_n_reg[i]= new TH1F(Form("hi_bg_z_n%i",i+1), Form("hi_bg_z_n%i",i+1),200, -200.,6500.);
-    hi_bg_z_n_reg[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_n_reg[i]->SetTitle("Rate (MHz)");
+    hi_bg_z_n_reg1[i]= new TH1F(Form("hi_bg_z_n1.%i",i+1), Form("hi_bg_z_n1.%i",i+1),200, -200.,6500.);
+    hi_bg_z_n_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_n_reg1[i]->SetTitle("Rate (MHz)");
         
-    hi_bg_z_p_reg[i]= new TH1F(Form("hi_bg_z_p%i",i+1), Form("hi_bg_z_p%i",i+1),200, -200.,6500.);
-    hi_bg_z_p_reg[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_p_reg[i]->SetTitle("Rate (MHz)");
+    hi_bg_z_p_reg1[i]= new TH1F(Form("hi_bg_z_p1.%i",i+1), Form("hi_bg_z_p1.%i",i+1),200, -200.,6500.);
+    hi_bg_z_p_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_p_reg1[i]->SetTitle("Rate (MHz)");
 
-    hi_bg_z_pi_reg[i]= new TH1F(Form("hi_bg_z_pi%i",i+1), Form("hi_bg_z_pi%i",i+1),200, -200.,6500.);
-    hi_bg_z_pi_reg[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_pi_reg[i]->SetTitle("Rate (MHz)");
+    hi_bg_z_pi_reg1[i]= new TH1F(Form("hi_bg_z_pi1.%i",i+1), Form("hi_bg_z_pi1.%i",i+1),200, -200.,6500.);
+    hi_bg_z_pi_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_pi_reg1[i]->SetTitle("Rate (MHz)");
         
-    hi_bg_z_o_reg[i]= new TH1F(Form("hi_bg_z_o%i",i+1), Form("hi_bg_z_o%i",i+1),200, -200.,6500.);
-    hi_bg_z_o_reg[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_o_reg[i]->SetTitle("Rate (MHz)");
+    hi_bg_z_o_reg1[i]= new TH1F(Form("hi_bg_z_o1.%i",i+1), Form("hi_bg_z_o1.%i",i+1),200, -200.,6500.);
+    hi_bg_z_o_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_o_reg1[i]->SetTitle("Rate (MHz)");
+    
+    hi_bg_z_reg2[i]= new TH1F(Form("hi_bg_z2.%i",i+1), Form("hi_bg_z2.%i",i+1),200, -200.,6500.);
+	hi_bg_z_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	hi_bg_z_reg2[i]->SetTitle("Rate (MHz)");
+
         
+    hi_bg_z_e_reg2[i]= new TH1F(Form("hi_bg_z_e2.%i",i+1), Form("hi_bg_z_e2.%i",i+1),200, -200.,6500.);
+    hi_bg_z_e_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_e_reg2[i]->SetTitle("Rate (MHz)");
         
+    hi_bg_z_g_reg2[i]= new TH1F(Form("hi_bg_z_g2.%i",i+1), Form("hi_bg_z_g2.%i",i+1),200, -200.,6500.);
+    hi_bg_z_g_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_g_reg2[i]->SetTitle("Rate (MHz)");
+    
+    hi_bg_z_n_reg2[i]= new TH1F(Form("hi_bg_z_n2.%i",i+1), Form("hi_bg_z_n2.%i",i+1),200, -200.,6500.);
+    hi_bg_z_n_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_n_reg2[i]->SetTitle("Rate (MHz)");
+        
+    hi_bg_z_p_reg2[i]= new TH1F(Form("hi_bg_z_p2.%i",i+1), Form("hi_bg_z_p2.%i",i+1),200, -200.,6500.);
+    hi_bg_z_p_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_p_reg2[i]->SetTitle("Rate (MHz)");
+
+    hi_bg_z_pi_reg2[i]= new TH1F(Form("hi_bg_z_pi2.%i",i+1), Form("hi_bg_z_pi2.%i",i+1),200, -200.,6500.);
+    hi_bg_z_pi_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_pi_reg2[i]->SetTitle("Rate (MHz)");
+        
+    hi_bg_z_o_reg2[i]= new TH1F(Form("hi_bg_z_o2.%i",i+1), Form("hi_bg_z_o2.%i",i+1),200, -200.,6500.);
+    hi_bg_z_o_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_o_reg2[i]->SetTitle("Rate (MHz)");
+        
+    hi_bg_z_reg3[i]= new TH1F(Form("hi_bg_z3.%i",i+1), Form("hi_bg_z3.%i",i+1),200, -200.,6500.);
+	hi_bg_z_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	hi_bg_z_reg3[i]->SetTitle("Rate (MHz)");
+
+        
+    hi_bg_z_e_reg3[i]= new TH1F(Form("hi_bg_z_e3.%i",i+1), Form("hi_bg_z_e3.%i",i+1),200, -200.,6500.);
+    hi_bg_z_e_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_e_reg3[i]->SetTitle("Rate (MHz)");
+        
+    hi_bg_z_g_reg3[i]= new TH1F(Form("hi_bg_z_g3.%i",i+1), Form("hi_bg_z_g3.%i",i+1),200, -200.,6500.);
+    hi_bg_z_g_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_g_reg3[i]->SetTitle("Rate (MHz)");
+    
+    hi_bg_z_n_reg3[i]= new TH1F(Form("hi_bg_z_n3.%i",i+1), Form("hi_bg_z_n3.%i",i+1),200, -200.,6500.);
+    hi_bg_z_n_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_n_reg3[i]->SetTitle("Rate (MHz)");
+        
+    hi_bg_z_p_reg3[i]= new TH1F(Form("hi_bg_z_p3.%i",i+1), Form("hi_bg_z_p3.%i",i+1),200, -200.,6500.);
+    hi_bg_z_p_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_p_reg3[i]->SetTitle("Rate (MHz)");
+
+    hi_bg_z_pi_reg3[i]= new TH1F(Form("hi_bg_z_pi3.%i",i+1), Form("hi_bg_z_pi3.%i",i+1),200, -200.,6500.);
+    hi_bg_z_pi_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_pi_reg3[i]->SetTitle("Rate (MHz)");
+        
+    hi_bg_z_o_reg3[i]= new TH1F(Form("hi_bg_z_o3.%i",i+1), Form("hi_bg_z_o3.%i",i+1),200, -200.,6500.);
+    hi_bg_z_o_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+    hi_bg_z_o_reg3[i]->SetTitle("Rate (MHz)");
     }
 
 
@@ -322,49 +436,46 @@ int main() {
                   
                     hi_bg_E->Fill(sqrt((*E)[it]*(*E)[it]-mass*mass));
                 }
-                if(dc_reg==1){
-                    for(int i=0; i<6; i++){
-                    hi_bg_r_vs_z_vs_ene_reg_temp[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
-                    hi_bg_r_vs_z_reg[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
+            if(dc_reg==1){
+                    hi_bg_r_vs_z_vs_ene_reg_temp1[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
+                    hi_bg_r_vs_z_reg1[nsect-1]->Fill((*vz)[nsect-1],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
 
-                    if((*pid)[it]==11) hi_bg_z_e_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==22) hi_bg_z_g_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==2112) hi_bg_z_n_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==2212) hi_bg_z_p_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg[dc_reg-1]->Fill((*vz)[it]);
-                        
-                    hi_bg_z_reg[i]->Fill((*vz)[it]);
-                    }
+                    if((*pid)[it]==11) hi_bg_z_e_reg1[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==22) hi_bg_z_g_reg1[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==2112) hi_bg_z_n_reg1[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==2212) hi_bg_z_p_reg1[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg1[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg1[nsect-1]->Fill((*vz)[it]);
+                    
+			    hi_bg_z_reg1[nsect-1]->Fill((*vz)[it]);
                 }
-                else if(dc_reg==2){
-                    for(int i=6; i<12; i++)
-                    hi_bg_r_vs_z_vs_ene_reg_temp[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
-                    hi_bg_r_vs_z_reg[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
+            if(dc_reg==2){
+                    hi_bg_r_vs_z_vs_ene_reg_temp2[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
+                    hi_bg_r_vs_z_reg2[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
 
-                    if((*pid)[it]==11) hi_bg_z_e_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==22) hi_bg_z_g_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==2112) hi_bg_z_n_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==2212) hi_bg_z_p_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg[i]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg[i]->Fill((*vz)[it]);
-                    hi_bg_z_reg[i]->Fill((*vz)[it]);
+                    if((*pid)[it]==11) hi_bg_z_e_reg2[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==22) hi_bg_z_g_reg2[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==2112) hi_bg_z_n_reg2[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==2212) hi_bg_z_p_reg2[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg2[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg2[nsect-1]->Fill((*vz)[it]);
+
+                    hi_bg_z_reg2[nsect-1]->Fill((*vz)[it]);
                 }
-                else if(dc_reg==3){
-                        for(int i=12; i<18; i++){ 
-                        hi_bg_r_vs_z_vs_ene_reg_temp[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
-                        hi_bg_r_vs_z_reg[i]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
 
-                        if((*pid)[it]==11) hi_bg_z_e_reg[i]->Fill((*vz)[it]);
-                        if((*pid)[it]==22) hi_bg_z_g_reg[i]->Fill((*vz)[it]);
-                        if((*pid)[it]==2112) hi_bg_z_n_reg[i]->Fill((*vz)[it]);
-                        if((*pid)[it]==2212) hi_bg_z_p_reg[i]->Fill((*vz)[it]);
-                        if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg[i]->Fill((*vz)[it]);
-                        if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg[dc_reg-1]->Fill((*vz)[it]);
+            if(dc_reg==3){
+                    hi_bg_r_vs_z_vs_ene_reg_temp3[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
+                    hi_bg_r_vs_z_reg3[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
 
-                        hi_bg_z_reg[i]->Fill((*vz)[it]);
-                        }
-                }
+                    if((*pid)[it]==11) hi_bg_z_e_reg3[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==22) hi_bg_z_g_reg3[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==2112) hi_bg_z_n_reg3[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==2212) hi_bg_z_p_reg3[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg3[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg3[nsect-1]->Fill((*vz)[it]);
+
+                    hi_bg_z_reg3[nsect-1]->Fill((*vz)[it]);
+                }       
             if((*vz)[it]>1000*(dc_reg+1)) hi_bg_y_vs_x_reg[dc_reg-1]->Fill((*vx)[it],(*vy)[it]);
            }
         }
@@ -391,19 +502,40 @@ int main() {
     hi_bg_z_g->Scale(1000./time);
     hi_bg_z_o->Scale(1000./time);
     hi_bg_E->Scale(1000./time);
-    for(int i=0; i<18; i++) {
-      hi_bg_z_reg[i]->Scale(1000./time);
-      hi_bg_z_e_reg[i]->Scale(1000./time);
-      hi_bg_z_g_reg[i]->Scale(1000./time);
-      hi_bg_z_p_reg[i]->Scale(1000./time);
-      hi_bg_z_pi_reg[i]->Scale(1000./time);
-      hi_bg_z_n_reg[i]->Scale(1000./time);
-      hi_bg_z_o_reg[i]->Scale(1000./time);
+    for(int i=0; i<6; i++) {
+      hi_bg_z_reg1[i]->Scale(1000./time);
+      hi_bg_z_e_reg1[i]->Scale(1000./time);
+      hi_bg_z_g_reg1[i]->Scale(1000./time);
+      hi_bg_z_p_reg1[i]->Scale(1000./time);
+      hi_bg_z_pi_reg1[i]->Scale(1000./time);
+      hi_bg_z_n_reg1[i]->Scale(1000./time);
+      hi_bg_z_o_reg1[i]->Scale(1000./time);
+    
+      hi_bg_z_reg2[i]->Scale(1000./time);
+      hi_bg_z_e_reg2[i]->Scale(1000./time);
+      hi_bg_z_g_reg2[i]->Scale(1000./time);
+      hi_bg_z_p_reg2[i]->Scale(1000./time);
+      hi_bg_z_pi_reg2[i]->Scale(1000./time);
+      hi_bg_z_n_reg2[i]->Scale(1000./time);
+      hi_bg_z_o_reg2[i]->Scale(1000./time);
+        
+      hi_bg_z_reg3[i]->Scale(1000./time);
+      hi_bg_z_e_reg3[i]->Scale(1000./time);
+      hi_bg_z_g_reg3[i]->Scale(1000./time);
+      hi_bg_z_p_reg3[i]->Scale(1000./time);
+      hi_bg_z_pi_reg3[i]->Scale(1000./time);
+      hi_bg_z_n_reg3[i]->Scale(1000./time);
+      hi_bg_z_o_reg3[i]->Scale(1000./time);
+        
+//       hi_bg_r_vs_z_vs_ene_reg1[i]->Divide(hi_bg_r_vs_z_vs_ene_reg_temp1[i],hi_bg_r_vs_z_reg1[i]);
+//       hi_bg_r_vs_z_vs_ene_reg2[i]->Divide(hi_bg_r_vs_z_vs_ene_reg_temp2[i],hi_bg_r_vs_z_reg2[i]);
+//       hi_bg_r_vs_z_vs_ene_reg3[i]->Divide(hi_bg_r_vs_z_vs_ene_reg_temp3[i],hi_bg_r_vs_z_reg3[i]);
+    }
+    for(int i=0; i<3; i++){
       hi_dcocc_region[i]->Sumw2();
       hi_dcocc_region[i]->Scale(100*norm/112/12);
-        
-        hi_bg_r_vs_z_vs_ene_reg[i]->Divide(hi_bg_r_vs_z_vs_ene_reg_temp[i],hi_bg_r_vs_z_reg[i]);
     }
+    
     hi_bg_energy->Divide(hi_bg_energy_tmp,hi_bg_origin);
 
     TCanvas *c1=new TCanvas("c1","Occupancy",750,1000);
@@ -433,319 +565,500 @@ int main() {
      
     TCanvas *m1=new TCanvas("m1","Background Origin Region 1.1",750,1000);
     m1->Divide(2,3);
-    for(int i=0; i<6; i++){
-	    m1->cd(i);
-	    gPad->SetLogz();
-	    hi_bg_r_vs_z_reg[i]->Draw("COLZ");
-	    }
+    m1->cd(1);
+    gPad->SetLogz();
+    hi_bg_r_vs_z_reg1[0]->Draw("COLZ");
+    m1->cd(2);
+    gPad->SetLogz();
+    hi_bg_r_vs_z_reg1[1]->Draw("COLZ");
+    m1->cd(3);
+    gPad->SetLogz();
+    hi_bg_r_vs_z_reg1[2]->Draw("COLZ");
+    m1->cd(4);
+    gPad->SetLogz();
+    hi_bg_r_vs_z_reg1[3]->Draw("COLZ");
+    m1->cd(5);
+    gPad->SetLogz();
+    hi_bg_r_vs_z_reg1[4]->Draw("COLZ");
+    m1->cd(6);
+    gPad->SetLogz();
+    hi_bg_r_vs_z_reg1[5]->Draw("COLZ");
     m1->Print("dc_occ.pdf");
-    TCanvas *m2=new TCanvas("m3","Background Origin Region 1.2",750,1000);
-    m2->Divide(2,3);
-    for(int i=0; i<6; i++){
-	    m2->cd(i);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMinimum(0);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMaximum(100);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->Draw("COLZ");
-	    }
-    m2->Print("dc_occ.pdf");
-    TCanvas *m3=new TCanvas("m3","Background Origin Region 1.3",750,1000);
-    m2->Divide(2,3);
-    for(int i=0; i<6; i++){
-	    m3->cd(i);
-	    gPad->SetLogy();
-	    hi_bg_z_reg[i]->Draw("H");
+// //     TCanvas *m2=new TCanvas("m3","Background Origin Region 1.2",750,1000);
+// //     m2->Divide(2,3);
+// //     for(int i=0; i<6; i++){
+// // 	    m2->cd(i);
+// // 	    hi_bg_r_vs_z_vs_ene_reg1[i]->SetMinimum(0);
+// // 	    hi_bg_r_vs_z_vs_ene_reg1[i]->SetMaximum(100);
+// // 	    hi_bg_r_vs_z_vs_ene_reg1[i]->Draw("COLZ");
+// // 	    }
+//     m2->Print("dc_occ.pdf");
+//     TCanvas *m3=new TCanvas("m3","Background Origin Region 1.3",750,1000);
+//     m3->Divide(2,3);
+//     m3->cd(1);
+//     gPad->SetLogy();
+//     hi_bg_z_reg1[0]->Draw("H");
 
-	    hi_bg_z_e_reg[i]->SetLineColor(2);
-	    hi_bg_z_e_reg[i]->Draw("SAMEH");
+//     hi_bg_z_e_reg1[0]->SetLineColor(2);
+//     hi_bg_z_e_reg1[0]->Draw("SAMEH");
 
-	    hi_bg_z_g_reg[i]->SetLineColor(4);
-	    hi_bg_z_g_reg[i]->Draw("SAMEH");
+//     hi_bg_z_g_reg1[0]->SetLineColor(4);
+//     hi_bg_z_g_reg1[0]->Draw("SAMEH");
 
-	    hi_bg_z_p_reg[i]->SetLineColor(91);
-	    hi_bg_z_p_reg[i]->Draw("SAMEH");
+//     hi_bg_z_p_reg1[0]->SetLineColor(91);
+//     hi_bg_z_p_reg1[0]->Draw("SAMEH");
 
-	    hi_bg_z_n_reg[i]->SetLineColor(8);
-	    hi_bg_z_n_reg[i]->Draw("SAMEH");
+//     hi_bg_z_n_reg1[0]->SetLineColor(8);
+//     hi_bg_z_n_reg1[0]->Draw("SAMEH");
 
-	    hi_bg_z_pi_reg[i]->SetLineColor(3);
-	    hi_bg_z_pi_reg[i]->Draw("SAMEH");
+//     hi_bg_z_pi_reg1[0]->SetLineColor(3);
+//     hi_bg_z_pi_reg1[0]->Draw("SAMEH");
 
-	    hi_bg_z_o_reg[i]->SetLineColor(6);
-	    hi_bg_z_o_reg[i]->Draw("SAMEH");
+//     hi_bg_z_o_reg1[0]->SetLineColor(6);
+//     hi_bg_z_o_reg1[0]->Draw("SAMEH");
 
-	     
-	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
-	    leg->SetTextSize(.04);
-	    leg->AddEntry(hi_bg_z_reg[i],"All","l");
-	    leg->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
-	    leg->AddEntry(hi_bg_z_g_reg[i],"photons","l");
-	    leg->AddEntry(hi_bg_z_p_reg[i],"proton","l");
-	    leg->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
-	    leg->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
-	    leg->AddEntry(hi_bg_z_o_reg[i],"other","l");
-	    leg->Draw();
-	    }
-    m3->Print("dc_occ.pdf");
+
+//     TLegend *leg1= new TLegend(0.7,0.75,0.96,0.96);
+//     leg1->SetTextSize(.04);
+//     leg1->AddEntry(hi_bg_z_reg1[0],"All","l");
+//     leg1->AddEntry(hi_bg_z_e_reg1[0],"electrons","l");
+//     leg1->AddEntry(hi_bg_z_g_reg1[0],"photons","l");
+//     leg1->AddEntry(hi_bg_z_p_reg1[0],"proton","l");
+//     leg1->AddEntry(hi_bg_z_pi_reg1[0],"pion","l");
+//     leg1->AddEntry(hi_bg_z_n_reg1[0],"neutron","l");
+//     leg1->AddEntry(hi_bg_z_o_reg1[0],"other","l");
+//     leg1->Draw();
+//     m3->cd(2);
+//     gPad->SetLogy();
+//     hi_bg_z_reg1[1]->Draw("H");
+
+//     hi_bg_z_e_reg1[1]->SetLineColor(2);
+//     hi_bg_z_e_reg1[1]->Draw("SAMEH");
+
+//     hi_bg_z_g_reg1[1]->SetLineColor(4);
+//     hi_bg_z_g_reg1[1]->Draw("SAMEH");
+
+//     hi_bg_z_p_reg1[1]->SetLineColor(91);
+//     hi_bg_z_p_reg1[1]->Draw("SAMEH");
+
+//     hi_bg_z_n_reg1[1]->SetLineColor(8);
+//     hi_bg_z_n_reg1[1]->Draw("SAMEH");
+
+//     hi_bg_z_pi_reg1[1]->SetLineColor(3);
+//     hi_bg_z_pi_reg1[1]->Draw("SAMEH");
+
+//     hi_bg_z_o_reg1[1]->SetLineColor(6);
+//     hi_bg_z_o_reg1[1]->Draw("SAMEH");
+
+
+//     TLegend *leg2= new TLegend(0.7,0.75,0.96,0.96);
+//     leg2->SetTextSize(.04);
+//     leg2->AddEntry(hi_bg_z_reg1[1],"All","l");
+//     leg2->AddEntry(hi_bg_z_e_reg1[1],"electrons","l");
+//     leg2->AddEntry(hi_bg_z_g_reg1[1],"photons","l");
+//     leg2->AddEntry(hi_bg_z_p_reg1[1],"proton","l");
+//     leg2->AddEntry(hi_bg_z_pi_reg1[1],"pion","l");
+//     leg2->AddEntry(hi_bg_z_n_reg1[1],"neutron","l");
+//     leg2->AddEntry(hi_bg_z_o_reg1[1],"other","l");
+//     leg2->Draw();
+//     m3->cd(3);
+//     gPad->SetLogy();
+//     hi_bg_z_reg1[2]->Draw("H");
+
+//     hi_bg_z_e_reg1[2]->SetLineColor(2);
+//     hi_bg_z_e_reg1[2]->Draw("SAMEH");
+
+//     hi_bg_z_g_reg1[2]->SetLineColor(4);
+//     hi_bg_z_g_reg1[2]->Draw("SAMEH");
+
+//     hi_bg_z_p_reg1[2]->SetLineColor(91);
+//     hi_bg_z_p_reg1[2]->Draw("SAMEH");
+
+//     hi_bg_z_n_reg1[2]->SetLineColor(8);
+//     hi_bg_z_n_reg1[2]->Draw("SAMEH");
+
+//     hi_bg_z_pi_reg1[2]->SetLineColor(3);
+//     hi_bg_z_pi_reg1[2]->Draw("SAMEH");
+
+//     hi_bg_z_o_reg1[2]->SetLineColor(6);
+//     hi_bg_z_o_reg1[2]->Draw("SAMEH");
+
+
+//     TLegend *leg3= new TLegend(0.7,0.75,0.96,0.96);
+//     leg3->SetTextSize(.04);
+//     leg3->AddEntry(hi_bg_z_reg1[2],"All","l");
+//     leg3->AddEntry(hi_bg_z_e_reg1[2],"electrons","l");
+//     leg3->AddEntry(hi_bg_z_g_reg1[2],"photons","l");
+//     leg3->AddEntry(hi_bg_z_p_reg1[2],"proton","l");
+//     leg3->AddEntry(hi_bg_z_pi_reg1[2],"pion","l");
+//     leg3->AddEntry(hi_bg_z_n_reg1[2],"neutron","l");
+//     leg3->AddEntry(hi_bg_z_o_reg1[2],"other","l");
+//     leg3->Draw();
+//     m3->cd(4);
+//     gPad->SetLogy();
+//     hi_bg_z_reg1[3]->Draw("H");
+
+//     hi_bg_z_e_reg1[3]->SetLineColor(2);
+//     hi_bg_z_e_reg1[3]->Draw("SAMEH");
+
+//     hi_bg_z_g_reg1[3]->SetLineColor(4);
+//     hi_bg_z_g_reg1[3]->Draw("SAMEH");
+
+//     hi_bg_z_p_reg1[3]->SetLineColor(91);
+//     hi_bg_z_p_reg1[3]->Draw("SAMEH");
+
+//     hi_bg_z_n_reg1[3]->SetLineColor(8);
+//     hi_bg_z_n_reg1[3]->Draw("SAMEH");
+
+//     hi_bg_z_pi_reg1[3]->SetLineColor(3);
+//     hi_bg_z_pi_reg1[3]->Draw("SAMEH");
+
+//     hi_bg_z_o_reg1[3]->SetLineColor(6);
+//     hi_bg_z_o_reg1[3]->Draw("SAMEH");
+
+
+//     TLegend *leg4= new TLegend(0.7,0.75,0.96,0.96);
+//     leg4->SetTextSize(.04);
+//     leg4->AddEntry(hi_bg_z_reg1[3],"All","l");
+//     leg4->AddEntry(hi_bg_z_e_reg1[3],"electrons","l");
+//     leg4->AddEntry(hi_bg_z_g_reg1[3],"photons","l");
+//     leg4->AddEntry(hi_bg_z_p_reg1[3],"proton","l");
+//     leg4->AddEntry(hi_bg_z_pi_reg1[3],"pion","l");
+//     leg4->AddEntry(hi_bg_z_n_reg1[3],"neutron","l");
+//     leg4->AddEntry(hi_bg_z_o_reg1[3],"other","l");
+//     leg4->Draw();
+//     m3->cd(5);
+//     gPad->SetLogy();
+//     hi_bg_z_reg1[0]->Draw("H");
+
+//     hi_bg_z_e_reg1[4]->SetLineColor(2);
+//     hi_bg_z_e_reg1[4]->Draw("SAMEH");
+
+//     hi_bg_z_g_reg1[4]->SetLineColor(4);
+//     hi_bg_z_g_reg1[4]->Draw("SAMEH");
+
+//     hi_bg_z_p_reg1[4]->SetLineColor(91);
+//     hi_bg_z_p_reg1[4]->Draw("SAMEH");
+
+//     hi_bg_z_n_reg1[4]->SetLineColor(8);
+//     hi_bg_z_n_reg1[4]->Draw("SAMEH");
+
+//     hi_bg_z_pi_reg1[4]->SetLineColor(3);
+//     hi_bg_z_pi_reg1[4]->Draw("SAMEH");
+
+//     hi_bg_z_o_reg1[4]->SetLineColor(6);
+//     hi_bg_z_o_reg1[4]->Draw("SAMEH");
+
+
+//     TLegend *leg5= new TLegend(0.7,0.75,0.96,0.96);
+//     leg5->SetTextSize(.04);
+//     leg5->AddEntry(hi_bg_z_reg1[4],"All","l");
+//     leg5->AddEntry(hi_bg_z_e_reg1[4],"electrons","l");
+//     leg5->AddEntry(hi_bg_z_g_reg1[4],"photons","l");
+//     leg5->AddEntry(hi_bg_z_p_reg1[4],"proton","l");
+//     leg5->AddEntry(hi_bg_z_pi_reg1[4],"pion","l");
+//     leg5->AddEntry(hi_bg_z_n_reg1[4],"neutron","l");
+//     leg5->AddEntry(hi_bg_z_o_reg1[4],"other","l");
+//     leg5->Draw();
+//     m3->cd(6);
+//     gPad->SetLogy();
+//     hi_bg_z_reg1[5]->Draw("H");
+
+//     hi_bg_z_e_reg1[5]->SetLineColor(2);
+//     hi_bg_z_e_reg1[5]->Draw("SAMEH");
+
+//     hi_bg_z_g_reg1[5]->SetLineColor(4);
+//     hi_bg_z_g_reg1[5]->Draw("SAMEH");
+
+//     hi_bg_z_p_reg1[5]->SetLineColor(91);
+//     hi_bg_z_p_reg1[5]->Draw("SAMEH");
+
+//     hi_bg_z_n_reg1[5]->SetLineColor(8);
+//     hi_bg_z_n_reg1[5]->Draw("SAMEH");
+
+//     hi_bg_z_pi_reg1[5]->SetLineColor(3);
+//     hi_bg_z_pi_reg1[5]->Draw("SAMEH");
+
+//     hi_bg_z_o_reg1[5]->SetLineColor(6);
+//     hi_bg_z_o_reg1[5]->Draw("SAMEH");
+
+
+//     TLegend *leg6= new TLegend(0.7,0.75,0.96,0.96);
+//     leg6->SetTextSize(.04);
+//     leg6->AddEntry(hi_bg_z_reg1[5],"All","l");
+//     leg6->AddEntry(hi_bg_z_e_reg1[5],"electrons","l");
+//     leg6->AddEntry(hi_bg_z_g_reg1[5],"photons","l");
+//     leg6->AddEntry(hi_bg_z_p_reg1[5],"proton","l");
+//     leg6->AddEntry(hi_bg_z_pi_reg1[5],"pion","l");
+//     leg6->AddEntry(hi_bg_z_n_reg1[5],"neutron","l");
+//     leg6->AddEntry(hi_bg_z_o_reg1[5],"other","l");
+//     leg6->Draw();
+//     m3->Print("dc_occ.pdf");
     
     
-    TCanvas *m4=new TCanvas("m4","Background Origin Region 2.1",750,1000);
-    m4->Divide(2,3);
-    for(int i=6; i<12; i++){
-	    m4->cd(i);
-	    gPad->SetLogz();
-	    hi_bg_r_vs_z_reg[i]->Draw("COLZ");
-	    }
-    m4->Print("dc_occ.pdf");
-    TCanvas *m5=new TCanvas("m5","Background Origin Region 2.2",750,1000);
-    m5->Divide(2,3);
-    for(int i=6; i<12; i++){
-	    m5->cd(i);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMinimum(0);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMaximum(100);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->Draw("COLZ");
-	    }
-    m5->Print("dc_occ.pdf");
-    TCanvas *m6=new TCanvas("m6","Background Origin Region 2.3",750,1000);
-    m6->Divide(2,3);
-    for(int i=6; i<12; i++){
-	    m6->cd(i);
-	    gPad->SetLogy();
-	    hi_bg_z_reg[i]->Draw("H");
+//     TCanvas *m4=new TCanvas("m4","Background Origin Region 2.1",750,1000);
+//     m4->Divide(2,3);
+//     for(int i=6; i<12; i++){
+// 	    m4->cd(i);
+// 	    gPad->SetLogz();
+// 	    hi_bg_r_vs_z_reg2[i]->Draw("COLZ");
+// 	    }
+// //     m4->Print("dc_occ.pdf");
+// //     TCanvas *m5=new TCanvas("m5","Background Origin Region 2.2",750,1000);
+// //     m5->Divide(2,3);
+// //     for(int i=6; i<12; i++){
+// // 	    m5->cd(i);
+// // 	    hi_bg_r_vs_z_vs_ene_reg2[i]->SetMinimum(0);
+// // 	    hi_bg_r_vs_z_vs_ene_reg2[i]->SetMaximum(100);
+// // 	    hi_bg_r_vs_z_vs_ene_reg2[i]->Draw("COLZ");
+// // 	    }
+//     m5->Print("dc_occ.pdf");
+//     TCanvas *m6=new TCanvas("m6","Background Origin Region 2.3",750,1000);
+//     m6->Divide(2,3);
+//     for(int i=6; i<12; i++){
+// 	    m6->cd(i);
+// 	    gPad->SetLogy();
+// 	    hi_bg_z_reg2[i]->Draw("H");
 
-	    hi_bg_z_e_reg[i]->SetLineColor(2);
-	    hi_bg_z_e_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_e_reg2[i]->SetLineColor(2);
+// 	    hi_bg_z_e_reg2[i]->Draw("SAMEH");
 
-	    hi_bg_z_g_reg[i]->SetLineColor(4);
-	    hi_bg_z_g_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_g_reg2[i]->SetLineColor(4);
+// 	    hi_bg_z_g_reg2[i]->Draw("SAMEH");
 
-	    hi_bg_z_p_reg[i]->SetLineColor(91);
-	    hi_bg_z_p_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_p_reg2[i]->SetLineColor(91);
+// 	    hi_bg_z_p_reg2[i]->Draw("SAMEH");
 
-	    hi_bg_z_n_reg[i]->SetLineColor(8);
-	    hi_bg_z_n_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_n_reg2[i]->SetLineColor(8);
+// 	    hi_bg_z_n_reg2[i]->Draw("SAMEH");
 
-	    hi_bg_z_pi_reg[i]->SetLineColor(3);
-	    hi_bg_z_pi_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_pi_reg2[i]->SetLineColor(3);
+// 	    hi_bg_z_pi_reg2[i]->Draw("SAMEH");
 
-	    hi_bg_z_o_reg[i]->SetLineColor(6);
-	    hi_bg_z_o_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_o_reg2[i]->SetLineColor(6);
+// 	    hi_bg_z_o_reg2[i]->Draw("SAMEH");
 
-	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
-	    leg->SetTextSize(.04);
-	    leg->AddEntry(hi_bg_z_reg[i],"All","l");
-	    leg->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
-	    leg->AddEntry(hi_bg_z_g_reg[i],"photons","l");
-	    leg->AddEntry(hi_bg_z_p_reg[i],"proton","l");
-	    leg->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
-	    leg->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
-	    leg->AddEntry(hi_bg_z_o_reg[i],"other","l");
-	    leg->Draw();
-	    }
-    m6->Print("dc_occ.pdf");
+// 	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
+// 	    leg->SetTextSize(.04);
+// 	    leg->AddEntry(hi_bg_z_reg2[i],"All","l");
+// 	    leg->AddEntry(hi_bg_z_e_reg2[i],"electrons","l");
+// 	    leg->AddEntry(hi_bg_z_g_reg2[i],"photons","l");
+// 	    leg->AddEntry(hi_bg_z_p_reg2[i],"proton","l");
+// 	    leg->AddEntry(hi_bg_z_pi_reg2[i],"pion","l");
+// 	    leg->AddEntry(hi_bg_z_n_reg2[i],"neutron","l");
+// 	    leg->AddEntry(hi_bg_z_o_reg2[i],"other","l");
+// 	    leg->Draw();
+// 	    }
+//     m6->Print("dc_occ.pdf");
 
-    TCanvas *m7=new TCanvas("m7","Background Origin Region 3.1",750,1000);
-    m7->Divide(2,3);
-    for(int i=12; i<18; i++){
-	    m7->cd(i);
-	    gPad->SetLogz();
-	    hi_bg_r_vs_z_reg[i]->Draw("COLZ");
-	    }
-    m7->Print("dc_occ.pdf");
-    TCanvas *m8=new TCanvas("m8","Background Origin Region 3.2",750,1000);
-    m8->Divide(2,3);
-    for(int i=12; i<18; i++){
-	    m8->cd(i);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMinimum(0);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->SetMaximum(100);
-	    hi_bg_r_vs_z_vs_ene_reg[i]->Draw("COLZ");
-	    }
-    m8->Print("dc_occ.pdf");
-    TCanvas *m9=new TCanvas("m9","Background Origin Region 2.3",750,1000);
-    m9->Divide(2,3);
-    for(int i=12; i<18; i++){
-	    m9->cd(i);
-	    gPad->SetLogy();
-	    hi_bg_z_reg[i]->Draw("H");
+//     TCanvas *m7=new TCanvas("m7","Background Origin Region 3.1",750,1000);
+//     m7->Divide(2,3);
+//     for(int i=12; i<18; i++){
+// 	    m7->cd(i);
+// 	    gPad->SetLogz();
+// 	    hi_bg_r_vs_z_reg3[i]->Draw("COLZ");
+// 	    }
+//     m7->Print("dc_occ.pdf");
+// //     TCanvas *m8=new TCanvas("m8","Background Origin Region 3.2",750,1000);
+// //     m8->Divide(2,3);
+// //     for(int i=12; i<18; i++){
+// // 	    m8->cd(i);
+// // 	    hi_bg_r_vs_z_vs_ene_reg3[i]->SetMinimum(0);
+// // 	    hi_bg_r_vs_z_vs_ene_reg3[i]->SetMaximum(100);
+// // 	    hi_bg_r_vs_z_vs_ene_reg3[i]->Draw("COLZ");
+// // 	    }
+// //     m8->Print("dc_occ.pdf");
+//     TCanvas *m9=new TCanvas("m9","Background Origin Region 2.3",750,1000);
+//     m9->Divide(2,3);
+//     for(int i=12; i<18; i++){
+// 	    m9->cd(i);
+// 	    gPad->SetLogy();
+// 	    hi_bg_z_reg3[i]->Draw("H");
 
-	    hi_bg_z_e_reg[i]->SetLineColor(2);
-	    hi_bg_z_e_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_e_reg3[i]->SetLineColor(2);
+// 	    hi_bg_z_e_reg3[i]->Draw("SAMEH");
 
-	    hi_bg_z_g_reg[i]->SetLineColor(4);
-	    hi_bg_z_g_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_g_reg3[i]->SetLineColor(4);
+// 	    hi_bg_z_g_reg3[i]->Draw("SAMEH");
 
-	    hi_bg_z_p_reg[i]->SetLineColor(91);
-	    hi_bg_z_p_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_p_reg3[i]->SetLineColor(91);
+// 	    hi_bg_z_p_reg3[i]->Draw("SAMEH");
 
-	    hi_bg_z_n_reg[i]->SetLineColor(8);
-	    hi_bg_z_n_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_n_reg3[i]->SetLineColor(8);
+// 	    hi_bg_z_n_reg3[i]->Draw("SAMEH");
 
-	    hi_bg_z_pi_reg[i]->SetLineColor(3);
-	    hi_bg_z_pi_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_pi_reg3[i]->SetLineColor(3);
+// 	    hi_bg_z_pi_reg3[i]->Draw("SAMEH");
 
-	    hi_bg_z_o_reg[i]->SetLineColor(6);
-	    hi_bg_z_o_reg[i]->Draw("SAMEH");
+// 	    hi_bg_z_o_reg3[i]->SetLineColor(6);
+// 	    hi_bg_z_o_reg3[i]->Draw("SAMEH");
 
-	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
-	    leg->SetTextSize(.04);
-	    leg->AddEntry(hi_bg_z_reg[i],"All","l");
-	    leg->AddEntry(hi_bg_z_e_reg[i],"electrons","l");
-	    leg->AddEntry(hi_bg_z_g_reg[i],"photons","l");
-	    leg->AddEntry(hi_bg_z_p_reg[i],"proton","l");
-	    leg->AddEntry(hi_bg_z_pi_reg[i],"pion","l");
-	    leg->AddEntry(hi_bg_z_n_reg[i],"neutron","l");
-	    leg->AddEntry(hi_bg_z_o_reg[i],"other","l");
-	    leg->Draw();
-	    }
-    m9->Print("dc_occ.pdf");
+// 	    TLegend *leg= new TLegend(0.7,0.75,0.96,0.96);
+// 	    leg->SetTextSize(.04);
+// 	    leg->AddEntry(hi_bg_z_reg3[i],"All","l");
+// 	    leg->AddEntry(hi_bg_z_e_reg3[i],"electrons","l");
+// 	    leg->AddEntry(hi_bg_z_g_reg3[i],"photons","l");
+// 	    leg->AddEntry(hi_bg_z_p_reg3[i],"proton","l");
+// 	    leg->AddEntry(hi_bg_z_pi_reg3[i],"pion","l");
+// 	    leg->AddEntry(hi_bg_z_n_reg3[i],"neutron","l");
+// 	    leg->AddEntry(hi_bg_z_o_reg3[i],"other","l");
+// 	    leg->Draw();
+// 	    }
+//     m9->Print("dc_occ.pdf");
     
-    TCanvas *c3=new TCanvas("c3","Background Origin",750,1000);
-    c3->Divide(1,2);
-    c3->cd(1);
-    gPad->SetLogz();
-    hi_bg_origin->Draw("COLZ");
-    c3->cd(2);
-    gPad->SetLogy();
-    hi_bg_z->SetLineColor(1);
-    //    hi_bg_z->SetMaximum(15);
-    hi_bg_z->Draw("H");
-    hi_bg_z_e->SetLineColor(2);
-    hi_bg_z_e->Draw("HSAME");
-    hi_bg_z_g->SetLineColor(4);
-    hi_bg_z_g->Draw("HSAME");
-    hi_bg_z_o->SetLineColor(3);
-    hi_bg_z_o->Draw("HSAME");
+//     TCanvas *c3=new TCanvas("c3","Background Origin",750,1000);
+//     c3->Divide(1,2);
+//     c3->cd(1);
+//     gPad->SetLogz();
+//     hi_bg_origin->Draw("COLZ");
+//     c3->cd(2);
+//     gPad->SetLogy();
+//     hi_bg_z->SetLineColor(1);
+//     //    hi_bg_z->SetMaximum(15);
+//     hi_bg_z->Draw("H");
+//     hi_bg_z_e->SetLineColor(2);
+//     hi_bg_z_e->Draw("HSAME");
+//     hi_bg_z_g->SetLineColor(4);
+//     hi_bg_z_g->Draw("HSAME");
+//     hi_bg_z_o->SetLineColor(3);
+//     hi_bg_z_o->Draw("HSAME");
     
     
-    TLegend *leg = new TLegend(0.7,0.75,0.96,0.96);
+//     TLegend *leg = new TLegend(0.7,0.75,0.96,0.96);
 
-    // leg->SetFillStyle(0);
-   //  leg ->SetBorderSize(0);
-     leg->SetTextSize(.04);
-     leg->AddEntry(hi_bg_z,"Vz of Bg","l");
-     leg->AddEntry(hi_bg_z_e,"Vz of Bg electrons","l");
-     leg->AddEntry(hi_bg_z_g,"Vz of Bg photons","l");
-     leg->AddEntry(hi_bg_z_o,"Vz of Bg other","l");
-     leg->Draw();
-    c3->Print("dc_occ.pdf");
+//     // leg->SetFillStyle(0);
+//    //  leg ->SetBorderSize(0);
+//      leg->SetTextSize(.04);
+//      leg->AddEntry(hi_bg_z,"Vz of Bg","l");
+//      leg->AddEntry(hi_bg_z_e,"Vz of Bg electrons","l");
+//      leg->AddEntry(hi_bg_z_g,"Vz of Bg photons","l");
+//      leg->AddEntry(hi_bg_z_o,"Vz of Bg other","l");
+//      leg->Draw();
+//     c3->Print("dc_occ.pdf");
     
-    TCanvas *c31=new TCanvas("c31","Background Origin",750,500);
-    gPad->SetLogz();
-    hi_bg_origin->Draw("COLZ");
-    c3->Print("dc_occ_origin.pdf");
+//     TCanvas *c31=new TCanvas("c31","Background Origin",750,500);
+//     gPad->SetLogz();
+//     hi_bg_origin->Draw("COLZ");
+//     c3->Print("dc_occ_origin.pdf");
 
-    TCanvas *c4=new TCanvas("c4","Background Energy",750,1000);
-    c4->Divide(1,2);
-    c4->cd(1);
-    gPad->SetLogz();
-    hi_bg_energy->Draw("COLZ");
-    c4->cd(2);
-    hi_bg_E->Draw("");
-    c4->Print("dc_occ.pdf");
+//     TCanvas *c4=new TCanvas("c4","Background Energy",750,1000);
+//     c4->Divide(1,2);
+//     c4->cd(1);
+//     gPad->SetLogz();
+//     hi_bg_energy->Draw("COLZ");
+//     c4->cd(2);
+//     hi_bg_E->Draw("");
+//     c4->Print("dc_occ.pdf");
     
-    TCanvas *c5=new TCanvas("c5","Region 1 Background Origin",750,1000);
-    c5->Divide(1,2);
-    c5->cd(1);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_reg[0]->Draw("COLZ");
-    c5->cd(2);
-    gPad->SetLogz();
-    hi_bg_y_vs_x_reg[0]->Draw("COLZ");
-    c5->Print("dc_occ.pdf");
+//     TCanvas *c5=new TCanvas("c5","Region 1 Background Origin",750,1000);
+//     c5->Divide(3,3);
+//     for(int i=0; i<6; i++){
+//     c5->cd(i):
+//     gPad->SetLogz();
+//     hi_bg_r_vs_z_reg1[i]->Draw("COLZ");
+//     }
+//     c5->cd(7);
+//     gPad->SetLogz();
+//     hi_bg_y_vs_x_reg[0]->Draw("COLZ");
+//     c5->Print("dc_occ.pdf");
     
 
-    TCanvas *c6=new TCanvas("c6","Region 2 Background Origin",750,1000);
-    c6->Divide(1,2);
-    c6->cd(1);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_reg[1]->Draw("COLZ");
-    c6->cd(2);
-    gPad->SetLogz();
-    hi_bg_y_vs_x_reg[1]->Draw("COLZ");
-    c6->Print("dc_occ.pdf");
-
-    TCanvas *c7=new TCanvas("c7","Region 3 Background Origin",750,1000);
-    c7->Divide(1,2);
-    c7->cd(1);
-    gPad->SetLogz();
-    hi_bg_r_vs_z_reg[2]->Draw("COLZ");
-    c7->cd(2);
-    gPad->SetLogz();
-    hi_bg_y_vs_x_reg[2]->Draw("COLZ");
-    c7->Print("dc_occ.pdf");
- 
-/*
-    TCanvas *c8=new TCanvas("c8","Occupancy",750,500);
-    hi_dcocc_ecut->Draw("COLZ");
-    c8->Print("dc_occ_map.pdf");
-    c8->Print("dc_occ.pdf");
-*/
+//     TCanvas *c6=new TCanvas("c6","Region 2 Background Origin",750,1000);
+//     c6->Divide(3,3);
+//     for(int i=0; i<6; i++){
+//     c6->cd(i);
+//     gPad->SetLogz();
+//     hi_bg_r_vs_z_reg2[i]->Draw("COLZ");
+//     }
+//     c6->cd(7);
+//     gPad->SetLogz();
+//     hi_bg_y_vs_x_reg[0]->Draw("COLZ");
+//     c6->Print("dc_occ.pdf");
     
-    TCanvas *c9=new TCanvas("c9","Sector Occupancy",500,500);
-    double region_ave_occ[3]={0};
-    double region_max_occ[3]={0};
-    for(int i=0; i<6; i++){
-        for(int iy=0; iy<hi_dcocc[i]->GetYaxis()->GetNbins(); iy++) {
-            int dc_reg=int(iy/12);
-            for(int ix=0; ix<hi_dcocc[i]->GetXaxis()->GetNbins(); ix++) {
-                region_ave_occ[dc_reg]+=hi_dcocc[i]->GetBinContent(ix+1,iy+1);
-                if(hi_dcocc[i]->GetBinContent(ix+1,iy+1)>region_max_occ[dc_reg]) region_max_occ[dc_reg]=hi_dcocc[i]->GetBinContent(ix+1,iy+1);
-            }
-        }    
-    }
-    TF1 *mypol0[3];
-    for(int i=0; i<3; i++) {
-        hi_dcocc_region[i]->SetMarkerStyle(20+i);
-        hi_dcocc_region[i]->SetMinimum(0.);
-        hi_dcocc_region[i]->SetMaximum(6);
-        mypol0[i]= new TF1(Form("mypol%i",i),"pol0",-0.5,6.5);
-        mypol0[i]->SetLineWidth(1);
-        mypol0[i]->SetLineColor(1);
-    }
-    hi_dcocc_region[0]->SetMarkerColor(kBlue+2);
-    hi_dcocc_region[0]->SetLineColor(kBlue+2);
-    hi_dcocc_region[0]->Draw("PE");
-    mypol0[0]->SetLineColor(kBlue+2);
-    hi_dcocc_region[0]->Fit("mypol0","SAME");
-    hi_dcocc_region[1]->SetMarkerColor(kRed+2);
-    hi_dcocc_region[1]->SetLineColor(kRed+2);
-    hi_dcocc_region[1]->Draw("SAMEPE");
-    mypol0[1]->SetLineColor(kRed+2);
-    hi_dcocc_region[1]->Fit("mypol1","SAME");
-    hi_dcocc_region[2]->SetMarkerColor(kGreen+2);
-    hi_dcocc_region[2]->SetLineColor(kGreen+2);
-    hi_dcocc_region[2]->Draw("SAMEPE");
-    mypol0[2]->SetLineColor(kGreen+2);
-    hi_dcocc_region[2]->Fit("mypol2","SAME");
-    TLegend *l_occ=new TLegend(0.5,0.75,0.96,0.96);
-    for(int i=0; i<3; i++) {
-      l_occ->AddEntry(hi_dcocc_region[i],Form("region %i occupancy: %.2f %%",i+1,mypol0[i]->GetParameter(0)),"p");
-    }
-    l_occ->SetTextFont(72);
-    l_occ->Draw();
-    c9->Print("dc_region_occ.pdf");
-    c9->Print("dc_occ.pdf)");
-    FILE *fp = fopen("dc_occ.txt","w");
-    for(int i=0; i<3;i++) {
-        region_ave_occ[i]=region_ave_occ[i]/12.0/hi_dcocc[i]->GetXaxis()->GetNbins();
-	fprintf(fp,"%d   %5.3f  %5.3f  %5.3f  \n",i+1,100*region_ave_occ[i],100*region_max_occ[i],mypol0[i]->GetParameter(0));
-    }
-    fclose(fp);    
+//     TCanvas *c7=new TCanvas("c7","Region 3 Background Origin",750,1000);
+//     c7->Divide(3,3);
+//     for(int i=0; i<6; i++){
+//     c7->cd(i);
+//     gPad->SetLogz();
+//     hi_bg_r_vs_z_reg3[i]->Draw("COLZ");
+//     }
+//     c7->cd(7);
+//     gPad->SetLogz();
+//     hi_bg_y_vs_x_reg[0]->Draw("COLZ");
+//     c7->Print("dc_occ.pdf");
+// /*
+//     TCanvas *c8=new TCanvas("c8","Occupancy",750,500);
+//     hi_dcocc_ecut->Draw("COLZ");
+//     c8->Print("dc_occ_map.pdf");
+//     c8->Print("dc_occ.pdf");
+// */
+    
+//     TCanvas *c9=new TCanvas("c9","Sector Occupancy",500,500);
+//     double region_ave_occ[3]={0};
+//     double region_max_occ[3]={0};
+//     for(int i=0; i<6; i++){
+//         for(int iy=0; iy<hi_dcocc[i]->GetYaxis()->GetNbins(); iy++) {
+//             int dc_reg=int(iy/12);
+//             for(int ix=0; ix<hi_dcocc[i]->GetXaxis()->GetNbins(); ix++) {
+//                 region_ave_occ[dc_reg]+=hi_dcocc[i]->GetBinContent(ix+1,iy+1);
+//                 if(hi_dcocc[i]->GetBinContent(ix+1,iy+1)>region_max_occ[dc_reg]) region_max_occ[dc_reg]=hi_dcocc[i]->GetBinContent(ix+1,iy+1);
+//             }
+//         }    
+//     }
+//     TF1 *mypol0[3];
+//     for(int i=0; i<3; i++) {
+//         hi_dcocc_region[i]->SetMarkerStyle(20+i);
+//         hi_dcocc_region[i]->SetMinimum(0.);
+//         hi_dcocc_region[i]->SetMaximum(6);
+//         mypol0[i]= new TF1(Form("mypol%i",i),"pol0",-0.5,6.5);
+//         mypol0[i]->SetLineWidth(1);
+//         mypol0[i]->SetLineColor(1);
+//     }
+//     hi_dcocc_region[0]->SetMarkerColor(kBlue+2);
+//     hi_dcocc_region[0]->SetLineColor(kBlue+2);
+//     hi_dcocc_region[0]->Draw("PE");
+//     mypol0[0]->SetLineColor(kBlue+2);
+//     hi_dcocc_region[0]->Fit("mypol0","SAME");
+//     hi_dcocc_region[1]->SetMarkerColor(kRed+2);
+//     hi_dcocc_region[1]->SetLineColor(kRed+2);
+//     hi_dcocc_region[1]->Draw("SAMEPE");
+//     mypol0[1]->SetLineColor(kRed+2);
+//     hi_dcocc_region[1]->Fit("mypol1","SAME");
+//     hi_dcocc_region[2]->SetMarkerColor(kGreen+2);
+//     hi_dcocc_region[2]->SetLineColor(kGreen+2);
+//     hi_dcocc_region[2]->Draw("SAMEPE");
+//     mypol0[2]->SetLineColor(kGreen+2);
+//     hi_dcocc_region[2]->Fit("mypol2","SAME");
+//     TLegend *l_occ=new TLegend(0.5,0.75,0.96,0.96);
+//     for(int i=0; i<3; i++) {
+//       l_occ->AddEntry(hi_dcocc_region[i],Form("region %i occupancy: %.2f %%",i+1,mypol0[i]->GetParameter(0)),"p");
+//     }
+//     l_occ->SetTextFont(72);
+//     l_occ->Draw();
+//     c9->Print("dc_region_occ.pdf");
+//     c9->Print("dc_occ.pdf)");
+//     FILE *fp = fopen("dc_occ.txt","w");
+//     for(int i=0; i<3;i++) {
+//         region_ave_occ[i]=region_ave_occ[i]/12.0/hi_dcocc[i]->GetXaxis()->GetNbins();
+// 	fprintf(fp,"%d   %5.3f  %5.3f  %5.3f  \n",i+1,100*region_ave_occ[i],100*region_max_occ[i],mypol0[i]->GetParameter(0));
+//     }
+//     fclose(fp);    
 
-    // saving histograms to file
-	TIter next(gDirectory->GetList());
-	TObject* obj;
-	TH1 *my_hi[1000];
-	int ihi=0;
-	while(obj= ( TObject* ) next()){
-		if(obj->InheritsFrom(TH1::Class())){
-			my_hi[ihi] = (TH1*)obj;
-			ihi++;
-		}
-	}
-	TFile myfile("dc.root", "recreate");
-	for(int i=0; i<ihi; i++) my_hi[i]->Write();
-	myfile.Close();  
+//     // saving histograms to file
+// 	TIter next(gDirectory->GetList());
+// 	TObject* obj;
+// 	TH1 *my_hi[1000];
+// 	int ihi=0;
+// 	while(obj= ( TObject* ) next()){
+// 		if(obj->InheritsFrom(TH1::Class())){
+// 			my_hi[ihi] = (TH1*)obj;
+// 			ihi++;
+// 		}
+// 	}
+// 	TFile myfile("dc.root", "recreate");
+// 	for(int i=0; i<ihi; i++) my_hi[i]->Write();
+// 	myfile.Close();  
 	
-    gui.Run(1);
+//     gui.Run(1);
 
-}   
+}
