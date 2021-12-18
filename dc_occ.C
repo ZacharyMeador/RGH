@@ -104,7 +104,8 @@ int main() {
     char *histname = new char[50];
     TH2F *hi_dcocc[6];
 
-    // Create histos
+    // Lines 109-351 create histos
+    // creating histos for wire vs layer
     for(int i=0; i<6; i++){
         hi_dcocc[i]= new TH2F(Form("DC Occ. E > 50 eV Sector%i",i+1),Form("DC Occ. E > 50 eV Sector%i",i+1),112, 1., 113., 36, 1., 37.);
         hi_dcocc[i]->GetXaxis()->SetTitle("wire");
@@ -114,7 +115,7 @@ int main() {
     hi_dcocc_tgt->GetXaxis()->SetTitle("wire");
     hi_dcocc_tgt->GetYaxis()->SetTitle("layer");
 
-    
+    //creating histo for average occupancy sector vs %
     TH1F *hi_dcocc_region[3];
     for(int i=0; i<3; i++) {
       //  sprintf(histname,"hi_dcocc_region%i",i);
@@ -128,6 +129,7 @@ int main() {
     hi_bg_origin->GetXaxis()->SetTitle("z(mm)");                                        
     hi_bg_origin->GetYaxis()->SetTitle("r(mm)");                                        
 
+    // ceating histo for hit detection for z vs r: lines 133 - 201
     TH2F *hi_bg_r_vs_z_reg1[6];
     TH2F *hi_bg_r_vs_z_vs_ene_reg1[6];
     TH2F *hi_bg_r_vs_z_vs_ene_reg_temp1[6];
@@ -197,6 +199,7 @@ int main() {
         hi_bg_r_vs_z_vs_ene_reg_temp3[i]->GetYaxis()->SetTitle("r(mm)");
         hi_bg_r_vs_z_vs_ene_reg_temp3[i]->GetZaxis()->SetTitle("Energy(MeV)");
     }
+    // ceating histos for hit distribution x(mm) vs y(mm)
     for(int i=0; i<3; i++){
         hi_bg_y_vs_x_reg[i]= new TH2F(Form("hi_bg_y_vs_x_region%i",i+1), Form("hi_bg_y_vs_x_region%i",i+1),200, -1000.,1000., 200, -1000.,1000.);
             hi_bg_y_vs_x_reg[i]->GetXaxis()->SetTitle("x(mm)");
@@ -215,7 +218,8 @@ int main() {
     //hi_bg_z->SetTitle("Vz of Bg");
     hi_bg_z->GetXaxis()->SetTitle("z(mm)");
     hi_bg_z->GetYaxis()->SetTitle("Rate (MHz)");
-
+    
+    // creating histos for origin of particle z(mm) vs Rates(MHz) 
     TH1F *hi_bg_z_reg1[6];
     TH1F *hi_bg_z_e_reg1[6];
     TH1F *hi_bg_z_g_reg1[6];
@@ -360,7 +364,9 @@ int main() {
     int ngoodentries=0;
     double mass=0;
     double dc_weight;
-
+    const double pi = 3.14159265358979323846;
+    double phi;
+    
     for(Long64_t jentry=0; jentry < nentries; jentry++) {
 //      for(Long64_t jentry=0; jentry < 1000; jentry++) {
 
@@ -392,30 +398,26 @@ int main() {
             
 	for(int i=0; i<ndchit; i++) {
 	    int it=(*hitn)[i]-1;
-        
-//        cout << it << " x-component = " << (*vx)[it]<< " and " << " y-component = " << (*vy)[it] << endl;
-         const double pi = 3.14159265358979323846;
-         double phi;
-         double x = (*vx)[it];
-         double y = (*vy)[it];
-         phi = atan2(y,x)*180/pi;
-//         cout << it << " has an angle of "<<phi << endl;
-         phi += (phi<0) ? 360:0;
-//         cout << it << " angle in degree = " << phi << endl;
-         int nsect = floor((phi-30)/60) + 2;
-         if(nsect == 7) nsect = 1;
-//         cout << it << " has a angle of " << phi << " in phi and is in sector " << nsect << endl;
+         // extracting phi using the hit index where (*vx) and (*vy) are the x- and y- vertix components (respectively)
+         phi = atan2((*vy)[it],(*vx)[it])*180/pi;	// atan2() returns [0, pi] if (*vy) >= 0 and (-pi, 0) if (*vy) < 0; 180/pi converts radian to degree	 
+         phi += (phi<0) ? 360:0;	// using ternary operator to find actual angel if (*vy) < 0
+	 // sorting hit into sectors
+         int nsect = floor((phi-30)/60) + 2; // subtracting 30 from phi to account for sector 1 range being [0, 30) and [330, 0]. Each sector is 60deg. Adding 2 to get sector# 
+         if(nsect == 7) nsect = 1; // sector 1 will return either 1 or 7
+	 // defining mass of particles pid is particle id in gemc
 	    if((*pid)[it]==2112 || (*pid)[it]==2212) {
                 mass=938;
             }
             else{
                 mass=0;
             }
+	  // defining layers: region 1 = layers 1-12, region 2 = 13-24, and region 25-36
             int dc_reg=int(((*layer)[i]-1)/12)+1;
             if(dc_reg==1) dc_weight=1;
             else          dc_weight=2;
             
 	    if((*Edep)[it]>0.00005) {
+		// Filling arrays
                 hi_dcocc[nsect-1]->Fill((*wire)[i],(*layer)[i],dc_weight);
 	        if((*vz)[it]<100)hi_dcocc_tgt->Fill((*wire)[i],(*layer)[i],dc_weight);
 		hi_dcocc_region[dc_reg-1]->Fill((*sector)[i],dc_weight);
@@ -435,6 +437,7 @@ int main() {
                   
                     hi_bg_E->Fill(sqrt((*E)[it]*(*E)[it]-mass*mass));
                 }
+	    // Lines 441-481 Filling arrays for histos by region
             if(dc_reg==1){
                     hi_bg_r_vs_z_vs_ene_reg_temp1[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
                     hi_bg_r_vs_z_reg1[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
@@ -491,7 +494,9 @@ int main() {
     cout << "Run time                      = " << time  << " ns" << endl;
     cout << nfull << " " << 1/norm << endl;
 
-    // normalizing rate histogram to 10^35 luminosity
+    // normalizing rate histogram
+    // If histo is integrated over all 6 sectors divide by 6
+    // If histo is integrate by sector divide by 1
     for(int i=0; i<6; i++){
         hi_dcocc[i]->Scale(norm/1.);
     }
@@ -528,7 +533,7 @@ int main() {
       hi_bg_z_o_reg3[i]->Scale(1000./time);
       
       
-        
+      // Lines 537-539 break code with DifferentDimension exception raised
 //       hi_bg_r_vs_z_vs_ene_reg1[i]->Divide(hi_bg_r_vs_z_vs_ene_reg_temp1[i],hi_bg_r_vs_z_reg1[i]);
 //       hi_bg_r_vs_z_vs_ene_reg2[i]->Divide(hi_bg_r_vs_z_vs_ene_reg_temp2[i],hi_bg_r_vs_z_reg2[i]);
 //       hi_bg_r_vs_z_vs_ene_reg3[i]->Divide(hi_bg_r_vs_z_vs_ene_reg_temp3[i],hi_bg_r_vs_z_reg3[i]);
@@ -539,7 +544,8 @@ int main() {
     }
     
     hi_bg_energy->Divide(hi_bg_energy_tmp,hi_bg_origin);
-
+// following lines print histos to pdf
+// Lines 548-572 print wire vs layer histos
     TCanvas *c1=new TCanvas("c1","Occupancy",750,1000);
     c1->Divide(3,3);
     c1->cd(1);
@@ -564,7 +570,7 @@ int main() {
 //     gPad->SetLogz();
     hi_dcocc_tgt->Draw("COLZ");
     c1->Print("dc_occ.pdf(");
-     
+// lines 574-594 print region 1 z(mm) vs r(mm)
     TCanvas *m1=new TCanvas("m1","Background Origin Region 1.1",750,1000);
     m1->Divide(2,3);
     m1->cd(1);
@@ -595,6 +601,7 @@ int main() {
 // // 	    hi_bg_r_vs_z_vs_ene_reg1[i]->Draw("COLZ");
 // // 	    }
 //     m2->Print("dc_occ.pdf");
+// lines 605-805 print z(mm) vs Rate(MHz) region 1 
     TCanvas *m3=new TCanvas("m3","Background Origin Region 1.3",750,1000);
     m3->Divide(2,3);
     m3->cd(1);
@@ -797,7 +804,7 @@ int main() {
     leg6->Draw();
     m3->Print("dc_occ.pdf");
     
-    
+// Lines 808-828 print z(mm) vs r(mm) region 2	
     TCanvas *m4=new TCanvas("m4","Background Origin Region 2.1",750,1000);
     m4->Divide(2,3);
     m4->cd(1);
@@ -828,6 +835,7 @@ int main() {
 // // 	    hi_bg_r_vs_z_vs_ene_reg2[i]->Draw("COLZ");
 // // 	    }
 //     m5->Print("dc_occ.pdf");
+// Lines 839-1039 print z(mm) vs Rate(MHz) region 2
     TCanvas *m6=new TCanvas("m6","Background Origin Region 2.3",750,1000);
     m6->Divide(2,3);
     m6->cd(1);
@@ -1030,6 +1038,7 @@ int main() {
     leg62->Draw();
     m6->Print("dc_occ.pdf");
 
+// lines 1042-1062 print z(mm) vs r(mm)	
     TCanvas *m7=new TCanvas("m7","Background Origin Region 3.1",750,1000);
     m7->Divide(2,3);
     m7->cd(1);
@@ -1060,6 +1069,7 @@ int main() {
 // // 	    hi_bg_r_vs_z_vs_ene_reg3[i]->Draw("COLZ");
 // // 	    }
 // //     m8->Print("dc_occ.pdf");
+//lines 1073-1273 print z(mm) vs Rate(MHz) region 3
     TCanvas *m9=new TCanvas("m9","Background Origin Region 3.3",750,1000);
     m9->Divide(2,3);
     m9->cd(1);
