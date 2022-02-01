@@ -182,7 +182,7 @@ int main() {
         hi_bg_r_vs_z_vs_ene_reg_temp2[i]->GetZaxis()->SetTitle("Energy(MeV)");
         
 	// sprintf(histname,"hi_bg_r_vs_z_region%i",i);
-        hi_bg_r_vs_z_reg3[i]= new TH2F(Form("hi_bg_r_vs_z_reg3_sec%i",i+1),Form("hi_bg_r_vs_z_reg2_sec%i",i+1),200, -200., 6500., 200, 0.,2000.);
+        hi_bg_r_vs_z_reg3[i]= new TH2F(Form("hi_bg_r_vs_z_reg3_sec%i",i+1),Form("hi_bg_r_vs_z_reg3_sec%i",i+1),200, -200., 6500., 200, 0.,2000.);
         hi_bg_r_vs_z_reg3[i]->GetXaxis()->SetTitle("z(mm)");
         hi_bg_r_vs_z_reg3[i]->GetYaxis()->SetTitle("r(mm)");
       //  sprintf(histname,"hi_bg_y_vs_x_region%i",i);
