@@ -244,92 +244,92 @@ int main() {
     
     for(int i=0; i<6; i++) {
     //    sprintf(histname,"hi_bg_z_region%i",i);
-    hi_bg_z_reg1[i]= new TH1F(Form("hi_bg_z_reg1_sec%i",i+1), Form("hi_bg_z_reg1_sec%i",i+1),200, -200.,6500.);
-	hi_bg_z_reg1[i]->GetXaxis()->SetTitle("z(mm)");
-	hi_bg_z_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    hi_bg_z_reg1[i]= new TH1F(Form("hi_bg_z_reg1_sec%i",i+1), Form("hi_bg_z_reg1_sec%i",i+1),200, -200.,6500.);
+	    hi_bg_z_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
-        
-    hi_bg_z_e_reg1[i]= new TH1F(Form("hi_bg_z_e1.%i",i+1), Form("hi_bg_z_e1.%i",i+1),200, -200.,6500.);
-    hi_bg_z_e_reg1[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_e_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_g_reg1[i]= new TH1F(Form("hi_bg_z_g%i",i+1), Form("hi_bg_z_g%i",i+1),200, -200.,6500.);
-    hi_bg_z_g_reg1[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_g_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
-    
-    hi_bg_z_n_reg1[i]= new TH1F(Form("hi_bg_z_n1.%i",i+1), Form("hi_bg_z_n1.%i",i+1),200, -200.,6500.);
-    hi_bg_z_n_reg1[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_n_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_p_reg1[i]= new TH1F(Form("hi_bg_z_p1.%i",i+1), Form("hi_bg_z_p1.%i",i+1),200, -200.,6500.);
-    hi_bg_z_p_reg1[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_p_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
-    hi_bg_z_pi_reg1[i]= new TH1F(Form("hi_bg_z_pi1.%i",i+1), Form("hi_bg_z_pi1.%i",i+1),200, -200.,6500.);
-    hi_bg_z_pi_reg1[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_pi_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_o_reg1[i]= new TH1F(Form("hi_bg_z_o1.%i",i+1), Form("hi_bg_z_o1.%i",i+1),200, -200.,6500.);
-    hi_bg_z_o_reg1[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_o_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
-    
-    hi_bg_z_reg2[i]= new TH1F(Form("hi_bg_z_reg2_sec%i",i+1), Form("hi_bg_z_reg2_sec%i",i+1),200, -200.,6500.);
-	hi_bg_z_reg2[i]->GetXaxis()->SetTitle("z(mm)");
-	hi_bg_z_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    hi_bg_z_e_reg1[i]= new TH1F(Form("hi_bg_z_e1.%i",i+1), Form("hi_bg_z_e1.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_e_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_e_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
-        
-    hi_bg_z_e_reg2[i]= new TH1F(Form("hi_bg_z_e2.%i",i+1), Form("hi_bg_z_e2.%i",i+1),200, -200.,6500.);
-    hi_bg_z_e_reg2[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_e_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_g_reg2[i]= new TH1F(Form("hi_bg_z_g2.%i",i+1), Form("hi_bg_z_g2.%i",i+1),200, -200.,6500.);
-    hi_bg_z_g_reg2[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_g_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
-    
-    hi_bg_z_n_reg2[i]= new TH1F(Form("hi_bg_z_n2.%i",i+1), Form("hi_bg_z_n2.%i",i+1),200, -200.,6500.);
-    hi_bg_z_n_reg2[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_n_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_p_reg2[i]= new TH1F(Form("hi_bg_z_p2.%i",i+1), Form("hi_bg_z_p2.%i",i+1),200, -200.,6500.);
-    hi_bg_z_p_reg2[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_p_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    hi_bg_z_g_reg1[i]= new TH1F(Form("hi_bg_z_g%i",i+1), Form("hi_bg_z_g%i",i+1),200, -200.,6500.);
+	    hi_bg_z_g_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_g_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
-    hi_bg_z_pi_reg2[i]= new TH1F(Form("hi_bg_z_pi2.%i",i+1), Form("hi_bg_z_pi2.%i",i+1),200, -200.,6500.);
-    hi_bg_z_pi_reg2[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_pi_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_o_reg2[i]= new TH1F(Form("hi_bg_z_o2.%i",i+1), Form("hi_bg_z_o2.%i",i+1),200, -200.,6500.);
-    hi_bg_z_o_reg2[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_o_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_reg3[i]= new TH1F(Form("hi_bg_z_reg3_sec%i",i+1), Form("hi_bg_z_reg3_sec%i",i+1),200, -200.,6500.);
-	hi_bg_z_reg3[i]->GetXaxis()->SetTitle("z(mm)");
-	hi_bg_z_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    hi_bg_z_n_reg1[i]= new TH1F(Form("hi_bg_z_n1.%i",i+1), Form("hi_bg_z_n1.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_n_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_n_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
-        
-    hi_bg_z_e_reg3[i]= new TH1F(Form("hi_bg_z_e3.%i",i+1), Form("hi_bg_z_e3.%i",i+1),200, -200.,6500.);
-    hi_bg_z_e_reg3[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_e_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_g_reg3[i]= new TH1F(Form("hi_bg_z_g3.%i",i+1), Form("hi_bg_zg3.%i",i+1),200, -200.,6500.);
-    hi_bg_z_g_reg3[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_g_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
-    
-    hi_bg_z_n_reg3[i]= new TH1F(Form("hi_bg_z_n3.%i",i+1), Form("hi_bg_z_n3.%i",i+1),200, -200.,6500.);
-    hi_bg_z_n_reg3[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_n_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_p_reg3[i]= new TH1F(Form("hi_bg_z_p3.%i",i+1), Form("hi_bg_z_p3.%i",i+1),200, -200.,6500.);
-    hi_bg_z_p_reg3[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_p_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    hi_bg_z_p_reg1[i]= new TH1F(Form("hi_bg_z_p1.%i",i+1), Form("hi_bg_z_p1.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_p_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_p_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
-    hi_bg_z_pi_reg3[i]= new TH1F(Form("hi_bg_z_pi3.%i",i+1), Form("hi_bg_z_pi3.%i",i+1),200, -200.,6500.);
-    hi_bg_z_pi_reg3[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_pi_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
-        
-    hi_bg_z_o_reg3[i]= new TH1F(Form("hi_bg_z_o3.%i",i+1), Form("hi_bg_z_o3.%i",i+1),200, -200.,6500.);
-    hi_bg_z_o_reg3[i]->GetXaxis()->SetTitle("z(mm)");
-    hi_bg_z_o_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    hi_bg_z_pi_reg1[i]= new TH1F(Form("hi_bg_z_pi1.%i",i+1), Form("hi_bg_z_pi1.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_pi_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_pi_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_o_reg1[i]= new TH1F(Form("hi_bg_z_o1.%i",i+1), Form("hi_bg_z_o1.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_o_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_o_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_reg2[i]= new TH1F(Form("hi_bg_z_reg2_sec%i",i+1), Form("hi_bg_z_reg2_sec%i",i+1),200, -200.,6500.);
+	    hi_bg_z_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+
+	    hi_bg_z_e_reg2[i]= new TH1F(Form("hi_bg_z_e2.%i",i+1), Form("hi_bg_z_e2.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_e_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_e_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_g_reg2[i]= new TH1F(Form("hi_bg_z_g2.%i",i+1), Form("hi_bg_z_g2.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_g_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_g_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_n_reg2[i]= new TH1F(Form("hi_bg_z_n2.%i",i+1), Form("hi_bg_z_n2.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_n_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_n_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_p_reg2[i]= new TH1F(Form("hi_bg_z_p2.%i",i+1), Form("hi_bg_z_p2.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_p_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_p_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_pi_reg2[i]= new TH1F(Form("hi_bg_z_pi2.%i",i+1), Form("hi_bg_z_pi2.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_pi_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_pi_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_o_reg2[i]= new TH1F(Form("hi_bg_z_o2.%i",i+1), Form("hi_bg_z_o2.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_o_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_o_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_reg3[i]= new TH1F(Form("hi_bg_z_reg3_sec%i",i+1), Form("hi_bg_z_reg3_sec%i",i+1),200, -200.,6500.);
+	    hi_bg_z_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+
+	    hi_bg_z_e_reg3[i]= new TH1F(Form("hi_bg_z_e3.%i",i+1), Form("hi_bg_z_e3.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_e_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_e_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_g_reg3[i]= new TH1F(Form("hi_bg_z_g3.%i",i+1), Form("hi_bg_zg3.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_g_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_g_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_n_reg3[i]= new TH1F(Form("hi_bg_z_n3.%i",i+1), Form("hi_bg_z_n3.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_n_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_n_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_p_reg3[i]= new TH1F(Form("hi_bg_z_p3.%i",i+1), Form("hi_bg_z_p3.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_p_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_p_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_pi_reg3[i]= new TH1F(Form("hi_bg_z_pi3.%i",i+1), Form("hi_bg_z_pi3.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_pi_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_pi_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+
+	    hi_bg_z_o_reg3[i]= new TH1F(Form("hi_bg_z_o3.%i",i+1), Form("hi_bg_z_o3.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_o_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_o_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
     }
 
 
@@ -399,11 +399,11 @@ int main() {
 	for(int i=0; i<ndchit; i++) {
 	    int it=(*hitn)[i]-1;
          // extracting phi using the hit index where (*vx) and (*vy) are the x- and y- vertix components (respectively)
-         phi = atan2((*vy)[it],(*vx)[it])*180/pi;	// atan2() returns [0, pi] if (*vy) >= 0 and (-pi, 0) if (*vy) < 0; 180/pi converts radian to degree	 
-         phi += (phi<0) ? 360:0;	// using ternary operator to find actual angel if (*vy) < 0
+            phi = atan2((*vy)[it],(*vx)[it])*180/pi;	// atan2() returns [0, pi] if (*vy) >= 0 and (-pi, 0) if (*vy) < 0; 180/pi converts radian to degree	 
+            phi += (phi<0) ? 360:0;	// using ternary operator to find actual angel if (*vy) < 0
 	 // sorting hit into sectors
-         int nsect = floor((phi-30)/60) + 2; // subtracting 30 from phi to account for sector 1 range being [0, 30) and [330, 0]. Each sector is 60deg. Adding 2 to get sector# 
-         if(nsect == 7) nsect = 1; // sector 1 will return either 1 or 7
+            int nsect = floor((phi-30)/60) + 2; // subtracting 30 from phi to account for sector 1 range being [0, 30) and [330, 0]. Each sector is 60deg. Adding 2 to get sector# 
+            if(nsect == 7) nsect = 1; // sector 1 will return either 1 or 7
 	 // defining mass of particles pid is particle id in gemc
 	    if((*pid)[it]==2112 || (*pid)[it]==2212) {
                 mass=938;
@@ -738,7 +738,7 @@ int main() {
     leg4->Draw();
     m3->cd(5);
     gPad->SetLogy();
-    hi_bg_z_reg1[0]->Draw("H");
+    hi_bg_z_reg1[4]->Draw("H");
 
     hi_bg_z_e_reg1[4]->SetLineColor(2);
     hi_bg_z_e_reg1[4]->Draw("SAMEH");
@@ -972,7 +972,7 @@ int main() {
     leg42->Draw();
     m6->cd(5);
     gPad->SetLogy();
-    hi_bg_z_reg2[0]->Draw("H");
+    hi_bg_z_reg2[4]->Draw("H");
 
     hi_bg_z_e_reg2[4]->SetLineColor(2);
     hi_bg_z_e_reg2[4]->Draw("SAMEH");
@@ -1206,7 +1206,7 @@ int main() {
     leg43->Draw();
     m9->cd(5);
     gPad->SetLogy();
-    hi_bg_z_reg3[0]->Draw("H");
+    hi_bg_z_reg3[4]->Draw("H");
 
     hi_bg_z_e_reg3[4]->SetLineColor(2);
     hi_bg_z_e_reg3[4]->Draw("SAMEH");
