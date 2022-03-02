@@ -627,6 +627,7 @@ int main() {
     m3->Divide(2,3);
     m3->cd(1);
     gPad->SetLogy();
+    hi_bg_z_reg1[0]->SetLineColor(1);
     hi_bg_z_reg1[0]->Draw("H");
 
     hi_bg_z_e_reg1[0]->SetLineColor(2);
@@ -664,6 +665,7 @@ int main() {
     leg1->Draw();
     m3->cd(2);
     gPad->SetLogy();
+    hi_bg_z_reg1[1]->SetLineColor(1);
     hi_bg_z_reg1[1]->Draw("H");
 
     hi_bg_z_e_reg1[1]->SetLineColor(2);
@@ -701,6 +703,7 @@ int main() {
     leg2->Draw();
     m3->cd(3);
     gPad->SetLogy();
+    hi_bg_z_reg1[2]->SetLineColor(1);
     hi_bg_z_reg1[2]->Draw("H");
 
     hi_bg_z_e_reg1[2]->SetLineColor(2);
@@ -737,6 +740,7 @@ int main() {
     leg3->Draw();
     m3->cd(4);
     gPad->SetLogy();
+    hi_bg_z_reg1[3]->SetLineColor(1);
     hi_bg_z_reg1[3]->Draw("H");
 
     hi_bg_z_e_reg1[3]->SetLineColor(2);
@@ -774,6 +778,7 @@ int main() {
     leg4->Draw();
     m3->cd(5);
     gPad->SetLogy();
+    hi_bg_z_reg1[4]->SetLineColor(1);
     hi_bg_z_reg1[4]->Draw("H");
 
     hi_bg_z_e_reg1[4]->SetLineColor(2);
@@ -811,6 +816,7 @@ int main() {
     leg5->Draw();
     m3->cd(6);
     gPad->SetLogy();
+    hi_bg_z_reg1[5]->SetLineColor(1);
     hi_bg_z_reg1[5]->Draw("H");
 
     hi_bg_z_e_reg1[5]->SetLineColor(2);
@@ -884,6 +890,7 @@ int main() {
     m6->Divide(2,3);
     m6->cd(1);
     gPad->SetLogy();
+    hi_bg_z_reg2[0]->SetLineColor(1);
     hi_bg_z_reg2[0]->Draw("H");
 
     hi_bg_z_e_reg2[0]->SetLineColor(2);
@@ -921,6 +928,7 @@ int main() {
     leg12->Draw();
     m6->cd(2);
     gPad->SetLogy();
+    hi_bg_z_reg2[1]->SetLineColor(1);
     hi_bg_z_reg2[1]->Draw("H");
 
     hi_bg_z_e_reg2[1]->SetLineColor(2);
@@ -958,6 +966,7 @@ int main() {
     leg22->Draw();
     m6->cd(3);
     gPad->SetLogy();
+    hi_bg_z_reg2[2]->SetLineColor(1);
     hi_bg_z_reg2[2]->Draw("H");
 
     hi_bg_z_e_reg2[2]->SetLineColor(2);
@@ -994,6 +1003,7 @@ int main() {
     leg32->Draw();
     m6->cd(4);
     gPad->SetLogy();
+    hi_bg_z_reg2[3]->SetLineColor(1);
     hi_bg_z_reg2[3]->Draw("H");
 
     hi_bg_z_e_reg2[3]->SetLineColor(2);
@@ -1031,6 +1041,7 @@ int main() {
     leg42->Draw();
     m6->cd(5);
     gPad->SetLogy();
+    hi_bg_z_reg2[4]->SetLineColor(1);
     hi_bg_z_reg2[4]->Draw("H");
 
     hi_bg_z_e_reg2[4]->SetLineColor(2);
@@ -1068,6 +1079,7 @@ int main() {
     leg52->Draw();
     m6->cd(6);
     gPad->SetLogy();
+    hi_bg_z_reg2[5]->SetLineColor(1);
     hi_bg_z_reg2[5]->Draw("H");
 
     hi_bg_z_e_reg2[5]->SetLineColor(2);
@@ -1141,6 +1153,7 @@ int main() {
     m9->Divide(2,3);
     m9->cd(1);
     gPad->SetLogy();
+    hi_bg_z_reg3[0]->SetLineColor(1);
     hi_bg_z_reg3[0]->Draw("H");
 
     hi_bg_z_e_reg3[0]->SetLineColor(2);
@@ -1177,6 +1190,7 @@ int main() {
     leg13->Draw();
     m9->cd(2);
     gPad->SetLogy();
+    hi_bg_z_reg3[1]->SetLineColor(1);
     hi_bg_z_reg3[1]->Draw("H");
 
     hi_bg_z_e_reg3[1]->SetLineColor(2);
@@ -1213,6 +1227,7 @@ int main() {
     leg23->Draw();
     m9->cd(3);
     gPad->SetLogy();
+    hi_bg_z_reg3[2]->SetLineColor(1);
     hi_bg_z_reg3[2]->Draw("H");
 
     hi_bg_z_e_reg3[2]->SetLineColor(2);
@@ -1249,6 +1264,7 @@ int main() {
     leg33->Draw();
     m9->cd(4);
     gPad->SetLogy();
+    hi_bg_z_reg3[3]->SetLineColor(1);
     hi_bg_z_reg3[3]->Draw("H");
 
     hi_bg_z_e_reg3[3]->SetLineColor(2);
@@ -1285,6 +1301,7 @@ int main() {
     leg43->Draw();
     m9->cd(5);
     gPad->SetLogy();
+    hi_bg_z_reg3[4]->SetLineColor(1);
     hi_bg_z_reg3[4]->Draw("H");
 
     hi_bg_z_e_reg3[4]->SetLineColor(2);
@@ -1321,6 +1338,7 @@ int main() {
     leg53->Draw();
     m9->cd(6);
     gPad->SetLogy();
+    hi_bg_z_reg3[5]->SetLineColor(1);
     hi_bg_z_reg3[5]->Draw("H");
 
     hi_bg_z_e_reg3[5]->SetLineColor(2);
