@@ -1173,7 +1173,7 @@ int main() {
     leg13->AddEntry(hi_bg_z_pi_reg3[0],"pion","l");
     leg13->AddEntry(hi_bg_z_n_reg3[0],"neutron","l");
     leg13->AddEntry(hi_bg_z_o_reg3[0],"other","l");
-    leg13->AddEntry(hi_bg_z_pos_reg3[0],"positron","l")
+    leg13->AddEntry(hi_bg_z_pos_reg3[0],"positron","l");
     leg13->Draw();
     m9->cd(2);
     gPad->SetLogy();
@@ -1209,7 +1209,7 @@ int main() {
     leg23->AddEntry(hi_bg_z_pi_reg3[1],"pion","l");
     leg23->AddEntry(hi_bg_z_n_reg3[1],"neutron","l");
     leg23->AddEntry(hi_bg_z_o_reg3[1],"other","l");
-    leg23->AddEntry(hi_bg_z_pos_reg3[1],"positron","l")
+    leg23->AddEntry(hi_bg_z_pos_reg3[1],"positron","l");
     leg23->Draw();
     m9->cd(3);
     gPad->SetLogy();
@@ -1245,7 +1245,7 @@ int main() {
     leg33->AddEntry(hi_bg_z_pi_reg3[2],"pion","l");
     leg33->AddEntry(hi_bg_z_n_reg3[2],"neutron","l");
     leg33->AddEntry(hi_bg_z_o_reg3[2],"other","l");
-    leg33->AddEntry(hi_bg_z_pos_reg3[2],"positron","l")
+    leg33->AddEntry(hi_bg_z_pos_reg3[2],"positron","l");
     leg33->Draw();
     m9->cd(4);
     gPad->SetLogy();
@@ -1281,7 +1281,7 @@ int main() {
     leg43->AddEntry(hi_bg_z_pi_reg3[3],"pion","l");
     leg43->AddEntry(hi_bg_z_n_reg3[3],"neutron","l");
     leg43->AddEntry(hi_bg_z_o_reg3[3],"other","l");
-    leg43->AddEntry(hi_bg_z_pos_reg3[3],"positron","l")
+    leg43->AddEntry(hi_bg_z_pos_reg3[3],"positron","l");
     leg43->Draw();
     m9->cd(5);
     gPad->SetLogy();
@@ -1317,7 +1317,7 @@ int main() {
     leg53->AddEntry(hi_bg_z_pi_reg3[4],"pion","l");
     leg53->AddEntry(hi_bg_z_n_reg3[4],"neutron","l");
     leg53->AddEntry(hi_bg_z_o_reg3[4],"other","l");
-    leg53->AddEntry(hi_bg_z_pos_reg3[4],"positron","l")
+    leg53->AddEntry(hi_bg_z_pos_reg3[4],"positron","l");
     leg53->Draw();
     m9->cd(6);
     gPad->SetLogy();
