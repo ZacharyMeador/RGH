@@ -222,6 +222,7 @@ int main() {
     // creating histos for origin of particle z(mm) vs Rates(MHz) 
     TH1F *hi_bg_z_reg1[6];
     TH1F *hi_bg_z_e_reg1[6];
+    TH1F *hi_bg_z_pos_reg1[6];
     TH1F *hi_bg_z_g_reg1[6];
     TH1F *hi_bg_z_p_reg1[6];
     TH1F *hi_bg_z_pi_reg1[6];
@@ -229,6 +230,7 @@ int main() {
     TH1F *hi_bg_z_o_reg1[6];
     TH1F *hi_bg_z_reg2[6];
     TH1F *hi_bg_z_e_reg2[6];
+    TH1F *hi_bg_z_pos_reg2[6];
     TH1F *hi_bg_z_g_reg2[6];
     TH1F *hi_bg_z_p_reg2[6];
     TH1F *hi_bg_z_pi_reg2[6];
@@ -236,6 +238,7 @@ int main() {
     TH1F *hi_bg_z_o_reg2[6];
     TH1F *hi_bg_z_reg3[6];
     TH1F *hi_bg_z_e_reg3[6];
+    TH1F *hi_bg_z_pos_reg3[6];
     TH1F *hi_bg_z_g_reg3[6];
     TH1F *hi_bg_z_p_reg3[6];
     TH1F *hi_bg_z_pi_reg3[6];
@@ -252,6 +255,10 @@ int main() {
 	    hi_bg_z_e_reg1[i]= new TH1F(Form("hi_bg_z_e1.%i",i+1), Form("hi_bg_z_e1.%i",i+1),200, -200.,6500.);
 	    hi_bg_z_e_reg1[i]->GetXaxis()->SetTitle("z(mm)");
 	    hi_bg_z_e_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    
+	    hi_bg_z_pos_reg1[i]= new TH1F(Form("hi_bg_z_pos1.%i",i+1), Form("hi_bg_z_pos1.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_pos_reg1[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_pos_reg1[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
 	    hi_bg_z_g_reg1[i]= new TH1F(Form("hi_bg_z_g%i",i+1), Form("hi_bg_z_g%i",i+1),200, -200.,6500.);
 	    hi_bg_z_g_reg1[i]->GetXaxis()->SetTitle("z(mm)");
@@ -281,6 +288,10 @@ int main() {
 	    hi_bg_z_e_reg2[i]= new TH1F(Form("hi_bg_z_e2.%i",i+1), Form("hi_bg_z_e2.%i",i+1),200, -200.,6500.);
 	    hi_bg_z_e_reg2[i]->GetXaxis()->SetTitle("z(mm)");
 	    hi_bg_z_e_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    
+	    hi_bg_z_pos_reg2[i]= new TH1F(Form("hi_bg_z_pos2.%i",i+1), Form("hi_bg_z_pos2.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_pos_reg2[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_pos_reg2[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
 	    hi_bg_z_g_reg2[i]= new TH1F(Form("hi_bg_z_g2.%i",i+1), Form("hi_bg_z_g2.%i",i+1),200, -200.,6500.);
 	    hi_bg_z_g_reg2[i]->GetXaxis()->SetTitle("z(mm)");
@@ -310,6 +321,10 @@ int main() {
 	    hi_bg_z_e_reg3[i]= new TH1F(Form("hi_bg_z_e3.%i",i+1), Form("hi_bg_z_e3.%i",i+1),200, -200.,6500.);
 	    hi_bg_z_e_reg3[i]->GetXaxis()->SetTitle("z(mm)");
 	    hi_bg_z_e_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
+	    
+	    hi_bg_z_pos_reg3[i]= new TH1F(Form("hi_bg_z_pos3.%i",i+1), Form("hi_bg_z_pos3.%i",i+1),200, -200.,6500.);
+	    hi_bg_z_pos_reg3[i]->GetXaxis()->SetTitle("z(mm)");
+	    hi_bg_z_pos_reg3[i]->GetYaxis()->SetTitle("Rate (MHz)");
 
 	    hi_bg_z_g_reg3[i]= new TH1F(Form("hi_bg_z_g3.%i",i+1), Form("hi_bg_zg3.%i",i+1),200, -200.,6500.);
 	    hi_bg_z_g_reg3[i]->GetXaxis()->SetTitle("z(mm)");
@@ -446,8 +461,9 @@ int main() {
                     if((*pid)[it]==22) hi_bg_z_g_reg1[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==2112) hi_bg_z_n_reg1[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==2212) hi_bg_z_p_reg1[nsect-1]->Fill((*vz)[it]);
+		    if((*pid)[it]==-11) hi_bg_z_pos_reg1[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg1[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg1[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg1[nsect-1]->Fill((*vz)[it]);
                     
 			    hi_bg_z_reg1[nsect-1]->Fill((*vz)[it]);
                 }
@@ -459,8 +475,9 @@ int main() {
                     if((*pid)[it]==22) hi_bg_z_g_reg2[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==2112) hi_bg_z_n_reg2[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==2212) hi_bg_z_p_reg2[nsect-1]->Fill((*vz)[it]);
+		    if((*pid)[it]==-11) hi_bg_z_pos_reg2[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg2[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg2[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg2[nsect-1]->Fill((*vz)[it]);
 
                     hi_bg_z_reg2[nsect-1]->Fill((*vz)[it]);
                 }
@@ -473,8 +490,9 @@ int main() {
                     if((*pid)[it]==22) hi_bg_z_g_reg3[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==2112) hi_bg_z_n_reg3[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==2212) hi_bg_z_p_reg3[nsect-1]->Fill((*vz)[it]);
+		    if((*pid)[it]==-11) hi_bg_z_pos_reg3[nsect-1]->Fill((*vz)[it]);
                     if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg3[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212) hi_bg_z_o_reg3[nsect-1]->Fill((*vz)[it]);
+                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg3[nsect-1]->Fill((*vz)[it]);
 
                     hi_bg_z_reg3[nsect-1]->Fill((*vz)[it]);
                 }       
@@ -515,6 +533,7 @@ int main() {
       hi_bg_z_pi_reg1[i]->Scale(1000./time);
       hi_bg_z_n_reg1[i]->Scale(1000./time);
       hi_bg_z_o_reg1[i]->Scale(1000./time);
+      hi_bg_z_pos_reg1[i]->Scale(1000./time);
     
       hi_bg_z_reg2[i]->Scale(1000./time);
       hi_bg_z_e_reg2[i]->Scale(1000./time);
@@ -523,6 +542,7 @@ int main() {
       hi_bg_z_pi_reg2[i]->Scale(1000./time);
       hi_bg_z_n_reg2[i]->Scale(1000./time);
       hi_bg_z_o_reg2[i]->Scale(1000./time);
+      hi_bg_z_pos_reg2[i]->Scale(1000./time);
         
       hi_bg_z_reg3[i]->Scale(1000./time);
       hi_bg_z_e_reg3[i]->Scale(1000./time);
@@ -531,6 +551,7 @@ int main() {
       hi_bg_z_pi_reg3[i]->Scale(1000./time);
       hi_bg_z_n_reg3[i]->Scale(1000./time);
       hi_bg_z_o_reg3[i]->Scale(1000./time);
+      hi_bg_z_pos_reg3[i]->Scale(1000./time);
       
       
       // Lines 537-539 break code with DifferentDimension exception raised
@@ -625,6 +646,9 @@ int main() {
 
     hi_bg_z_o_reg1[0]->SetLineColor(6);
     hi_bg_z_o_reg1[0]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg1[0]->SetLineColor(7);
+    hi_bg_z_pos_reg1[0]->Draw("SAMEH");
 
 
     TLegend *leg1= new TLegend(0.7,0.75,0.96,0.96);
@@ -636,6 +660,7 @@ int main() {
     leg1->AddEntry(hi_bg_z_pi_reg1[0],"pion","l");
     leg1->AddEntry(hi_bg_z_n_reg1[0],"neutron","l");
     leg1->AddEntry(hi_bg_z_o_reg1[0],"other","l");
+    leg1->AddEntry(hi_bg_z_pos_reg1[0],"positron","l");
     leg1->Draw();
     m3->cd(2);
     gPad->SetLogy();
@@ -658,6 +683,9 @@ int main() {
 
     hi_bg_z_o_reg1[1]->SetLineColor(6);
     hi_bg_z_o_reg1[1]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg1[1]->SetLineColor(7);
+    hi_bg_z_pos_reg1[1]->Draw("SAMEH");
 
 
     TLegend *leg2= new TLegend(0.7,0.75,0.96,0.96);
@@ -669,6 +697,7 @@ int main() {
     leg2->AddEntry(hi_bg_z_pi_reg1[1],"pion","l");
     leg2->AddEntry(hi_bg_z_n_reg1[1],"neutron","l");
     leg2->AddEntry(hi_bg_z_o_reg1[1],"other","l");
+    leg2->AddEntry(hi_bg_z_pos_reg1[1],"positron","l");
     leg2->Draw();
     m3->cd(3);
     gPad->SetLogy();
@@ -692,7 +721,9 @@ int main() {
     hi_bg_z_o_reg1[2]->SetLineColor(6);
     hi_bg_z_o_reg1[2]->Draw("SAMEH");
 
-
+    hi_bg_z_pos_reg1[2]->SetLineColor(7);
+    hi_bg_z_pos_reg1[2]->Draw("SAMEH");
+	
     TLegend *leg3= new TLegend(0.7,0.75,0.96,0.96);
     leg3->SetTextSize(.04);
     leg3->AddEntry(hi_bg_z_reg1[2],"All","l");
@@ -702,6 +733,7 @@ int main() {
     leg3->AddEntry(hi_bg_z_pi_reg1[2],"pion","l");
     leg3->AddEntry(hi_bg_z_n_reg1[2],"neutron","l");
     leg3->AddEntry(hi_bg_z_o_reg1[2],"other","l");
+    leg3->AddEntry(hi_bg_z_pos_reg1[2],"positron","l");
     leg3->Draw();
     m3->cd(4);
     gPad->SetLogy();
@@ -724,6 +756,9 @@ int main() {
 
     hi_bg_z_o_reg1[3]->SetLineColor(6);
     hi_bg_z_o_reg1[3]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg1[3]->SetLineColor(7);
+    hi_bg_z_pos_reg1[3]->Draw("SAMEH");
 
 
     TLegend *leg4= new TLegend(0.7,0.75,0.96,0.96);
@@ -735,6 +770,7 @@ int main() {
     leg4->AddEntry(hi_bg_z_pi_reg1[3],"pion","l");
     leg4->AddEntry(hi_bg_z_n_reg1[3],"neutron","l");
     leg4->AddEntry(hi_bg_z_o_reg1[3],"other","l");
+    leg4->AddEntry(hi_bg_z_pos_reg1[3],"positron","l");
     leg4->Draw();
     m3->cd(5);
     gPad->SetLogy();
@@ -757,6 +793,9 @@ int main() {
 
     hi_bg_z_o_reg1[4]->SetLineColor(6);
     hi_bg_z_o_reg1[4]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg1[4]->SetLineColor(7);
+    hi_bg_z_pos_reg1[4]->Draw("SAMEH");
 
 
     TLegend *leg5= new TLegend(0.7,0.75,0.96,0.96);
@@ -768,6 +807,7 @@ int main() {
     leg5->AddEntry(hi_bg_z_pi_reg1[4],"pion","l");
     leg5->AddEntry(hi_bg_z_n_reg1[4],"neutron","l");
     leg5->AddEntry(hi_bg_z_o_reg1[4],"other","l");
+    leg5->AddEntry(hi_bg_z_pos_reg1[4],"positron","l");
     leg5->Draw();
     m3->cd(6);
     gPad->SetLogy();
@@ -790,6 +830,9 @@ int main() {
 
     hi_bg_z_o_reg1[5]->SetLineColor(6);
     hi_bg_z_o_reg1[5]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg1[5]->SetLineColor(7);
+    hi_bg_z_pos_reg1[5]->Draw("SAMEH");
 
 
     TLegend *leg6= new TLegend(0.7,0.75,0.96,0.96);
@@ -801,6 +844,7 @@ int main() {
     leg6->AddEntry(hi_bg_z_pi_reg1[5],"pion","l");
     leg6->AddEntry(hi_bg_z_n_reg1[5],"neutron","l");
     leg6->AddEntry(hi_bg_z_o_reg1[5],"other","l");
+    leg6->AddEntry(hi_bg_z_pos_reg1[5],"positron","l");
     leg6->Draw();
     m3->Print("dc_occ.pdf");
     
@@ -859,6 +903,9 @@ int main() {
 
     hi_bg_z_o_reg2[0]->SetLineColor(6);
     hi_bg_z_o_reg2[0]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg2[0]->SetLineColor(7);
+    hi_bg_z_pos_reg2[0]->Draw("SAMEH");
 
 
     TLegend *leg12= new TLegend(0.7,0.75,0.96,0.96);
@@ -870,6 +917,7 @@ int main() {
     leg12->AddEntry(hi_bg_z_pi_reg2[0],"pion","l");
     leg12->AddEntry(hi_bg_z_n_reg2[0],"neutron","l");
     leg12->AddEntry(hi_bg_z_o_reg2[0],"other","l");
+    leg12->AddEntry(hi_bg_z_pos_reg2[0],"other","l");
     leg12->Draw();
     m6->cd(2);
     gPad->SetLogy();
@@ -892,6 +940,9 @@ int main() {
 
     hi_bg_z_o_reg2[1]->SetLineColor(6);
     hi_bg_z_o_reg2[1]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg2[1]->SetLineColor(7);
+    hi_bg_z_pos_reg2[1]->Draw("SAMEH");
 
 
     TLegend *leg22= new TLegend(0.7,0.75,0.96,0.96);
@@ -903,6 +954,7 @@ int main() {
     leg22->AddEntry(hi_bg_z_pi_reg1[1],"pion","l");
     leg22->AddEntry(hi_bg_z_n_reg1[1],"neutron","l");
     leg22->AddEntry(hi_bg_z_o_reg1[1],"other","l");
+    leg22->AddEntry(hi_bg_z_pos_reg2[1],"other","l");
     leg22->Draw();
     m6->cd(3);
     gPad->SetLogy();
@@ -926,6 +978,8 @@ int main() {
     hi_bg_z_o_reg2[2]->SetLineColor(6);
     hi_bg_z_o_reg2[2]->Draw("SAMEH");
 
+    hi_bg_z_pos_reg2[2]->SetLineColor(7);
+    hi_bg_z_pos_reg2[2]->Draw("SAMEH");
 
     TLegend *leg32= new TLegend(0.7,0.75,0.96,0.96);
     leg32->SetTextSize(.04);
@@ -936,6 +990,7 @@ int main() {
     leg32->AddEntry(hi_bg_z_pi_reg2[2],"pion","l");
     leg32->AddEntry(hi_bg_z_n_reg2[2],"neutron","l");
     leg32->AddEntry(hi_bg_z_o_reg2[2],"other","l");
+    leg32->AddEntry(hi_bg_z_pos_reg2[2],"other","l");
     leg32->Draw();
     m6->cd(4);
     gPad->SetLogy();
@@ -958,6 +1013,9 @@ int main() {
 
     hi_bg_z_o_reg2[3]->SetLineColor(6);
     hi_bg_z_o_reg2[3]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg2[3]->SetLineColor(7);
+    hi_bg_z_pos_reg2[3]->Draw("SAMEH");
 
 
     TLegend *leg42= new TLegend(0.7,0.75,0.96,0.96);
@@ -969,6 +1027,7 @@ int main() {
     leg42->AddEntry(hi_bg_z_pi_reg2[3],"pion","l");
     leg42->AddEntry(hi_bg_z_n_reg2[3],"neutron","l");
     leg42->AddEntry(hi_bg_z_o_reg2[3],"other","l");
+    leg42->AddEntry(hi_bg_z_pos_reg2[3],"other","l");
     leg42->Draw();
     m6->cd(5);
     gPad->SetLogy();
@@ -991,6 +1050,9 @@ int main() {
 
     hi_bg_z_o_reg2[4]->SetLineColor(6);
     hi_bg_z_o_reg2[4]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg2[4]->SetLineColor(7);
+    hi_bg_z_pos_reg2[4]->Draw("SAMEH");
 
 
     TLegend *leg52= new TLegend(0.7,0.75,0.96,0.96);
@@ -1002,6 +1064,7 @@ int main() {
     leg52->AddEntry(hi_bg_z_pi_reg2[4],"pion","l");
     leg52->AddEntry(hi_bg_z_n_reg2[4],"neutron","l");
     leg52->AddEntry(hi_bg_z_o_reg2[4],"other","l");
+    leg52->AddEntry(hi_bg_z_pos_reg2[4],"other","l");
     leg52->Draw();
     m6->cd(6);
     gPad->SetLogy();
@@ -1024,6 +1087,9 @@ int main() {
 
     hi_bg_z_o_reg2[5]->SetLineColor(6);
     hi_bg_z_o_reg2[5]->Draw("SAMEH");
+	
+    hi_bg_z_pos_reg2[5]->SetLineColor(7);
+    hi_bg_z_pos_reg2[5]->Draw("SAMEH");
 
 
     TLegend *leg62= new TLegend(0.7,0.75,0.96,0.96);
@@ -1035,6 +1101,7 @@ int main() {
     leg62->AddEntry(hi_bg_z_pi_reg2[5],"pion","l");
     leg62->AddEntry(hi_bg_z_n_reg2[5],"neutron","l");
     leg62->AddEntry(hi_bg_z_o_reg2[5],"other","l");
+    leg62->AddEntry(hi_bg_z_pos_reg2[5],"other","l");
     leg62->Draw();
     m6->Print("dc_occ.pdf");
 
@@ -1094,7 +1161,9 @@ int main() {
     hi_bg_z_o_reg3[0]->SetLineColor(6);
     hi_bg_z_o_reg3[0]->Draw("SAMEH");
 
-
+    hi_bg_z_pos_reg3[0]->SetLineColor(7);
+    hi_bg_z_pos_reg3[0]->Draw("SAMEH");
+	
     TLegend *leg13= new TLegend(0.7,0.75,0.96,0.96);
     leg13->SetTextSize(.04);
     leg13->AddEntry(hi_bg_z_reg3[0],"All","l");
@@ -1104,6 +1173,7 @@ int main() {
     leg13->AddEntry(hi_bg_z_pi_reg3[0],"pion","l");
     leg13->AddEntry(hi_bg_z_n_reg3[0],"neutron","l");
     leg13->AddEntry(hi_bg_z_o_reg3[0],"other","l");
+    leg13->AddEntry(hi_bg_z_pos_reg3[0],"positron","l")
     leg13->Draw();
     m9->cd(2);
     gPad->SetLogy();
@@ -1127,7 +1197,9 @@ int main() {
     hi_bg_z_o_reg3[1]->SetLineColor(6);
     hi_bg_z_o_reg3[1]->Draw("SAMEH");
 
-
+    hi_bg_z_pos_reg3[1]->SetLineColor(7);
+    hi_bg_z_pos_reg3[1]->Draw("SAMEH");
+	
     TLegend *leg23= new TLegend(0.7,0.75,0.96,0.96);
     leg23->SetTextSize(.04);
     leg23->AddEntry(hi_bg_z_reg3[1],"All","l");
@@ -1137,6 +1209,7 @@ int main() {
     leg23->AddEntry(hi_bg_z_pi_reg3[1],"pion","l");
     leg23->AddEntry(hi_bg_z_n_reg3[1],"neutron","l");
     leg23->AddEntry(hi_bg_z_o_reg3[1],"other","l");
+    leg23->AddEntry(hi_bg_z_pos_reg3[1],"positron","l")
     leg23->Draw();
     m9->cd(3);
     gPad->SetLogy();
@@ -1160,7 +1233,9 @@ int main() {
     hi_bg_z_o_reg3[2]->SetLineColor(6);
     hi_bg_z_o_reg3[2]->Draw("SAMEH");
 
-
+    hi_bg_z_pos_reg3[2]->SetLineColor(7);
+    hi_bg_z_pos_reg3[2]->Draw("SAMEH");
+	
     TLegend *leg33= new TLegend(0.7,0.75,0.96,0.96);
     leg33->SetTextSize(.04);
     leg33->AddEntry(hi_bg_z_reg3[2],"All","l");
@@ -1170,6 +1245,7 @@ int main() {
     leg33->AddEntry(hi_bg_z_pi_reg3[2],"pion","l");
     leg33->AddEntry(hi_bg_z_n_reg3[2],"neutron","l");
     leg33->AddEntry(hi_bg_z_o_reg3[2],"other","l");
+    leg33->AddEntry(hi_bg_z_pos_reg3[2],"positron","l")
     leg33->Draw();
     m9->cd(4);
     gPad->SetLogy();
@@ -1193,6 +1269,8 @@ int main() {
     hi_bg_z_o_reg3[3]->SetLineColor(6);
     hi_bg_z_o_reg3[3]->Draw("SAMEH");
 
+    hi_bg_z_pos_reg3[3]->SetLineColor(7);
+    hi_bg_z_pos_reg3[3]->Draw("SAMEH");
 
     TLegend *leg43= new TLegend(0.7,0.75,0.96,0.96);
     leg43->SetTextSize(.04);
@@ -1203,6 +1281,7 @@ int main() {
     leg43->AddEntry(hi_bg_z_pi_reg3[3],"pion","l");
     leg43->AddEntry(hi_bg_z_n_reg3[3],"neutron","l");
     leg43->AddEntry(hi_bg_z_o_reg3[3],"other","l");
+    leg43->AddEntry(hi_bg_z_pos_reg3[3],"positron","l")
     leg43->Draw();
     m9->cd(5);
     gPad->SetLogy();
@@ -1226,7 +1305,9 @@ int main() {
     hi_bg_z_o_reg3[4]->SetLineColor(6);
     hi_bg_z_o_reg3[4]->Draw("SAMEH");
 
-
+    hi_bg_z_pos_reg3[4]->SetLineColor(7);
+    hi_bg_z_pos_reg3[4]->Draw("SAMEH");
+	
     TLegend *leg53= new TLegend(0.7,0.75,0.96,0.96);
     leg53->SetTextSize(.04);
     leg53->AddEntry(hi_bg_z_reg3[4],"All","l");
@@ -1236,6 +1317,7 @@ int main() {
     leg53->AddEntry(hi_bg_z_pi_reg3[4],"pion","l");
     leg53->AddEntry(hi_bg_z_n_reg3[4],"neutron","l");
     leg53->AddEntry(hi_bg_z_o_reg3[4],"other","l");
+    leg53->AddEntry(hi_bg_z_pos_reg3[4],"positron","l")
     leg53->Draw();
     m9->cd(6);
     gPad->SetLogy();
@@ -1259,7 +1341,9 @@ int main() {
     hi_bg_z_o_reg3[5]->SetLineColor(6);
     hi_bg_z_o_reg3[5]->Draw("SAMEH");
 
-
+    hi_bg_z_pos_reg3[5]->SetLineColor(7);
+    hi_bg_z_pos_reg3[5]->Draw("SAMEH");
+	
     TLegend *leg63= new TLegend(0.7,0.75,0.96,0.96);
     leg63->SetTextSize(.04);
     leg63->AddEntry(hi_bg_z_reg3[5],"All","l");
@@ -1269,6 +1353,7 @@ int main() {
     leg63->AddEntry(hi_bg_z_pi_reg3[5],"pion","l");
     leg63->AddEntry(hi_bg_z_n_reg3[5],"neutron","l");
     leg63->AddEntry(hi_bg_z_o_reg3[5],"other","l");
+    leg63->AddEntry(hi_bg_z_pos_reg3[5],"positron","l");
     leg63->Draw();
     m9->Print("dc_occ.pdf");
     
