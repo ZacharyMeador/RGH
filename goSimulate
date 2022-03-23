@@ -1,0 +1,92 @@
+#!/bin/csh -f
+
+# user setup: environment
+# -----------------------
+#source /group/clas12/gemc/environment.csh 4.4.0
+#source /group/clas12/gemc/environment.csh 4.3.2
+source /group/clas12/packages/setup.csh
+module load clas12/pro
+# -----------------
+# end of user setup
+
+# Usage:
+# go_simulate title workdir nevents experimentsdir inputfdir
+set title   = $1
+set workdir = $2
+set nevents = $3
+set expsd   = $4
+set inputf  = $5
+echo
+
+set dir = $workdir/$title
+set gcard = $title".gcard"
+
+# making sure top directory exist
+mkdir -p $dir
+
+
+# sleeping a random amount of time (max 100 seconds)
+# to prevent to use the same directory
+set x = `perl -e 'srand; print int(rand(10)+1)'`
+
+echo "sleeping for "$x" seconds" > localLog
+sleep $x
+
+# checking how many directories already exist
+# the loop will check for all of those + 10
+# giving 200 buffer as many jobs could start at the same time
+set NEXIST = `\ls $dir/  | awk -F'simu_' '{print $2}' | awk -F\/ '{print $1}' | sort -nr | head -1`
+@ NMAX = $NEXIST * 2 + 200
+
+echo "Direactory already existing: "$NEXIST >> localLog
+
+# Look for first non existing dir
+set SIMU = 1
+while ($SIMU < $NMAX)
+
+        echo scanning $SIMU  >> localLog
+
+        if(`filetest -e $dir/simu_$SIMU` == 0) then
+
+                set runDir =  $dir/simu_$SIMU
+
+                mkdir -p $runDir
+                chmod a+rwx $runDir
+
+                # linking detector info and input files
+                ln -s $expsd .
+                ln -s $expsd $runDir/
+
+                # copying gcard to runDir
+                cp <path to gcard> $runDir
+
+                # linking input file if given
+                if($inputf != "none") then
+                        ln -s $inputf/input$SIMU".dat" sidis.dat
+                endif
+
+                set gemcLogFile = $runDir/gemc.log
+
+                # log before running
+                ./logConditions pre-run $SIMU $x
+                ./logConditions pre-run $SIMU $x          >> localLog
+
+                # running gemc
+                gemc <path to gcard>  -N=$nevents -USE_GUI=0        >> $gemcLogFile
+
+
+                # log after running
+                ./logConditions after-run
+                ./logConditions after-run                 >> localLog
+
+                cp out.ev $gcard localLog $runDir
+
+
+                # exit here to stop at the first non-existing dir
+                exit
+        endif
+
+ @ SIMU += 1
+
+end
+
