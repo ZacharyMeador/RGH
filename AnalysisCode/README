@@ -1,2 +1,18 @@
-RUNNING CODE:
-------------
+All code is modified from https://github.com/ZacharyMeador/clas12_simulation_rootMacro written by Raffaella De Vita.
+The original code does not account for an assymetrical background. This code examines the background of each sector of each
+region in the Drift Chamber subsystem of the CLAS12 detector.
+
+
+Editing dc_occ.C CODE:
+----------------------
+  - Line 1458: Changes the limit of y-axis on Occupnacy vs. Sector.
+
+
+Running Code:
+-------------
+  - Identify what <option> is necessary: dc_occ, moller, ft_rate, htcc_background, or tof_trigger.
+  - Copy MakeRootFile and <option> to directory where root files are located.
+  - ./MakeRootFile <option>
+  - An exectutable will be made to analyze data
+  - Run exectutable; ex: ./dc_occ.exe
+  
