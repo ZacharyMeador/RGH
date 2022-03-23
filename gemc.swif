@@ -24,4 +24,4 @@ swif2 add-job -workflow $wf \
 done
 
 swif2 run -workflow $wf
-\\ swif2 cancel -delete -workflow wf
+
