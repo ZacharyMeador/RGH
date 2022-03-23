@@ -15,8 +15,8 @@ TROUBLESHOOTING gemc.swif:
 Occasionally goSimulate will not copy the correct path and the simulations will fail in swif2:
   -Edit line 61 and 75 in goSimulate: $gcard
   -Example gcard path: /volatile/clas12/zachjj/ELMO.gcard
-  
-  SUBMIT SIMULATIONS:
-  -------------------
+   
+SUBMIT SIMULATIONS:
+-------------------
   ./gemc.swif
 
