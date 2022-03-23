@@ -1,21 +1,22 @@
 NECESSARY EDITS:
 ----------------
-
-In the gemc.swif:
-  -Replace all "<workflow title>"; example tr_ELMO
-  -Replace "<path to goSimulate>"; example /volatile/clas12/zachjj/work_transverse/goSimulate
-  -Replace "<path to logconditions>"; example /volatile/clas12/zachjj/analysis/farm/gemc/logconditions
-  -Replace all "<gcard title>"; example ELMO
-  -Replace "<path to gcard>"; example /volatile/clas12/zachjj/ELMO.gcard
-  -Replace "<path to output dir>"; example /volatile/clas12/zachjj/work_transverse/output
-  -Replace "<path to gemc version>"; example /group/clas12/gemc/4.4.2
-
+  In the gemc.swif:
+    -Replace all "<workflow title>"; example tr_ELMO
+    -Replace "<path to goSimulate>"; example /volatile/clas12/zachjj/work_transverse/goSimulate
+    -Replace "<path to logconditions>"; example /volatile/clas12/zachjj/analysis/farm/gemc/logconditions
+    -Replace all "<gcard title>"; example ELMO
+    -Replace "<path to gcard>"; example /volatile/clas12/zachjj/ELMO.gcard
+    -Replace "<path to output dir>"; example /volatile/clas12/zachjj/work_transverse/output
+    -Replace "<path to gemc version>"; example /group/clas12/gemc/4.4.2
+ 
+ 
 TROUBLESHOOTING gemc.swif:
 --------------------------
 Occasionally goSimulate will not copy the correct path and the simulations will fail in swif2:
   -Edit line 61 and 75 in goSimulate: $gcard
   -Example gcard path: /volatile/clas12/zachjj/ELMO.gcard
-   
+ 
+ 
 SUBMIT SIMULATIONS:
 -------------------
   ./gemc.swif
