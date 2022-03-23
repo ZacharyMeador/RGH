@@ -104,7 +104,7 @@ int main() {
     char *histname = new char[50];
     TH2F *hi_dcocc[6];
 
-    // Lines 109-351 create histos
+    // Lines 109-366 create histos
     // creating histos for wire vs layer
     for(int i=0; i<6; i++){
         hi_dcocc[i]= new TH2F(Form("DC Occ. E > 50 eV Sector%i",i+1),Form("DC Occ. E > 50 eV Sector%i",i+1),112, 1., 113., 36, 1., 37.);
