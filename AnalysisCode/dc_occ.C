@@ -626,7 +626,7 @@ int main() {
     TCanvas *m3=new TCanvas("m3","Background Origin Region 1.3",750,1000);
     m3->Divide(2,3);
     m3->cd(1);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg1[0]->SetLineColor(1);
     hi_bg_z_reg1[0]->Draw("H");
 
@@ -664,7 +664,7 @@ int main() {
     leg1->AddEntry(hi_bg_z_pos_reg1[0],"positron","l");
     leg1->Draw();
     m3->cd(2);
-    gPad->SetLogy();
+  //  gPad->SetLogy();
     hi_bg_z_reg1[1]->SetLineColor(1);
     hi_bg_z_reg1[1]->Draw("H");
 
@@ -702,7 +702,7 @@ int main() {
     leg2->AddEntry(hi_bg_z_pos_reg1[1],"positron","l");
     leg2->Draw();
     m3->cd(3);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg1[2]->SetLineColor(1);
     hi_bg_z_reg1[2]->Draw("H");
 
@@ -739,7 +739,7 @@ int main() {
     leg3->AddEntry(hi_bg_z_pos_reg1[2],"positron","l");
     leg3->Draw();
     m3->cd(4);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg1[3]->SetLineColor(1);
     hi_bg_z_reg1[3]->Draw("H");
 
@@ -777,7 +777,7 @@ int main() {
     leg4->AddEntry(hi_bg_z_pos_reg1[3],"positron","l");
     leg4->Draw();
     m3->cd(5);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg1[4]->SetLineColor(1);
     hi_bg_z_reg1[4]->Draw("H");
 
@@ -815,7 +815,7 @@ int main() {
     leg5->AddEntry(hi_bg_z_pos_reg1[4],"positron","l");
     leg5->Draw();
     m3->cd(6);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg1[5]->SetLineColor(1);
     hi_bg_z_reg1[5]->Draw("H");
 
@@ -889,7 +889,7 @@ int main() {
     TCanvas *m6=new TCanvas("m6","Background Origin Region 2.3",750,1000);
     m6->Divide(2,3);
     m6->cd(1);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg2[0]->SetLineColor(1);
     hi_bg_z_reg2[0]->Draw("H");
 
@@ -927,7 +927,7 @@ int main() {
     leg12->AddEntry(hi_bg_z_pos_reg2[0],"other","l");
     leg12->Draw();
     m6->cd(2);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg2[1]->SetLineColor(1);
     hi_bg_z_reg2[1]->Draw("H");
 
@@ -965,7 +965,7 @@ int main() {
     leg22->AddEntry(hi_bg_z_pos_reg2[1],"other","l");
     leg22->Draw();
     m6->cd(3);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg2[2]->SetLineColor(1);
     hi_bg_z_reg2[2]->Draw("H");
 
@@ -1002,7 +1002,7 @@ int main() {
     leg32->AddEntry(hi_bg_z_pos_reg2[2],"other","l");
     leg32->Draw();
     m6->cd(4);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg2[3]->SetLineColor(1);
     hi_bg_z_reg2[3]->Draw("H");
 
@@ -1040,7 +1040,7 @@ int main() {
     leg42->AddEntry(hi_bg_z_pos_reg2[3],"other","l");
     leg42->Draw();
     m6->cd(5);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg2[4]->SetLineColor(1);
     hi_bg_z_reg2[4]->Draw("H");
 
@@ -1078,7 +1078,7 @@ int main() {
     leg52->AddEntry(hi_bg_z_pos_reg2[4],"other","l");
     leg52->Draw();
     m6->cd(6);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg2[5]->SetLineColor(1);
     hi_bg_z_reg2[5]->Draw("H");
 
@@ -1124,7 +1124,7 @@ int main() {
     gPad->SetLogz();
     hi_bg_r_vs_z_reg3[0]->Draw("COLZ");
     m7->cd(2);
-    gPad->SetLogz();
+//    gPad->SetLogz();
     hi_bg_r_vs_z_reg3[1]->Draw("COLZ");
     m7->cd(3);
     gPad->SetLogz();
@@ -1152,7 +1152,7 @@ int main() {
     TCanvas *m9=new TCanvas("m9","Background Origin Region 3.3",750,1000);
     m9->Divide(2,3);
     m9->cd(1);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg3[0]->SetLineColor(1);
     hi_bg_z_reg3[0]->Draw("H");
 
@@ -1189,7 +1189,7 @@ int main() {
     leg13->AddEntry(hi_bg_z_pos_reg3[0],"positron","l");
     leg13->Draw();
     m9->cd(2);
-    gPad->SetLogy();
+ //   gPad->SetLogy();
     hi_bg_z_reg3[1]->SetLineColor(1);
     hi_bg_z_reg3[1]->Draw("H");
 
@@ -1226,7 +1226,7 @@ int main() {
     leg23->AddEntry(hi_bg_z_pos_reg3[1],"positron","l");
     leg23->Draw();
     m9->cd(3);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg3[2]->SetLineColor(1);
     hi_bg_z_reg3[2]->Draw("H");
 
@@ -1263,7 +1263,7 @@ int main() {
     leg33->AddEntry(hi_bg_z_pos_reg3[2],"positron","l");
     leg33->Draw();
     m9->cd(4);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg3[3]->SetLineColor(1);
     hi_bg_z_reg3[3]->Draw("H");
 
@@ -1300,7 +1300,7 @@ int main() {
     leg43->AddEntry(hi_bg_z_pos_reg3[3],"positron","l");
     leg43->Draw();
     m9->cd(5);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg3[4]->SetLineColor(1);
     hi_bg_z_reg3[4]->Draw("H");
 
@@ -1337,7 +1337,7 @@ int main() {
     leg53->AddEntry(hi_bg_z_pos_reg3[4],"positron","l");
     leg53->Draw();
     m9->cd(6);
-    gPad->SetLogy();
+//    gPad->SetLogy();
     hi_bg_z_reg3[5]->SetLineColor(1);
     hi_bg_z_reg3[5]->Draw("H");
 
