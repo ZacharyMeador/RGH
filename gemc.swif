@@ -1,14 +1,14 @@
 #!/bin/bash
 
-wf=rga_flux
+wf= <workflow title>
 
-swif2 create -workflow rga_flux -site jlab/enp
+swif2 create -workflow <workflow title> -site jlab/enp
 
 for i in `seq 100`
 do
 
 swif2 add-job -workflow $wf \
-    -name rga_flux.$i \
+    -name <workflow title>.$i \
     -constraint general \
     -account clas12 \
     -partition production \
@@ -16,10 +16,10 @@ swif2 add-job -workflow $wf \
     -cores 1 \
     -disk 1G \
     -ram 2G \
-    -input goSimulate file:/volatile/clas12/zachjj/work_transverse/goSimulate \
-    -input logConditions file:/volatile/clas12/zachjj/analysis/farm/gemc/functions/logConditions \
-    -input rga_flux.gcard file:/volatile/clas12/zachjj/RGH/Mar2022/rga/rga_flux/rga_flux.gcard \
-    './goSimulate rga_flux /volatile/clas12/zachjj/work_transverse/output 11 /group/clas12/gemc/4.4.2 none'
+    -input goSimulate file: <path to goSimulate> \
+    -input logConditions file: <path to logconditions> \
+    -input <gcard title>.gcard file: <path to gcard>\
+    './goSimulate <gcard title> <path to output dir> 11 <path to gemc version> none'
 
 done
 
