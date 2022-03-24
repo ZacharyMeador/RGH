@@ -924,7 +924,7 @@ int main() {
     leg12->AddEntry(hi_bg_z_pi_reg2[0],"pion","l");
     leg12->AddEntry(hi_bg_z_n_reg2[0],"neutron","l");
     leg12->AddEntry(hi_bg_z_o_reg2[0],"other","l");
-    leg12->AddEntry(hi_bg_z_pos_reg2[0],"other","l");
+    leg12->AddEntry(hi_bg_z_pos_reg2[0],"positron","l");
     leg12->Draw();
     m6->cd(2);
 //    gPad->SetLogy();
@@ -962,7 +962,7 @@ int main() {
     leg22->AddEntry(hi_bg_z_pi_reg1[1],"pion","l");
     leg22->AddEntry(hi_bg_z_n_reg1[1],"neutron","l");
     leg22->AddEntry(hi_bg_z_o_reg1[1],"other","l");
-    leg22->AddEntry(hi_bg_z_pos_reg2[1],"other","l");
+    leg22->AddEntry(hi_bg_z_pos_reg2[1],"positron","l");
     leg22->Draw();
     m6->cd(3);
 //    gPad->SetLogy();
@@ -999,7 +999,7 @@ int main() {
     leg32->AddEntry(hi_bg_z_pi_reg2[2],"pion","l");
     leg32->AddEntry(hi_bg_z_n_reg2[2],"neutron","l");
     leg32->AddEntry(hi_bg_z_o_reg2[2],"other","l");
-    leg32->AddEntry(hi_bg_z_pos_reg2[2],"other","l");
+    leg32->AddEntry(hi_bg_z_pos_reg2[2],"Positron","l");
     leg32->Draw();
     m6->cd(4);
 //    gPad->SetLogy();
@@ -1037,7 +1037,7 @@ int main() {
     leg42->AddEntry(hi_bg_z_pi_reg2[3],"pion","l");
     leg42->AddEntry(hi_bg_z_n_reg2[3],"neutron","l");
     leg42->AddEntry(hi_bg_z_o_reg2[3],"other","l");
-    leg42->AddEntry(hi_bg_z_pos_reg2[3],"other","l");
+    leg42->AddEntry(hi_bg_z_pos_reg2[3],"positron","l");
     leg42->Draw();
     m6->cd(5);
 //    gPad->SetLogy();
@@ -1075,7 +1075,7 @@ int main() {
     leg52->AddEntry(hi_bg_z_pi_reg2[4],"pion","l");
     leg52->AddEntry(hi_bg_z_n_reg2[4],"neutron","l");
     leg52->AddEntry(hi_bg_z_o_reg2[4],"other","l");
-    leg52->AddEntry(hi_bg_z_pos_reg2[4],"other","l");
+    leg52->AddEntry(hi_bg_z_pos_reg2[4],"positron","l");
     leg52->Draw();
     m6->cd(6);
 //    gPad->SetLogy();
@@ -1113,7 +1113,7 @@ int main() {
     leg62->AddEntry(hi_bg_z_pi_reg2[5],"pion","l");
     leg62->AddEntry(hi_bg_z_n_reg2[5],"neutron","l");
     leg62->AddEntry(hi_bg_z_o_reg2[5],"other","l");
-    leg62->AddEntry(hi_bg_z_pos_reg2[5],"other","l");
+    leg62->AddEntry(hi_bg_z_pos_reg2[5],"positron","l");
     leg62->Draw();
     m6->Print("dc_occ.pdf");
 
