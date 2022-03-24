@@ -11,7 +11,7 @@ Editing dc_occ.C CODE:
 Running Code:
 -------------
   - Identify what <option> is necessary: dc_occ, moller, ft_rate, htcc_background, or tof_trigger.
-  - Copy MakeRootFile and <option> to directory where root files are located.
+  - Copy MakeRootFile and <option> code to directory where root files are located.
   - ./MakeRootFile <option>
   - An exectutable will be made to analyze data
   - Run exectutable; ex: ./dc_occ.exe
