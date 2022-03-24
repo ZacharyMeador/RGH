@@ -1381,7 +1381,7 @@ int main() {
     gPad->SetLogz();
     hi_bg_origin->Draw("COLZ");
     c3->cd(2);
-    gPad->SetLogy();
+    //gPad->SetLogy();
     hi_bg_z->SetLineColor(1);
     //    hi_bg_z->SetMaximum(15);
     hi_bg_z->Draw("H");
