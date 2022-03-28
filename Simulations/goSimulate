@@ -58,7 +58,7 @@ while ($SIMU < $NMAX)
                 ln -s $expsd $runDir/
 
                 # copying gcard to runDir
-                cp <path to gcard> $runDir
+                cp $gcard $runDir
 
                 # linking input file if given
                 if($inputf != "none") then
@@ -72,7 +72,7 @@ while ($SIMU < $NMAX)
                 ./logConditions pre-run $SIMU $x          >> localLog
 
                 # running gemc
-                gemc <path to gcard>  -N=$nevents -USE_GUI=0        >> $gemcLogFile
+                gemc $gcard  -N=$nevents -USE_GUI=0        >> $gemcLogFile
 
 
                 # log after running
