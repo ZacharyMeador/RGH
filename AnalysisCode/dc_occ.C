@@ -435,77 +435,78 @@ int main() {
 	    if(dc_reg==2 && (*wire)[i]>=1 && (*wire)[i]<=20){
 	    	continue;
 	    }
-	    if((*Edep)[it]>0.00005) {
-		// Filling arrays
-                hi_dcocc[nsect-1]->Fill((*wire)[i],(*layer)[i],dc_weight);
-	        if((*vz)[it]<100)hi_dcocc_tgt->Fill((*wire)[i],(*layer)[i],dc_weight);
-		hi_dcocc_region[dc_reg-1]->Fill((*sector)[i],dc_weight);
-	        if(dc_reg==1) {
-                    hi_bg_origin->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
-                    hi_bg_z->Fill((*vz)[it]);
-                    if((*pid)[it]==11) {
-                        hi_bg_z_e->Fill((*vz)[it]);
-                    }
-                    else if((*pid)[it]==22) {
-                        hi_bg_z_g->Fill((*vz)[it]);
-                    }
-                    else {
-                        hi_bg_z_o->Fill((*vz)[it]);
-                    }
-                    if((*E)[it]>mass) hi_bg_energy_tmp->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
+		else{
+	    		if((*Edep)[it]>0.00005) {
+			// Filling arrays
+                	hi_dcocc[nsect-1]->Fill((*wire)[i],(*layer)[i],dc_weight);
+	        	if((*vz)[it]<100)hi_dcocc_tgt->Fill((*wire)[i],(*layer)[i],dc_weight);
+			hi_dcocc_region[dc_reg-1]->Fill((*sector)[i],dc_weight);
+	        	if(dc_reg==1) {
+                    		hi_bg_origin->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
+                    		hi_bg_z->Fill((*vz)[it]);
+                    	if((*pid)[it]==11) {
+                        	hi_bg_z_e->Fill((*vz)[it]);
+                    	}
+                    	else if((*pid)[it]==22) {
+                        	hi_bg_z_g->Fill((*vz)[it]);
+                    	}
+                    	else {
+                        	hi_bg_z_o->Fill((*vz)[it]);
+                    	}
+                    	if((*E)[it]>mass) hi_bg_energy_tmp->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
                   
-                    hi_bg_E->Fill(sqrt((*E)[it]*(*E)[it]-mass*mass));
-                }
-	    // Lines 441-481 Filling arrays for histos by region
-            if(dc_reg==1){
-                    hi_bg_r_vs_z_vs_ene_reg_temp1[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
-                    hi_bg_r_vs_z_reg1[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
+                    	hi_bg_E->Fill(sqrt((*E)[it]*(*E)[it]-mass*mass));
+                	}
+	    	// Lines 441-481 Filling arrays for histos by region
+            		if(dc_reg==1){
+				hi_bg_r_vs_z_vs_ene_reg_temp1[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
+				hi_bg_r_vs_z_reg1[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
 
-                    if((*pid)[it]==11) hi_bg_z_e_reg1[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==22) hi_bg_z_g_reg1[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==2112) hi_bg_z_n_reg1[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==2212) hi_bg_z_p_reg1[nsect-1]->Fill((*vz)[it]);
-		    if((*pid)[it]==-11) hi_bg_z_pos_reg1[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg1[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg1[nsect-1]->Fill((*vz)[it]);
-                    
-			    hi_bg_z_reg1[nsect-1]->Fill((*vz)[it]);
-                }
-            if(dc_reg==2){
-                    hi_bg_r_vs_z_vs_ene_reg_temp2[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
-                    hi_bg_r_vs_z_reg2[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
+				if((*pid)[it]==11) hi_bg_z_e_reg1[nsect-1]->Fill((*vz)[it]);
+				if((*pid)[it]==22) hi_bg_z_g_reg1[nsect-1]->Fill((*vz)[it]);
+				if((*pid)[it]==2112) hi_bg_z_n_reg1[nsect-1]->Fill((*vz)[it]);
+				if((*pid)[it]==2212) hi_bg_z_p_reg1[nsect-1]->Fill((*vz)[it]);
+				if((*pid)[it]==-11) hi_bg_z_pos_reg1[nsect-1]->Fill((*vz)[it]);
+				if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg1[nsect-1]->Fill((*vz)[it]);
+				if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg1[nsect-1]->Fill((*vz)[it]);
 
-                    if((*pid)[it]==11) hi_bg_z_e_reg2[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==22) hi_bg_z_g_reg2[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==2112) hi_bg_z_n_reg2[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==2212) hi_bg_z_p_reg2[nsect-1]->Fill((*vz)[it]);
-		    if((*pid)[it]==-11) hi_bg_z_pos_reg2[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg2[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg2[nsect-1]->Fill((*vz)[it]);
+					hi_bg_z_reg1[nsect-1]->Fill((*vz)[it]);
+				}
+			    if(dc_reg==2){
+				    hi_bg_r_vs_z_vs_ene_reg_temp2[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
+				    hi_bg_r_vs_z_reg2[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
 
-                    hi_bg_z_reg2[nsect-1]->Fill((*vz)[it]);
-                }
+				    if((*pid)[it]==11) hi_bg_z_e_reg2[nsect-1]->Fill((*vz)[it]);
+				    if((*pid)[it]==22) hi_bg_z_g_reg2[nsect-1]->Fill((*vz)[it]);
+				    if((*pid)[it]==2112) hi_bg_z_n_reg2[nsect-1]->Fill((*vz)[it]);
+				    if((*pid)[it]==2212) hi_bg_z_p_reg2[nsect-1]->Fill((*vz)[it]);
+				    if((*pid)[it]==-11) hi_bg_z_pos_reg2[nsect-1]->Fill((*vz)[it]);
+				    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg2[nsect-1]->Fill((*vz)[it]);
+				    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg2[nsect-1]->Fill((*vz)[it]);
 
-            if(dc_reg==3){
-                    hi_bg_r_vs_z_vs_ene_reg_temp3[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
-                    hi_bg_r_vs_z_reg3[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
+				    hi_bg_z_reg2[nsect-1]->Fill((*vz)[it]);
+				}
 
-                    if((*pid)[it]==11) hi_bg_z_e_reg3[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==22) hi_bg_z_g_reg3[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==2112) hi_bg_z_n_reg3[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==2212) hi_bg_z_p_reg3[nsect-1]->Fill((*vz)[it]);
-		    if((*pid)[it]==-11) hi_bg_z_pos_reg3[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg3[nsect-1]->Fill((*vz)[it]);
-                    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg3[nsect-1]->Fill((*vz)[it]);
+		    if(dc_reg==3){
+			    hi_bg_r_vs_z_vs_ene_reg_temp3[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]),sqrt((*E)[it]*(*E)[it]-mass*mass));
+			    hi_bg_r_vs_z_reg3[nsect-1]->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
 
-                    hi_bg_z_reg3[nsect-1]->Fill((*vz)[it]);
-                }       
-            if((*vz)[it]>1000*(dc_reg+1)) hi_bg_y_vs_x_reg[dc_reg-1]->Fill((*vx)[it],(*vy)[it]);
-            
-           }
-        }
+			    if((*pid)[it]==11) hi_bg_z_e_reg3[nsect-1]->Fill((*vz)[it]);
+			    if((*pid)[it]==22) hi_bg_z_g_reg3[nsect-1]->Fill((*vz)[it]);
+			    if((*pid)[it]==2112) hi_bg_z_n_reg3[nsect-1]->Fill((*vz)[it]);
+			    if((*pid)[it]==2212) hi_bg_z_p_reg3[nsect-1]->Fill((*vz)[it]);
+			    if((*pid)[it]==-11) hi_bg_z_pos_reg3[nsect-1]->Fill((*vz)[it]);
+			    if((*pid)[it]==211 || (*pid)[it]==-211 ) hi_bg_z_pi_reg3[nsect-1]->Fill((*vz)[it]);
+			    if((*pid)[it]!=211 && (*pid)[it]!=-211 && (*pid)[it]!=11 && (*pid)[it]!=22 && (*pid)[it]!=2212 && (*pid)[it]!=-11) hi_bg_z_o_reg3[nsect-1]->Fill((*vz)[it]);
+
+				hi_bg_z_reg3[nsect-1]->Fill((*vz)[it]);
+				}       
+			 if((*vz)[it]>1000*(dc_reg+1)) hi_bg_y_vs_x_reg[dc_reg-1]->Fill((*vx)[it],(*vy)[it]);
+
+		     }
+           	}
+    	}
     }
-
     // calculating normalization factors based on number of good events
     float norm=124000/levents/ngoodentries;
     float lumi=ngoodentries*250/10*levents/124000; // (mbarn^-1 or 10^27 cm^-2)
