@@ -432,7 +432,7 @@ int main() {
             else          dc_weight=2;
             
 	   // code to turn off wires by ignoring them in analysis
-	    if(dc_region==2 && (*wire)[i]>=1 && (*wire)[i]<=20){
+	    if(dc_reg==2 && (*wire)[i]>=1 && (*wire)[i]<=20){
 	    	continue;
 	    }
 	    if((*Edep)[it]>0.00005) {
