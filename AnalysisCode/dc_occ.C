@@ -529,8 +529,7 @@ int main() {
     // If histo is integrate by sector divide by 1
     for(int i=0; i<6; i++){
         hi_dcocc[i]->Scale(norm/1.);
-    
-        hi_dcocc_tgt[i]->Scale(norm/6.);
+        hi_dcocc_tgt[i]->Scale(norm/1.);
     }
 	
     hi_bg_z->Scale(1000./time);
