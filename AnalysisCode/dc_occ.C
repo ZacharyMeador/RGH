@@ -441,7 +441,7 @@ int main() {
 	    		if((*Edep)[it]>0.00005) {
 			// Filling arrays
                 	hi_dcocc[nsect-1]->Fill((*wire)[i],(*layer)[i],dc_weight);
-	        	if((*vz)[it]<100)hi_dcocc_tgt->Fill((*wire)[i],(*layer)[i],dc_weight);
+	        	if((*vz)[it]<100)hi_dcocc_tgt[nsect-1]->Fill((*wire)[i],(*layer)[i],dc_weight);
 			hi_dcocc_region[dc_reg-1]->Fill((*sector)[i],dc_weight);
 	        	if(dc_reg==1) {
                     		hi_bg_origin->Fill((*vz)[it],sqrt((*vx)[it]*(*vx)[it]+(*vy)[it]*(*vy)[it]));
@@ -524,9 +524,10 @@ int main() {
     // If histo is integrate by sector divide by 1
     for(int i=0; i<6; i++){
         hi_dcocc[i]->Scale(norm/1.);
-    }
-        hi_dcocc_tgt->Scale(norm/6.);
     
+        hi_dcocc_tgt[i]->Scale(norm/6.);
+    }
+	
     hi_bg_z->Scale(1000./time);
     hi_bg_z_e->Scale(1000./time);
     hi_bg_z_g->Scale(1000./time);
@@ -594,10 +595,30 @@ int main() {
     c1->cd(6);
 //     gPad->SetLogz();
     hi_dcocc[5]->Draw("COLZ");
-    c1->cd(7);
-//     gPad->SetLogz();
-    hi_dcocc_tgt->Draw("COLZ");
     c1->Print("dc_occ.pdf(");
+
+    TCanvas *c16=new TCanvas("c16","Occupancy Target",750,1000);
+    c16->Divide(3,3);
+    c16->cd(1);
+//     gPad->SetLogz();
+    hi_dcocc_tgt[0]->Draw("COLZ");
+    c16->cd(2);
+//     gPad->SetLogz();
+    hi_dcocc_tgt[1]->Draw("COLZ");
+    c16->cd(3);
+//     gPad->SetLogz();
+    hi_dcocc_tgt[2]->Draw("COLZ");
+    c16->cd(4);
+//     gPad->SetLogz();
+    hi_dcocc_tgt[3]->Draw("COLZ");
+    c16->cd(5);
+//     gPad->SetLogz();
+    hi_dcocc_tgt[4]->Draw("COLZ");
+    c16->cd(6);
+//     gPad->SetLogz();
+    hi_dcocc[5]_tgt->Draw("COLZ");
+    c16->Print("dc_occ.pdf");
+	
 // lines 574-594 print region 1 z(mm) vs r(mm)
     TCanvas *m1=new TCanvas("m1","Background Origin Region 1.1",750,1000);
     m1->Divide(2,3);
