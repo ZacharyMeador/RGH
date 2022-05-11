@@ -111,9 +111,11 @@ int main() {
         hi_dcocc[i]->GetXaxis()->SetTitle("wire");
         hi_dcocc[i]->GetYaxis()->SetTitle("layer");
     }
-    TH2F *hi_dcocc_tgt   = new TH2F("DC Occ. Target", "DC Occ. Target",112, 1.,113., 36, 1.,37.);
-    hi_dcocc_tgt->GetXaxis()->SetTitle("wire");
-    hi_dcocc_tgt->GetYaxis()->SetTitle("layer");
+    for(int i-0; i<6; i++){
+       hi_dcocc_tgt[i]   = new TH2F(Form("DC Occ. Target Sector%i",i+1), Form("DC Occ. Target Sector%i",i+1),112, 1.,113., 36, 1.,37.);
+       hi_dcocc_tgt[i]->GetXaxis()->SetTitle("wire");
+       hi_dcocc_tgt[i]->GetYaxis()->SetTitle("layer");
+    }
 
     //creating histo for average occupancy sector vs %
     TH1F *hi_dcocc_region[3];
