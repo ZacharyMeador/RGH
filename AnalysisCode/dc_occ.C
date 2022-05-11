@@ -429,16 +429,20 @@ int main() {
             else{
                 mass=0;
             }
-	  // defining layers: region 1 = layers 1-12, region 2 = 13-24, and region 25-36
+	  // defining layers: region 1 = layers 1-12, region 2 = 13-24, and region 3 = 25-36
             int dc_reg=int(((*layer)[i]-1)/12)+1;
             if(dc_reg==1) dc_weight=1;
             else          dc_weight=2;
             
-	   // code to turn off wires by ignoring them in analysis
-	    if(dc_reg==2 && (*wire)[i]>=1 && (*wire)[i]<=20 && nsect == 4){
-	    	continue;
-	    }
-		else{
+	   // If you need to turn off wires in a particular use lines 437-445 (don't forget to uncomment line 516)
+	   //int reg = 0; // Choose a region: 1-3
+           //int wire_start = 0; // Choose a start wire: 1-112
+	   //int wire_end = 0; // Choose a end wire: 1-112
+	   //int section = 0; // Choose a sector: 1-6
+	   //if(dc_reg==reg && (*wire)[i]>=wire_start && (*wire)[i]<=wire_end && nsect == section){
+	   // 	continue;
+	   //}
+		//else{
 	    		if((*Edep)[it]>0.00005) {
 			// Filling arrays
                 	hi_dcocc[nsect-1]->Fill((*wire)[i],(*layer)[i],dc_weight);
@@ -509,7 +513,7 @@ int main() {
 		     }
            	}
     	}
-    }
+    //}
     // calculating normalization factors based on number of good events
     float norm=124000/levents/ngoodentries;
     float lumi=ngoodentries*250/10*levents/124000; // (mbarn^-1 or 10^27 cm^-2)
