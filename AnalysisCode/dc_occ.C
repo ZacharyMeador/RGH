@@ -103,6 +103,7 @@ int main() {
 
     char *histname = new char[50];
     TH2F *hi_dcocc[6];
+    TH2F *hi_dcocc_tgt[6];
 
     // Lines 109-366 create histos
     // creating histos for wire vs layer
