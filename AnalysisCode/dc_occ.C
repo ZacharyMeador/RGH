@@ -620,7 +620,7 @@ int main() {
     hi_dcocc_tgt[4]->Draw("COLZ");
     c16->cd(6);
 //     gPad->SetLogz();
-    hi_dcocc[5]_tgt->Draw("COLZ");
+    hi_dcocc_tgt[5]->Draw("COLZ");
     c16->Print("dc_occ.pdf");
 	
 // lines 574-594 print region 1 z(mm) vs r(mm)
