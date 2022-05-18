@@ -418,8 +418,10 @@ int main() {
 	 else if((*tof_pid)[i]==22) hi_tof_vz_g[nsect-1]->Fill((*tof_vz)[i]/10.);
 	 else                       hi_tof_vz_h[nsect-1]->Fill((*tof_vz)[i]/10.);
 	 if((*tof_pid)[i]==2112)    hi_tof_vz_n[nsect-1]->Fill((*tof_vz)[i]/10.);
-	 hi_tof_origin_all[nsect-1]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
-     hi_tof_origin_all_temp[nsect-1]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
+	 hi_tof_origin[nsect-1]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
+     hi_tof_origin_temp[nsect-1]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
+	 hi_tof_origin_all->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
+     hi_tof_origin_all_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
     if((*tof_E)[i]>mass) hi_tof_origin_all_ene_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.), sqrt((*tof_E)[i]*(*tof_E)[i]-mass*mass) );
 	 if((*tof_Edep)[i]>Ethr) {
 	   hi_tof_occ_5->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
