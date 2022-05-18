@@ -225,7 +225,7 @@ int main() {
    	hi_tof_origin_temp[i] = new TH2F(Form("hi_tof_origin_all_temp%i",i+1), "",200, 0.,800.,200, 0.,100.);
    }
 
-  TH2f *hi_tof_origin_all = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
+  TH2F *hi_tof_origin_all = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
   hi_tof_origin_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
   hi_tof_origin_all->GetYaxis()->SetTitle("R_{vertex} (cm)");
    
@@ -347,6 +347,7 @@ int main() {
    float Ethr=1;            // energy thresholds in MeV
    int nint=0;
    int ngoodentries=0;
+   int pi = 3.14159265359
    for (Long64_t jentry=0; jentry < nentries; jentry++) {
   
        tof_sector->clear();
