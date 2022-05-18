@@ -188,32 +188,49 @@ int main() {
    TH1F *hi_tof2_pid_5 = new TH1F("hi_tof2_pid_5", "hi_tof2_pid_5",200, -600.,2400.);
    hi_tof2_pid_5->GetXaxis()->SetTitle("PID");
    hi_tof2_pid_5->GetYaxis()->SetTitle("Rate (MHz)");
+   
+   TH1F *hi_tof_vz_all[6];
+   TH1F *hi_tof_e[6];
+   TH1F *hi_tof_g[6];
+   TH1F *hi_tof_h[6];
+   TH1F *hi_tof_n[6];
+   TH2F *hi_tof_origin[6];
+   TH2F *hi_tof_origin_temp[6];
+   
+   for(int i=0; i<6; i++){	
+   	hi_tof_vz_all[i] = new TH1F(Form("hi_tof_vz_all%i",i+1), Form("hi_tof_vz_all%i",i+1),200, 0.,800.);
+   	hi_tof_vz_all[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+   	hi_tof_vz_all[i]->GetYaxis()->SetTitle("Rate (MHz/4cm)");
 
-   TH1F *hi_tof_vz_all = new TH1F("hi_tof_vz_all", "hi_tof_vz_all",200, 0.,800.);
-   hi_tof_vz_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-   hi_tof_vz_all->GetYaxis()->SetTitle("Rate (MHz/4cm)");
+   	hi_tof_vz_e[i] = new TH1F(Form("hi_tof_vz_e%i",i+1), Form("hi_tof_vz_e%i",i+1),200, 0.,800.);
+   	hi_tof_vz_e[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+   	hi_tof_vz_e[i]->GetYaxis()->SetTitle("Rate (MHz/4cm)");
 
-   TH1F *hi_tof_vz_e = new TH1F("hi_tof_vz_e", "hi_tof_vz_e",200, 0.,800.);
-   hi_tof_vz_e->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-   hi_tof_vz_e->GetYaxis()->SetTitle("Rate (MHz/4cm)");
+   	hi_tof_vz_g[i] = new TH1F(Form("hi_tof_vz_g%i",i+1), Form("hi_tof_vz_g%i",i+1),200, 0.,800.);
+   	hi_tof_vz_g[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+   	hi_tof_vz_g[i]->GetYaxis()->SetTitle("Rate (MHz/4cm)");
 
-   TH1F *hi_tof_vz_g = new TH1F("hi_tof_vz_g", "hi_tof_vz_g",200, 0.,800.);
-   hi_tof_vz_g->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-   hi_tof_vz_g->GetYaxis()->SetTitle("Rate (MHz/4cm)");
+   	hi_tof_vz_h[i] = new TH1F(Form("hi_tof_vz_h%i",i+1), Form("hi_tof_vz_h%i",i+1),200, 0.,800.);
+   	hi_tof_vz_h[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+   	hi_tof_vz_h[i]->GetYaxis()->SetTitle("Rate (MHz/4cm)");
 
-   TH1F *hi_tof_vz_h = new TH1F("hi_tof_vz_h", "hi_tof_vz_h",200, 0.,800.);
-   hi_tof_vz_h->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-   hi_tof_vz_h->GetYaxis()->SetTitle("Rate (MHz/4cm)");
+   	hi_tof_vz_n[i] = new TH1F(Form("hi_tof_vz_n%i",i+1), Form("hi_tof_vz_n%i",i+1),200, 0.,800.);
+   	hi_tof_vz_n[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+   	hi_tof_vz_n[i]->GetYaxis()->SetTitle("Rate (MHz/4cm)");
 
-   TH1F *hi_tof_vz_n = new TH1F("hi_tof_vz_n", "hi_tof_vz_n",200, 0.,800.);
-   hi_tof_vz_n->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-   hi_tof_vz_n->GetYaxis()->SetTitle("Rate (MHz/4cm)");
+   	hi_tof_origin[i] = new TH2F(Form("hi_tof_origin%i",i+1), Form("hi_tof_origin%i",i+1),200, 0.,800.,200, 0.,100.);
+   	hi_tof_origin[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+   	hi_tof_origin[i]->GetYaxis()->SetTitle("R_{vertex} (cm)");
+   
+   	hi_tof_origin_temp[i] = new TH2F(Form("hi_tof_origin_all_temp%i",i+1), "",200, 0.,800.,200, 0.,100.);
+   }
 
-   TH2F *hi_tof_origin_all = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
-   hi_tof_origin_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-   hi_tof_origin_all->GetYaxis()->SetTitle("R_{vertex} (cm)");
-    
-     TH2F *hi_tof_origin_all_temp = new TH2F("hi_tof_origin_all_temp", "",200, 0.,800.,200, 0.,100.);
+  TH2f *hi_tof_origin_all = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
+  hi_tof_origin_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+  hi_tof_origin_all->GetYaxis()->SetTitle("R_{vertex} (cm)");
+   
+  hi_tof_origin_temp_all = new TH2F("hi_tof_origin_all_temp", "",200, 0.,800.,200, 0.,100.);
+	
 
   TH2F *hi_tof_origin_all_ene = new TH2F("hi_tof_origin_all_ene", "hi_tof_origin_all_ene",200, 0.,800.,200, 0.,100.);
   hi_tof_origin_all_ene->GetXaxis()->SetTitle("Z_{vertex} (cm)");
@@ -360,7 +377,11 @@ int main() {
        ntofhit=tof_pid->size();
 
        for(int i=0; i<ntofhit; i++) {
-           
+           int it=(*hitn)[i]-1;
+	   phi = atan2((*tof_vy)[it],(*tof_vz)[it])*180/pi;
+	   phi += (phi<0) ? 360:0;
+	   int nsect = floor((phi-30)/60) + 2;
+	   if(nsect == 7) nsect = 1;
            if((*tof_pid)[i]==2112 || (*tof_pid)[i]==2212) {
                mass=938;
            }
@@ -391,13 +412,13 @@ int main() {
 	 hi_tof_occ_curr->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,weightCurrent); 
 	 hi_tof_occ_adc->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,weightADC);
 	 hi_tof_pid->Fill((*tof_pid)[i]*1.);
-	 hi_tof_vz_all->Fill((*tof_vz)[i]/10.);
-	 if(abs((*tof_pid)[i])==11) hi_tof_vz_e->Fill((*tof_vz)[i]/10.);
-	 else if((*tof_pid)[i]==22) hi_tof_vz_g->Fill((*tof_vz)[i]/10.);
-	 else                       hi_tof_vz_h->Fill((*tof_vz)[i]/10.);
-	 if((*tof_pid)[i]==2112)    hi_tof_vz_n->Fill((*tof_vz)[i]/10.);
-	 hi_tof_origin_all->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
-     hi_tof_origin_all_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
+	 hi_tof_vz_all[nsect]->Fill((*tof_vz)[i]/10.);
+	 if(abs((*tof_pid)[i])==11) hi_tof_vz_e[nsect]->Fill((*tof_vz)[i]/10.);
+	 else if((*tof_pid)[i]==22) hi_tof_vz_g[nsect]->Fill((*tof_vz)[i]/10.);
+	 else                       hi_tof_vz_h[nsect]->Fill((*tof_vz)[i]/10.);
+	 if((*tof_pid)[i]==2112)    hi_tof_vz_n[nsect]->Fill((*tof_vz)[i]/10.);
+	 hi_tof_origin_all[nsect]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
+     hi_tof_origin_all_temp[nsect]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
     if((*tof_E)[i]>mass) hi_tof_origin_all_ene_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.), sqrt((*tof_E)[i]*(*tof_E)[i]-mass*mass) );
 	 if((*tof_Edep)[i]>Ethr) {
 	   hi_tof_occ_5->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
@@ -541,11 +562,14 @@ int main() {
    hi_tof1a_pid_5->Scale(1/time);
    hi_tof1b_pid_5->Scale(1/time);
    hi_tof2_pid_5->Scale(1/time);
-   hi_tof_vz_all->Scale(1/time);
-   hi_tof_vz_e->Scale(1/time);
-   hi_tof_vz_g->Scale(1/time);
-   hi_tof_vz_h->Scale(1/time);
-   hi_tof_vz_n->Scale(1/time);
+   for(int i=0; i<6; i++){
+   hi_tof_vz_all[i]->Scale(1/time);
+   hi_tof_vz_e[i]->Scale(1/time);
+   hi_tof_vz_g[i]->Scale(1/time);
+   hi_tof_vz_h[i]->Scale(1/time);
+   hi_tof_vz_n[i]->Scale(1/time);
+   hi_tof_origin[i]->Scale(1/time);
+   }
    hi_tof_origin_all->Scale(1/time);
    hi_tof1a_vz->Scale(1/time);
    hi_tof1b_vz->Scale(1/time);
@@ -615,33 +639,151 @@ int main() {
    c_pid->Print("tof_occupancy.pdf");
 
    TCanvas *c_origin=new TCanvas("c_origin","Origin",750,1000);
-   c_origin->Divide(1,2);
+   c_origin->Divide(2,3);
    c_origin->cd(1);
    gPad->SetLogz();
-   hi_tof_origin_all->Draw("COLZ");
+   hi_tof_origin[0]->Draw("COLZ");
    c_origin->cd(2);
-   gPad->SetLogy();
-   hi_tof_vz_all->SetMinimum(0.001);
-   hi_tof_vz_all->Draw("H");
-   hi_tof_vz_e->SetLineColor(2);
-   hi_tof_vz_e->Draw("SAME");
-   hi_tof_vz_g->SetLineColor(4);
-   hi_tof_vz_g->Draw("SAME");
-   hi_tof_vz_h->SetLineColor(kGreen);
-   hi_tof_vz_h->Draw("SAME");
-   hi_tof_vz_n->SetLineColor(kGreen+2);
-   hi_tof_vz_n->Draw("SAME");
+   gPad->SetLogz();
+   hi_tof_origin[1]->Draw("COLZ");
+   c_origin->cd(3);
+   gPad->SetLogz();
+   hi_tof_origin[2]->Draw("COLZ");
+   c_origin->cd(4);
+   gPad->SetLogz();
+   hi_tof_origin[3]->Draw("COLZ");
+   c_origin->cd(5);
+   gPad->SetLogz();
+   hi_tof_origin[5]->Draw("COLZ");
+   c_origin->cd(6);
+   gPad->SetLogz();
+   hi_tof_origin[6]->Draw("COLZ");
+   c_origin->Print("tof_occupancy.pdf");
+
+   TCanvas *c_particles=new TCanvas("c_particles","Particles",750,1000);
+   c_origin->Divide(2,3);
+   c_origin->cd(1);
+   hi_tof_vz_all[0]->SetMinimum(0.001);
+   hi_tof_vz_all[0]->Draw("H");
+   hi_tof_vz_e[0]->SetLineColor(2);
+   hi_tof_vz_e[0]->Draw("SAME");
+   hi_tof_vz_g[0]->SetLineColor(4);
+   hi_tof_vz_g[0]->Draw("SAME");
+   hi_tof_vz_h[0]->SetLineColor(kGreen);
+   hi_tof_vz_h[0]->Draw("SAME");
+   hi_tof_vz_n[0]->SetLineColor(kGreen+2);
+   hi_tof_vz_n[0]->Draw("SAME");
     
     TLegend *leg1 = new TLegend(0.7,0.75,0.96,0.96);
      leg1->SetTextSize(.04);
-     leg1->AddEntry(hi_tof_vz_all,"All","l");
-     leg1->AddEntry(hi_tof_vz_e,"electrons","l");
-     leg1->AddEntry(hi_tof_vz_g,"photons","l");
-     leg1->AddEntry(hi_tof_vz_n,"neutron","l");
-     leg1->AddEntry(hi_tof_vz_h,"hadron","l");
+     leg1->AddEntry(hi_tof_vz_all[0],"All","l");
+     leg1->AddEntry(hi_tof_vz_e[0],"electrons","l");
+     leg1->AddEntry(hi_tof_vz_g[0],"photons","l");
+     leg1->AddEntry(hi_tof_vz_n[0],"neutron","l");
+     leg1->AddEntry(hi_tof_vz_h[0],"hadron","l");
      leg1->Draw();
+   c_origin->cd(2);
+   hi_tof_vz_all[1]->SetMinimum(0.001);
+   hi_tof_vz_all[1]->Draw("H");
+   hi_tof_vz_e[1]->SetLineColor(2);
+   hi_tof_vz_e[1]->Draw("SAME");
+   hi_tof_vz_g[1]->SetLineColor(4);
+   hi_tof_vz_g[1]->Draw("SAME");
+   hi_tof_vz_h[1]->SetLineColor(kGreen);
+   hi_tof_vz_h[1]->Draw("SAME");
+   hi_tof_vz_n[1]->SetLineColor(kGreen+2);
+   hi_tof_vz_n[1]->Draw("SAME");
     
-   c_origin->Print("tof_occupancy.pdf");
+    TLegend *leg2 = new TLegend(0.7,0.75,0.96,0.96);
+     leg2->SetTextSize(.04);
+     leg2->AddEntry(hi_tof_vz_all[1],"All","l");
+     leg2->AddEntry(hi_tof_vz_e[1],"electrons","l");
+     leg2->AddEntry(hi_tof_vz_g[1],"photons","l");
+     leg2->AddEntry(hi_tof_vz_n[1],"neutron","l");
+     leg2->AddEntry(hi_tof_vz_h[1],"hadron","l");
+     leg2->Draw();
+   c_origin->cd(3);
+   hi_tof_vz_all[2]->SetMinimum(0.001);
+   hi_tof_vz_all[2]->Draw("H");
+   hi_tof_vz_e[2]->SetLineColor(2);
+   hi_tof_vz_e[2]->Draw("SAME");
+   hi_tof_vz_g[2]->SetLineColor(4);
+   hi_tof_vz_g[2]->Draw("SAME");
+   hi_tof_vz_h[2]->SetLineColor(kGreen);
+   hi_tof_vz_h[2]->Draw("SAME");
+   hi_tof_vz_n[2]->SetLineColor(kGreen+2);
+   hi_tof_vz_n[2]->Draw("SAME");
+    
+    TLegend *leg1 = new TLegend(0.7,0.75,0.96,0.96);
+     leg1->SetTextSize(.04);
+     leg1->AddEntry(hi_tof_vz_all[2],"All","l");
+     leg1->AddEntry(hi_tof_vz_e[2],"electrons","l");
+     leg1->AddEntry(hi_tof_vz_g[2],"photons","l");
+     leg1->AddEntry(hi_tof_vz_n[2],"neutron","l");
+     leg1->AddEntry(hi_tof_vz_h[2],"hadron","l");
+     leg1->Draw();
+   c_origin->cd(4);
+   hi_tof_vz_all[3]->SetMinimum(0.001);
+   hi_tof_vz_all[3]->Draw("H");
+   hi_tof_vz_e[3]->SetLineColor(2);
+   hi_tof_vz_e[3]->Draw("SAME");
+   hi_tof_vz_g[3]->SetLineColor(4);
+   hi_tof_vz_g[3]->Draw("SAME");
+   hi_tof_vz_h[3]->SetLineColor(kGreen);
+   hi_tof_vz_h[3]->Draw("SAME");
+   hi_tof_vz_n[3]->SetLineColor(kGreen+2);
+   hi_tof_vz_n[3]->Draw("SAME");
+    
+    TLegend *leg4 = new TLegend(0.7,0.75,0.96,0.96);
+     leg4->SetTextSize(.04);
+     leg4->AddEntry(hi_tof_vz_all[3],"All","l");
+     leg4->AddEntry(hi_tof_vz_e[3],"electrons","l");
+     leg4->AddEntry(hi_tof_vz_g[3],"photons","l");
+     leg4->AddEntry(hi_tof_vz_n[3],"neutron","l");
+     leg4->AddEntry(hi_tof_vz_h[3],"hadron","l");
+     leg4->Draw();
+   c_origin->cd(5);
+   hi_tof_vz_all[4]->SetMinimum(0.001);
+   hi_tof_vz_all[4]->Draw("H");
+   hi_tof_vz_e[4]->SetLineColor(2);
+   hi_tof_vz_e[4]->Draw("SAME");
+   hi_tof_vz_g[4]->SetLineColor(4);
+   hi_tof_vz_g[4]->Draw("SAME");
+   hi_tof_vz_h[4]->SetLineColor(kGreen);
+   hi_tof_vz_h[4]->Draw("SAME");
+   hi_tof_vz_n[4]->SetLineColor(kGreen+2);
+   hi_tof_vz_n[4]->Draw("SAME");
+    
+    TLegend *leg5 = new TLegend(0.7,0.75,0.96,0.96);
+     leg5->SetTextSize(.04);
+     leg5->AddEntry(hi_tof_vz_all[4],"All","l");
+     leg5->AddEntry(hi_tof_vz_e[4],"electrons","l");
+     leg5->AddEntry(hi_tof_vz_g[4],"photons","l");
+     leg5->AddEntry(hi_tof_vz_n[4],"neutron","l");
+     leg5->AddEntry(hi_tof_vz_h[4],"hadron","l");
+     leg5->Draw();
+   c_origin->cd(6);
+   hi_tof_vz_all[5]->SetMinimum(0.001);
+   hi_tof_vz_all[5]->Draw("H");
+   hi_tof_vz_e[5]->SetLineColor(2);
+   hi_tof_vz_e[5]->Draw("SAME");
+   hi_tof_vz_g[5]->SetLineColor(4);
+   hi_tof_vz_g[5]->Draw("SAME");
+   hi_tof_vz_h[5]->SetLineColor(kGreen);
+   hi_tof_vz_h[5]->Draw("SAME");
+   hi_tof_vz_n[5]->SetLineColor(kGreen+2);
+   hi_tof_vz_n[5]->Draw("SAME");
+    
+    TLegend *leg6 = new TLegend(0.7,0.75,0.96,0.96);
+     leg6->SetTextSize(.04);
+     leg6->AddEntry(hi_tof_vz_all[5],"All","l");
+     leg6->AddEntry(hi_tof_vz_e[5],"electrons","l");
+     leg6->AddEntry(hi_tof_vz_g[5],"photons","l");
+     leg6->AddEntry(hi_tof_vz_n[5],"neutron","l");
+     leg6->AddEntry(hi_tof_vz_h[5],"hadron","l");
+     leg6->Draw();
+   c_particles->Print("tof_occupancy.pdf");
+   
 
     TCanvas *c_origin_e=new TCanvas("c_origin_e","Origin_e",750,1000);
     c_origin_e->Divide(1,2);
