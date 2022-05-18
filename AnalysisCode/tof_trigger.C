@@ -226,8 +226,8 @@ int main() {
    }
 
   TH2F *hi_tof_origin_all = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
-  hi_tof_all_origin->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-  hi_tof_all_origin->GetYaxis()->SetTitle("R_{vertex} (cm)");
+  hi_tof_origin_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+  hi_tof_origin_all->GetYaxis()->SetTitle("R_{vertex} (cm)");
    
   TH2F *hi_tof_origin_all_temp = new TH2F("hi_tof_origin_temp_all", "",200, 0.,800.,200, 0.,100.);
 	
@@ -717,14 +717,14 @@ int main() {
    hi_tof_vz_n[2]->SetLineColor(kGreen+2);
    hi_tof_vz_n[2]->Draw("SAME");
     
-    TLegend *leg1 = new TLegend(0.7,0.75,0.96,0.96);
-     leg1->SetTextSize(.04);
-     leg1->AddEntry(hi_tof_vz_all[2],"All","l");
-     leg1->AddEntry(hi_tof_vz_e[2],"electrons","l");
-     leg1->AddEntry(hi_tof_vz_g[2],"photons","l");
-     leg1->AddEntry(hi_tof_vz_n[2],"neutron","l");
-     leg1->AddEntry(hi_tof_vz_h[2],"hadron","l");
-     leg1->Draw();
+    TLegend *leg3 = new TLegend(0.7,0.75,0.96,0.96);
+     leg3->SetTextSize(.04);
+     leg3->AddEntry(hi_tof_vz_all[2],"All","l");
+     leg3->AddEntry(hi_tof_vz_e[2],"electrons","l");
+     leg3->AddEntry(hi_tof_vz_g[2],"photons","l");
+     leg3->AddEntry(hi_tof_vz_n[2],"neutron","l");
+     leg3->AddEntry(hi_tof_vz_h[2],"hadron","l");
+     leg3->Draw();
    c_particles->cd(4);
    hi_tof_vz_all[3]->SetMinimum(0.001);
    hi_tof_vz_all[3]->Draw("H");
