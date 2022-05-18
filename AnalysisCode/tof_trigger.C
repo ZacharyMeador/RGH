@@ -226,10 +226,10 @@ int main() {
    }
 
   TH2F *hi_tof_origin_all = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
-  hi_tof_origin_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-  hi_tof_origin_all->GetYaxis()->SetTitle("R_{vertex} (cm)");
+  hi_tof_all_origin->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+  hi_tof_all_origin->GetYaxis()->SetTitle("R_{vertex} (cm)");
    
-  TH2F *hi_tof_origin_temp_all = new TH2F("hi_tof_origin_temp_all", "",200, 0.,800.,200, 0.,100.);
+  TH2F *hi_tof_origin_all_temp = new TH2F("hi_tof_origin_temp_all", "",200, 0.,800.,200, 0.,100.);
 	
 
   TH2F *hi_tof_origin_all_ene = new TH2F("hi_tof_origin_all_ene", "hi_tof_origin_all_ene",200, 0.,800.,200, 0.,100.);
