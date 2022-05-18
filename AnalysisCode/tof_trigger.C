@@ -194,7 +194,7 @@ int main() {
    TH1F *hi_tof_vz_g[6];
    TH1F *hi_tof_vz_h[6];
    TH1F *hi_tof_vz_n[6];
-   TH2F *hi_tof_vz_origin[6];
+   TH2F *hi_tof_origin[6];
    TH2F *hi_tof_origin_temp[6];
    
    for(int i=0; i<6; i++){	
@@ -229,7 +229,7 @@ int main() {
   hi_tof_origin_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
   hi_tof_origin_all->GetYaxis()->SetTitle("R_{vertex} (cm)");
    
-  hi_tof_origin_temp_all = new TH2F("hi_tof_origin_all_temp", "",200, 0.,800.,200, 0.,100.);
+  TH2F *hi_tof_origin_temp_all = new TH2F("hi_tof_origin_temp_all", "",200, 0.,800.,200, 0.,100.);
 	
 
   TH2F *hi_tof_origin_all_ene = new TH2F("hi_tof_origin_all_ene", "hi_tof_origin_all_ene",200, 0.,800.,200, 0.,100.);
@@ -347,7 +347,8 @@ int main() {
    float Ethr=1;            // energy thresholds in MeV
    int nint=0;
    int ngoodentries=0;
-   int pi = 3.14159265359
+   int pi = 3.14159265359;
+   double phi;
    for (Long64_t jentry=0; jentry < nentries; jentry++) {
   
        tof_sector->clear();
@@ -378,8 +379,7 @@ int main() {
        ntofhit=tof_pid->size();
 
        for(int i=0; i<ntofhit; i++) {
-           int it=(*hitn)[i]-1;
-	   phi = atan2((*tof_vy)[it],(*tof_vz)[it])*180/pi;
+	   phi = atan2((*tof_vy)[i],(*tof_vz)[i])*180/pi;
 	   phi += (phi<0) ? 360:0;
 	   int nsect = floor((phi-30)/60) + 2;
 	   if(nsect == 7) nsect = 1;
