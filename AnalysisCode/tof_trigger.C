@@ -379,7 +379,7 @@ int main() {
        ntofhit=tof_pid->size();
 
        for(int i=0; i<ntofhit; i++) {
-	   phi = atan2((*tof_vy)[i],(*tof_vz)[i])*180/pi;
+	   phi = atan2((*tof_vy)[i],(*tof_vx)[i])*180/pi;
 	   phi += (phi<0) ? 360:0;
 	   int nsect = floor((phi-30)/60) + 2;
 	   if(nsect == 7) nsect = 1;
