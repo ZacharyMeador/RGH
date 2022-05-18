@@ -190,11 +190,11 @@ int main() {
    hi_tof2_pid_5->GetYaxis()->SetTitle("Rate (MHz)");
    
    TH1F *hi_tof_vz_all[6];
-   TH1F *hi_tof_e[6];
-   TH1F *hi_tof_g[6];
-   TH1F *hi_tof_h[6];
-   TH1F *hi_tof_n[6];
-   TH2F *hi_tof_origin[6];
+   TH1F *hi_tof_vz_e[6];
+   TH1F *hi_tof_vz_g[6];
+   TH1F *hi_tof_vz_h[6];
+   TH1F *hi_tof_vz_n[6];
+   TH2F *hi_tof_vz_origin[6];
    TH2F *hi_tof_origin_temp[6];
    
    for(int i=0; i<6; i++){	
