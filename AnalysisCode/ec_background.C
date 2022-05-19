@@ -53,26 +53,26 @@ int main() {
 
    const int NTOFMAX = 100000;
 // pcal
-   int npcalhit;
-   vector<double> *pcal_sector=new vector<double>;
-   vector<double> *pcal_layer=new vector<double>;
-   vector<double> *pcal_view=new vector<double>;
-   vector<double> *pcal_strip=new vector<double>;
-   vector<double> *pcal_ADC=new vector<double>;
-   vector<double> *pcal_TDC=new vector<double>;
-   vector<double> *pcal_Edep=new vector<double>;
-   vector<double> *pcal_E=new vector<double>;
-   vector<double> *pcal_x=new vector<double>;
-   vector<double> *pcal_y=new vector<double>;
-   vector<double> *pcal_z=new vector<double>;
-   vector<double> *pcal_lx=new vector<double>;
-   vector<double> *pcal_ly=new vector<double>;
-   vector<double> *pcal_lz=new vector<double>;
-   vector<double> *pcal_t=new vector<double>;
-   vector<double> *pcal_pid=new vector<double>;
-   vector<double> *pcal_vx=new vector<double>;
-   vector<double> *pcal_vy=new vector<double>;
-   vector<double> *pcal_vz=new vector<double>;
+//   int npcalhit;
+//   vector<double> *pcal_sector=new vector<double>;
+//   vector<double> *pcal_layer=new vector<double>;
+//   vector<double> *pcal_view=new vector<double>;
+//   vector<double> *pcal_strip=new vector<double>;
+//   vector<double> *pcal_ADC=new vector<double>;
+//   vector<double> *pcal_TDC=new vector<double>;
+//   vector<double> *pcal_Edep=new vector<double>;
+//   vector<double> *pcal_E=new vector<double>;
+//   vector<double> *pcal_x=new vector<double>;
+//   vector<double> *pcal_y=new vector<double>;
+//   vector<double> *pcal_z=new vector<double>;
+//   vector<double> *pcal_lx=new vector<double>;
+//   vector<double> *pcal_ly=new vector<double>;
+//   vector<double> *pcal_lz=new vector<double>;
+//   vector<double> *pcal_t=new vector<double>;
+//   vector<double> *pcal_pid=new vector<double>;
+//   vector<double> *pcal_vx=new vector<double>;
+//   vector<double> *pcal_vy=new vector<double>;
+//   vector<double> *pcal_vz=new vector<double>;
 // ec
    int nechit;
    vector<double> *ec_sector=new vector<double>;
@@ -97,32 +97,32 @@ int main() {
 
 
    cout << "Creating Tree chains" << endl;
-   TChain *pcal= new TChain("pcal");
-   pcal->Add("out*.root");
+//   TChain *pcal= new TChain("pcal");
+//   pcal->Add("out*.root");
    TChain *ec= new TChain("ec");
    ec->Add("out*.root");
 
 
 // PCAL
-   pcal->SetBranchAddress("sector" ,&pcal_sector);
-   pcal->SetBranchAddress("module" ,&pcal_layer);
-   pcal->SetBranchAddress("view"   ,&pcal_view);
-   pcal->SetBranchAddress("strip"  ,&pcal_strip);
-   pcal->SetBranchAddress("ADC"    ,&pcal_ADC);
-   pcal->SetBranchAddress("TDC"    ,&pcal_TDC);
-   pcal->SetBranchAddress("trackE" ,&pcal_E);
-   pcal->SetBranchAddress("totEdep",&pcal_Edep);
-   pcal->SetBranchAddress("avg_t"  ,&pcal_t);
-   pcal->SetBranchAddress("pid"    ,&pcal_pid);
-   pcal->SetBranchAddress("avg_x"  ,&pcal_x);
-   pcal->SetBranchAddress("avg_y"  ,&pcal_y);
-   pcal->SetBranchAddress("avg_z"  ,&pcal_z);
-   pcal->SetBranchAddress("avg_lx" ,&pcal_lx);
-   pcal->SetBranchAddress("avg_ly" ,&pcal_ly);
-   pcal->SetBranchAddress("avg_lz" ,&pcal_lz); 
-   pcal->SetBranchAddress("vx"     ,&pcal_vx);
-   pcal->SetBranchAddress("vy"     ,&pcal_vy);
-   pcal->SetBranchAddress("vz"     ,&pcal_vz);
+//   pcal->SetBranchAddress("sector" ,&pcal_sector);
+//   pcal->SetBranchAddress("module" ,&pcal_layer);
+//   pcal->SetBranchAddress("view"   ,&pcal_view);
+//   pcal->SetBranchAddress("strip"  ,&pcal_strip);
+//   pcal->SetBranchAddress("ADC"    ,&pcal_ADC);
+//   pcal->SetBranchAddress("TDC"    ,&pcal_TDC);
+//   pcal->SetBranchAddress("trackE" ,&pcal_E);
+//   pcal->SetBranchAddress("totEdep",&pcal_Edep);
+//   pcal->SetBranchAddress("avg_t"  ,&pcal_t);
+//   pcal->SetBranchAddress("pid"    ,&pcal_pid);
+//   pcal->SetBranchAddress("avg_x"  ,&pcal_x);
+//   pcal->SetBranchAddress("avg_y"  ,&pcal_y);
+//   pcal->SetBranchAddress("avg_z"  ,&pcal_z);
+//   pcal->SetBranchAddress("avg_lx" ,&pcal_lx);
+//   pcal->SetBranchAddress("avg_ly" ,&pcal_ly);
+//   pcal->SetBranchAddress("avg_lz" ,&pcal_lz); 
+//   pcal->SetBranchAddress("vx"     ,&pcal_vx);
+//   pcal->SetBranchAddress("vy"     ,&pcal_vy);
+//   pcal->SetBranchAddress("vz"     ,&pcal_vz);
 
 // EC
    ec->SetBranchAddress("sector" ,&ec_sector);
@@ -215,25 +215,25 @@ int main() {
    int ngoodentries=0;
    for (Long64_t jentry=0; jentry < nentries; jentry++) {
   
-       pcal_sector->clear();
-       pcal_layer->clear();
-       pcal_view->clear();
-       pcal_strip->clear();
-       pcal_ADC->clear();
-       pcal_TDC->clear();
-       pcal_E->clear();
-       pcal_Edep->clear();
-       pcal_t->clear();
-       pcal_pid->clear();
-       pcal_x->clear();
-       pcal_y->clear();
-       pcal_z->clear();
-       pcal_lx->clear();
-       pcal_ly->clear();
-       pcal_lz->clear(); 
-       pcal_vx->clear();
-       pcal_vy->clear();
-       pcal_vz->clear();
+//       pcal_sector->clear();
+//       pcal_layer->clear();
+//       pcal_view->clear();
+//       pcal_strip->clear();
+//       pcal_ADC->clear();
+//       pcal_TDC->clear();
+//       pcal_E->clear();
+//       pcal_Edep->clear();
+//       pcal_t->clear();
+//       pcal_pid->clear();
+//       pcal_x->clear();
+//       pcal_y->clear();
+//       pcal_z->clear();
+//       pcal_lx->clear();
+//       pcal_ly->clear();
+//       pcal_lz->clear(); 
+//       pcal_vx->clear();
+//       pcal_vy->clear();
+//       pcal_vz->clear();
      
        ec_sector->clear();
        ec_layer->clear();
@@ -260,22 +260,22 @@ int main() {
        ngoodentries++;
        if(int(jentry/1000)*1000==jentry) cout << "Analyzed " << jentry << " events of " << nentries << endl;
 	
-       npcalhit=pcal_pid->size();
+//       npcalhit=pcal_pid->size();
        nechit=ec_pid->size();
 
-       for(int i=0; i<npcalhit; i++) {
-  	   hi_ecal_occ[0]->Fill((*pcal_strip)[i]*1.,(*pcal_view)[i]*1.);
-	   hi_ecal_vz_all[0]->Fill((*pcal_vz)[i]/10.);
-	   if(abs((*pcal_pid)[i])==11) hi_ecal_vz_e[0]->Fill((*pcal_vz)[i]/10.);
-	   else if((*pcal_pid)[i]==22) hi_ecal_vz_g[0]->Fill((*pcal_vz)[i]/10.);
-	   else                       hi_ecal_vz_h[0]->Fill((*pcal_vz)[i]/10.);
-	   if((*pcal_pid)[i]==2112)    hi_ecal_vz_n[0]->Fill((*pcal_vz)[i]/10.);
-	   hi_ecal_origin_all[0]->Fill((*pcal_vz)[i]/10.,sqrt((*pcal_vx)[i]*(*pcal_vx)[i]/100.+(*pcal_vy)[i]*(*pcal_vy)[i]/100.));
-	   hi_ecal_edep[0]->Fill((*pcal_Edep)[i]);
-	   if((*pcal_Edep)[i]>Ethr) {
-	     hi_ecal_occ_cut[0]->Fill((*pcal_strip)[i]*1.,(*pcal_view)[i]*1.);
-	   }
-       }
+//       for(int i=0; i<npcalhit; i++) {
+//  	   hi_ecal_occ[0]->Fill((*pcal_strip)[i]*1.,(*pcal_view)[i]*1.);
+//	   hi_ecal_vz_all[0]->Fill((*pcal_vz)[i]/10.);
+//	   if(abs((*pcal_pid)[i])==11) hi_ecal_vz_e[0]->Fill((*pcal_vz)[i]/10.);
+//	   else if((*pcal_pid)[i]==22) hi_ecal_vz_g[0]->Fill((*pcal_vz)[i]/10.);
+//	   else                       hi_ecal_vz_h[0]->Fill((*pcal_vz)[i]/10.);
+//	   if((*pcal_pid)[i]==2112)    hi_ecal_vz_n[0]->Fill((*pcal_vz)[i]/10.);
+//	   hi_ecal_origin_all[0]->Fill((*pcal_vz)[i]/10.,sqrt((*pcal_vx)[i]*(*pcal_vx)[i]/100.+(*pcal_vy)[i]*(*pcal_vy)[i]/100.));
+//	   hi_ecal_edep[0]->Fill((*pcal_Edep)[i]);
+//	   if((*pcal_Edep)[i]>Ethr) {
+//	     hi_ecal_occ_cut[0]->Fill((*pcal_strip)[i]*1.,(*pcal_view)[i]*1.);
+//	   }
+//       }
        for(int i=0; i<nechit; i++) {
 	   int istack=(*ec_layer)[i];
   	   hi_ecal_occ[istack]->Fill((*ec_strip)[i]*1.,(*ec_view)[i]*1.);
