@@ -336,7 +336,7 @@ int main() {
    c_occ->Print("ecal_occupancy.pdf(");
 
    TCanvas *c_occ_cut=new TCanvas("c_occ_cut","Occupancy_Cuts",750,1000);
-   c_occ_cut->Divide(1,3);
+   c_occ_cut->Divide(1,2);
    fp = fopen("ecal_occupancy_cut.txt","w");
    for(int i=1; i<3; i++) {
        c_occ_cut->cd(i+1);
@@ -355,7 +355,7 @@ int main() {
 
 
    TCanvas *c_origin=new TCanvas("c_origin","Origin",750,1000);
-   c_origin->Divide(1,3);
+   c_origin->Divide(1,2);
    for(int i=1; i<3; i++) {
        c_origin->cd(i+1);
        gPad->SetLogz();
@@ -364,7 +364,7 @@ int main() {
    c_origin->Print("ecal_occupancy.pdf");
 
    TCanvas *c_vz=new TCanvas("c_vz","VZ",750,1000);
-   c_vz->Divide(1,3);
+   c_vz->Divide(1,2);
    for(int i=0; i<3; i++) {
        c_vz->cd(i+2);
        gPad->SetLogy();
