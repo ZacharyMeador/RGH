@@ -255,7 +255,7 @@ int main() {
        ec_vy->clear();
        ec_vz->clear();
      
-       int nb = pcal->GetEntry(jentry); 
+       int nb = ec->GetEntry(jentry); 
        ec->GetEntry(jentry); 
        ngoodentries++;
        if(int(jentry/1000)*1000==jentry) cout << "Analyzed " << jentry << " events of " << nentries << endl;
