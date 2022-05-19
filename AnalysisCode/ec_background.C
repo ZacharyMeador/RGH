@@ -147,8 +147,8 @@ int main() {
 
 
 
-   Long64_t nentries = pcal->GetEntries();
-   cout << "N. entries:" << nentries << " " << pcal->GetEntries() << endl;
+//   Long64_t nentries = pcal->GetEntries();
+//   cout << "N. entries:" << nentries << " " << pcal->GetEntries() << endl;
 
 
 
@@ -285,7 +285,7 @@ int main() {
 	   else                       hi_ecal_vz_h[istack]->Fill((*ec_vz)[i]/10.);
 	   if((*ec_pid)[i]==2112)    hi_ecal_vz_n[istack]->Fill((*ec_vz)[i]/10.);
 	   hi_ecal_origin_all[istack]->Fill((*ec_vz)[i]/10.,sqrt((*ec_vx)[i]*(*ec_vx)[i]/100.+(*ec_vy)[i]*(*ec_vy)[i]/100.));
-	   hi_ecal_edep[istack]->Fill((*pcal_Edep)[i]);
+//	   hi_ecal_edep[istack]->Fill((*pcal_Edep)[i]);
 	   if((*ec_Edep)[i]>Ethr) {
 	     hi_ecal_occ_cut[istack]->Fill((*ec_strip)[i]*1.,(*ec_view)[i]*1.);
 	   }
