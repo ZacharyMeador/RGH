@@ -333,7 +333,7 @@ int main() {
        }
    }
    fclose(fp);
-   c_occ->Print("ecal_occupancy.pdf");
+   c_occ->Print("ecal_occupancy.pdf(");
 
    TCanvas *c_occ_cut=new TCanvas("c_occ_cut","Occupancy_Cuts",750,1000);
    c_occ_cut->Divide(1,3);
@@ -351,7 +351,7 @@ int main() {
        }
    }
    fclose(fp);
-   c_occ_cut->Print("ecal_occupancy_cut.pdf");
+   c_occ_cut->Print("ecal_occupancy.pdf");
 
 
    TCanvas *c_origin=new TCanvas("c_origin","Origin",750,1000);
@@ -361,7 +361,7 @@ int main() {
        gPad->SetLogz();
        hi_ecal_origin_all[i]->Draw("COLZ");
    }
-   c_origin->Print("ecal_origin.pdf");
+   c_origin->Print("ecal_occupancy.pdf");
 
    TCanvas *c_vz=new TCanvas("c_vz","VZ",750,1000);
    c_vz->Divide(1,3);
@@ -379,7 +379,7 @@ int main() {
        hi_ecal_vz_n[i]->SetLineColor(kGreen+2);
        hi_ecal_vz_n[i]->Draw("SAME");
    }
-   c_vz->Print("ecal_vertex.pdf");
+   c_vz->Print("ecal_occupancy.pdf");
 
    TCanvas *c_edep=new TCanvas("c_edep","Deposited Energy",750,1000);
    c_edep->Divide(1,3);
@@ -388,7 +388,7 @@ int main() {
        gPad->SetLogy();
        hi_ecal_edep[i]->Draw();
    }
-   c_edep->Print("ecal_edep.pdf");
+   c_edep->Print("ecal_occupancy.pdf)");
 
 
    gui.Run(1);
