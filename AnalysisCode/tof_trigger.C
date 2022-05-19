@@ -657,10 +657,10 @@ int main() {
    hi_tof_origin[3]->Draw("COLZ");
    c_origin->cd(5);
    gPad->SetLogz();
-   hi_tof_origin[5]->Draw("COLZ");
+   hi_tof_origin[4]->Draw("COLZ");
    c_origin->cd(6);
    gPad->SetLogz();
-   hi_tof_origin[6]->Draw("COLZ");
+   hi_tof_origin[5]->Draw("COLZ");
    c_origin->Print("tof_occupancy.pdf");
 
    TCanvas *c_particles=new TCanvas("c_particles","Particles",750,1000);
