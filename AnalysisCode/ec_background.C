@@ -318,10 +318,10 @@ int main() {
    
 
    TCanvas *c_occ=new TCanvas("c_occ","Occupancy",750,1000);
-   c_occ->Divide(1,3);
+   c_occ->Divide(1,2);
    FILE *fp = fopen("ecal_occupancy.txt","w");
    for(int i=1; i<3; i++) {
-       c_occ->cd(i+1);
+       c_occ->cd(i);
        hi_ecal_occ[i]->Draw("COLZ");
        for(int iv=0; iv<hi_ecal_occ[i]->GetNbinsY(); iv++) {
 	   for(int is=0; is<hi_ecal_occ[i]->GetNbinsX(); is++) {
@@ -339,7 +339,7 @@ int main() {
    c_occ_cut->Divide(1,2);
    fp = fopen("ecal_occupancy_cut.txt","w");
    for(int i=1; i<3; i++) {
-       c_occ_cut->cd(i+1);
+       c_occ_cut->cd(i);
        hi_ecal_occ_cut[i]->Draw("COLZ");
        for(int iv=0; iv<hi_ecal_occ_cut[i]->GetNbinsY(); iv++) {
 	   for(int is=0; is<hi_ecal_occ_cut[i]->GetNbinsX(); is++) {
@@ -356,28 +356,35 @@ int main() {
 
    TCanvas *c_origin=new TCanvas("c_origin","Origin",750,1000);
    c_origin->Divide(1,2);
-   for(int i=1; i<3; i++) {
+   for(int i=0; i<2; i++) {
        c_origin->cd(i+1);
        gPad->SetLogz();
-       hi_ecal_origin_all[i]->Draw("COLZ");
+       hi_ecal_origin_all[i+1]->Draw("COLZ");
    }
    c_origin->Print("ecal_occupancy.pdf");
 
    TCanvas *c_vz=new TCanvas("c_vz","VZ",750,1000);
    c_vz->Divide(1,2);
-   for(int i=0; i<3; i++) {
-       c_vz->cd(i+2);
-       gPad->SetLogy();
-       hi_ecal_vz_all[i]->SetMinimum(0.001);
-       hi_ecal_vz_all[i]->Draw("H");
-       hi_ecal_vz_e[i]->SetLineColor(2);
-       hi_ecal_vz_e[i]->Draw("SAME");
-       hi_ecal_vz_g[i]->SetLineColor(4);
-       hi_ecal_vz_g[i]->Draw("SAME");
-       hi_ecal_vz_h[i]->SetLineColor(kGreen);
-       hi_ecal_vz_h[i]->Draw("SAME");
-       hi_ecal_vz_n[i]->SetLineColor(kGreen+2);
-       hi_ecal_vz_n[i]->Draw("SAME");
+   for(int i=0; i<2; i++) {
+       c_vz->cd(i+1);
+       hi_ecal_vz_all[i+1]->SetMinimum(0.001);
+       hi_ecal_vz_all[i+1]->Draw("H");
+       hi_ecal_vz_e[i+1]->SetLineColor(2);
+       hi_ecal_vz_e[i+1]->Draw("SAME");
+       hi_ecal_vz_g[i+1]->SetLineColor(4);
+       hi_ecal_vz_g[i+1]->Draw("SAME");
+       hi_ecal_vz_h[i+1]->SetLineColor(kGreen);
+       hi_ecal_vz_h[i+1]->Draw("SAME");
+       hi_ecal_vz_n[i+1]->SetLineColor(kGreen+2);
+       hi_ecal_vz_n[i+1]->Draw("SAME");
+       TLegend Form(*leg"%i",i+1) = new TLegend(0.7,0.75,0.96,0.96);
+       Form(leg"%i",i+1)->SetTextSize(.04);
+       Form(leg"%i",i+1)->AddEntry(hi_ecal_vz_all[i+1],"All","l");
+       Form(leg"%i",i+1)->AddEntry(hi_ecal_vz_e[i+1],"electrons","l");
+       Form(leg"%i",i+1)->AddEntry(hi_ecal_vz_g[i+1],"photons","l");
+       Form(leg"%i",i+1)->AddEntry(hi_ecal_vz_n[i+1],"neutron","l");
+       Form(leg"%i",i+1)->AddEntry(hi_ecal_vz_h[i+1],"hadron","l");
+       Form(leg"%i",i+1)->Draw();
    }
    c_vz->Print("ecal_occupancy.pdf)");
 
