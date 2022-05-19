@@ -147,8 +147,8 @@ int main() {
 
 
 
-//   Long64_t nentries = pcal->GetEntries();
-//   cout << "N. entries:" << nentries << " " << pcal->GetEntries() << endl;
+   Long64_t nentries = ec->GetEntries();
+   cout << "N. entries:" << nentries << " " << ec->GetEntries() << endl;
 
 
 
