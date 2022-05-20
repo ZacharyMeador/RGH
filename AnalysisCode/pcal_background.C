@@ -7,6 +7,7 @@
 #include <TGraph.h>
 #include <TStyle.h>
 #include <TCanvas.h>
+#include <TLegend.h>
 #include <TChain.h>
 #include "TFile.h"
 #include "TApplication.h"
