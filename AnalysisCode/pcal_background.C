@@ -268,18 +268,18 @@ int main() {
        for(int i=0; i<npcalhit; i++) {
   	    hi_pcal_occ[0]->Fill((*pcal_strip)[i]*1.,(*pcal_view)[i]*1.);
 	      hi_pcal_vz_all[0]->Fill((*pcal_vz)[i]/10.);
-        if(abs((*pcal_pid)[i])==11) hi_ecal_vz_e[0]->Fill((*pcal_vz)[i]/10.);
-        else if((*pcal_pid)[i]==22) hi_ecal_vz_g[0]->Fill((*pcal_vz)[i]/10.);
-   	    else                       hi_ecal_vz_h[0]->Fill((*pcal_vz)[i]/10.);
+        if(abs((*pcal_pid)[i])==11) hi_pcal_vz_e[0]->Fill((*pcal_vz)[i]/10.);
+        else if((*pcal_pid)[i]==22) hi_pcal_vz_g[0]->Fill((*pcal_vz)[i]/10.);
+   	    else                       hi_pcal_vz_h[0]->Fill((*pcal_vz)[i]/10.);
         if((*pcal_pid)[i]==2112)    hi_ecal_vz_n[0]->Fill((*pcal_vz)[i]/10.);
-	      hi_ecal_origin_all[0]->Fill((*pcal_vz)[i]/10.,sqrt((*pcal_vx)[i]*(*pcal_vx)[i]/100.+(*pcal_vy)[i]*(*pcal_vy)[i]/100.));
-	      hi_ecal_edep[0]->Fill((*pcal_Edep)[i]);
+	      hi_pcal_origin_all[0]->Fill((*pcal_vz)[i]/10.,sqrt((*pcal_vx)[i]*(*pcal_vx)[i]/100.+(*pcal_vy)[i]*(*pcal_vy)[i]/100.));
+	      hi_pcal_edep[0]->Fill((*pcal_Edep)[i]);
 	      if((*pcal_Edep)[i]>Ethr) {
 	        hi_ecal_occ_cut[0]->Fill((*pcal_strip)[i]*1.,(*pcal_view)[i]*1.);
 	      }
        }
 //       for(int i=0; i<nechit; i++) {
-//	   int istack=(*ec_layer)[i];
+//	   int istack=(*pcal_layer)[i];
 //  	   hi_ecal_occ[istack]->Fill((*ec_strip)[i]*1.,(*ec_view)[i]*1.);
 //	   hi_ecal_vz_all[istack]->Fill((*ec_vz)[i]/10.);
 //	   if(abs((*ec_pid)[i])==11) hi_ecal_vz_e[istack]->Fill((*ec_vz)[i]/10.);
@@ -287,11 +287,11 @@ int main() {
 //	   else                       hi_ecal_vz_h[istack]->Fill((*ec_vz)[i]/10.);
 //	   if((*ec_pid)[i]==2112)    hi_ecal_vz_n[istack]->Fill((*ec_vz)[i]/10.);
 //	   hi_ecal_origin_all[istack]->Fill((*ec_vz)[i]/10.,sqrt((*ec_vx)[i]*(*ec_vx)[i]/100.+(*ec_vy)[i]*(*ec_vy)[i]/100.));
-//	   hi_ecal_edep[istack]->Fill((*pcal_Edep)[i]);
+//	   hi_pcal_edep[istack]->Fill((*pcal_Edep)[i]);
 //	   if((*ec_Edep)[i]>Ethr) {
 //	     hi_ecal_occ_cut[istack]->Fill((*ec_strip)[i]*1.,(*ec_view)[i]*1.);
 //	   }
-//       }
+       }
    }
    
 // in standard run mode (1 electron at a time)
@@ -369,7 +369,6 @@ int main() {
    c_vz->Divide(1,3);
    for(int i=0; i<3; i++) {
        c_vz->cd(i+1);
-       gPad->SetLogy();
        hi_pcal_vz_all[i]->SetMinimum(0.001);
        hi_pcal_vz_all[i]->Draw("H");
        hi_pcal_vz_e[i]->SetLineColor(2);
@@ -388,7 +387,7 @@ int main() {
    for(int i=0; i<3; i++) {
        c_edep->cd(i+1);
        gPad->SetLogy();
-       hi_ecal_edep[i]->Draw();
+       hi_pcal_edep[i]->Draw();
    }
    c_edep->Print("pcal_occupancy.pdf)");
 
