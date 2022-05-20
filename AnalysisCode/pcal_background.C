@@ -319,9 +319,8 @@ int main() {
    
 
    TCanvas *c_occ=new TCanvas("c_occ","Occupancy",750,1000);
-   c_occ->Divide(1,3);
    FILE *fp = fopen("pcal_occupancy.txt","w");
-   for(int i=0; i<3; i++) {
+   for(int i=0; i<1; i++) {
        c_occ->cd(i+1);
        hi_pcal_occ[i]->Draw("COLZ");
        for(int iv=0; iv<hi_pcal_occ[i]->GetNbinsY(); iv++) {
@@ -337,9 +336,8 @@ int main() {
    c_occ->Print("pcal_occupancy.pdf(");
 
    TCanvas *c_occ_cut=new TCanvas("c_occ_cut","Occupancy_Cuts",750,1000);
-   c_occ_cut->Divide(1,3);
    fp = fopen("pcal_occupancy_cut.txt","w");
-   for(int i=0; i<3; i++) {
+   for(int i=0; i<1; i++) {
        c_occ_cut->cd(i+1);
        hi_pcal_occ_cut[i]->Draw("COLZ");
        for(int iv=0; iv<hi_pcal_occ_cut[i]->GetNbinsY(); iv++) {
@@ -356,8 +354,7 @@ int main() {
 
 
    TCanvas *c_origin=new TCanvas("c_origin","Origin",750,1000);
-   c_origin->Divide(1,3);
-   for(int i=0; i<3; i++) {
+   for(int i=0; i<1; i++) {
        c_origin->cd(i+1);
        gPad->SetLogz();
        hi_pcal_origin_all[i]->Draw("COLZ");
@@ -365,25 +362,29 @@ int main() {
    c_origin->Print("pcal_occupancy.pdf");
 
    TCanvas *c_vz=new TCanvas("c_vz","VZ",750,1000);
-   c_vz->Divide(1,3);
-   for(int i=0; i<3; i++) {
-       c_vz->cd(i+1);
-       hi_pcal_vz_all[i]->SetMinimum(0.001);
-       hi_pcal_vz_all[i]->Draw("H");
-       hi_pcal_vz_e[i]->SetLineColor(2);
-       hi_pcal_vz_e[i]->Draw("SAME");
-       hi_pcal_vz_g[i]->SetLineColor(4);
-       hi_pcal_vz_g[i]->Draw("SAME");
-       hi_pcal_vz_h[i]->SetLineColor(kGreen);
-       hi_pcal_vz_h[i]->Draw("SAME");
-       hi_pcal_vz_n[i]->SetLineColor(kGreen+2);
-       hi_pcal_vz_n[i]->Draw("SAME");
-   }
+   c_vz->cd(1);
+   hi_pcal_vz_all[0]->SetMinimum(0.001);
+   hi_pcal_vz_all[0]->Draw("H");
+   hi_pcal_vz_e[0]->SetLineColor(2);
+   hi_pcal_vz_e[0]->Draw("SAME");
+   hi_pcal_vz_g[0]->SetLineColor(4);
+   hi_pcal_vz_g[0]->Draw("SAME");
+   hi_pcal_vz_h[0]->SetLineColor(kGreen);
+   hi_pcal_vz_h[0]->Draw("SAME");
+   hi_pcal_vz_n[0]->SetLineColor(kGreen+2);
+   hi_pcal_vz_n[0]->Draw("SAME");
+   TLegend *leg1 = new TLegend(0.7,0.75,0.96,0.96);
+   leg1->SetTextSize(.04);
+   leg1->AddEntry(hi_pcal_vz_all[0],"All","l");
+   leg1->AddEntry(hi_pcal_vz_e[0],"electrons","l");
+   leg1->AddEntry(hi_pcal_vz_g[0],"photons","l");
+   leg1->AddEntry(hi_pcal_vz_n[0],"neutron","l");
+   leg1->AddEntry(hi_pcal_vz_h[0],"hadron","l");
+   leg1->Draw();
    c_vz->Print("pcal_occupancy.pdf");
 
    TCanvas *c_edep=new TCanvas("c_edep","Deposited Energy",750,1000);
-   c_edep->Divide(1,3);
-   for(int i=0; i<3; i++) {
+   for(int i=0; i<1; i++) {
        c_edep->cd(i+1);
        gPad->SetLogy();
        hi_pcal_edep[i]->Draw();
