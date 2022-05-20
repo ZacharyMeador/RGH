@@ -257,7 +257,7 @@ int main() {
 //       ec_vz->clear();
      
        int nb = pcal->GetEntry(jentry); 
-       //ec->GetEntry(jentry); 
+       pcal->GetEntry(jentry); 
        ngoodentries++;
        if(int(jentry/1000)*1000==jentry) cout << "Analyzed " << jentry << " events of " << nentries << endl;
 	
@@ -270,7 +270,7 @@ int main() {
         if(abs((*pcal_pid)[i])==11) hi_pcal_vz_e[0]->Fill((*pcal_vz)[i]/10.);
         else if((*pcal_pid)[i]==22) hi_pcal_vz_g[0]->Fill((*pcal_vz)[i]/10.);
    	    else                       hi_pcal_vz_h[0]->Fill((*pcal_vz)[i]/10.);
-        if((*pcal_pid)[i]==2112)    hi_ecal_vz_n[0]->Fill((*pcal_vz)[i]/10.);
+        if((*pcal_pid)[i]==2112)    hi_pcal_vz_n[0]->Fill((*pcal_vz)[i]/10.);
 	      hi_pcal_origin_all[0]->Fill((*pcal_vz)[i]/10.,sqrt((*pcal_vx)[i]*(*pcal_vx)[i]/100.+(*pcal_vy)[i]*(*pcal_vy)[i]/100.));
 	      hi_pcal_edep[0]->Fill((*pcal_Edep)[i]);
 	      if((*pcal_Edep)[i]>Ethr) {
