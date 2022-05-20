@@ -290,7 +290,7 @@ int main() {
 //	   if((*ec_Edep)[i]>Ethr) {
 //	     hi_ecal_occ_cut[istack]->Fill((*ec_strip)[i]*1.,(*ec_view)[i]*1.);
 //	   }
-       }
+//       }
    }
    
 // in standard run mode (1 electron at a time)
