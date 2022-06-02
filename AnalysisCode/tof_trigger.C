@@ -132,10 +132,17 @@ int main() {
 
 
 // Create histos
-   TH2F *hi_tof_occ = new TH2F("hi_tof_occ", "hi_tof_occ",120, 0.,120.,6,1.,7.);
-   hi_tof_occ->GetXaxis()->SetTitle("Paddle");
-   hi_tof_occ->GetYaxis()->SetTitle("Sector");
-   hi_tof_occ->GetZaxis()->SetTitle("MHz");
+   TH2F *hi_tof_occ_all_sectors = new TH2F("hi_tof_occ_all_sectors", "hi_tof_occ_all_sectors",120, 0.,120.,6,1.,7.);
+   hi_tof_occ_all_sectors->GetXaxis()->SetTitle("Paddle");
+   hi_tof_occ_all_sectors->GetYaxis()->SetTitle("Sector");
+   hi_tof_occ_all_sectors->GetZaxis()->SetTitle("MHz/cm");
+   TH1F *hi_tof_occ[6];
+
+   for(int i=0; i<6; i++){ 
+   	hi_tof_occ[i] = new TH1F(Form("hi_tof_occ%i",i+1),Form("hi_tof_occ%i",i+1),120, 0.,120.);
+   	hi_tof_occ[i]->GetXaxis()->SetTitle("Paddle");
+   	hi_tof_occ[i]->GetYaxis()->SetTitle("MHz");
+   }
 
    TH2F *hi_tof_occ_norm = new TH2F("hi_tof_occ_norm", "hi_tof_occ_norm",120, 0.,120.,6,1.,7.);
    hi_tof_occ_norm->GetXaxis()->SetTitle("Paddle");
@@ -225,9 +232,9 @@ int main() {
    	hi_tof_origin_temp[i] = new TH2F(Form("hi_tof_origin_all_temp%i",i+1), "",200, 0.,800.,200, 0.,100.);
    }
 
-  TH2F *hi_tof_origin_all = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
-  hi_tof_origin_all->GetXaxis()->SetTitle("Z_{vertex} (cm)");
-  hi_tof_origin_all->GetYaxis()->SetTitle("R_{vertex} (cm)");
+  TH2F *hi_tof_all_origin = new TH2F("hi_tof_origin_all", "hi_tof_origin_all",200, 0.,800.,200, 0.,100.);
+  hi_tof_all_origin->GetXaxis()->SetTitle("Z_{vertex} (cm)");
+  hi_tof_all_origin->GetYaxis()->SetTitle("R_{vertex} (cm)");
    
   TH2F *hi_tof_origin_all_temp = new TH2F("hi_tof_origin_temp_all", "",200, 0.,800.,200, 0.,100.);
 	
@@ -406,7 +413,8 @@ int main() {
 
 	 bool charged = !(sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.)<100. && (*tof_vz)[i]/10.<150. 
 		      && ((*tof_pid)[i]==22 || (*tof_pid)[i]==2112));
-	 hi_tof_occ->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
+	 hi_tof_occ[nsect-1]->Fill((*tof_paddle)[i]*1.+offset);
+         hi_tof_occ_all_sectors->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
 	 hi_tof_occ_norm->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,1./width);
 	 hi_tof_occ_edep->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,(*tof_Edep)[i]);
 	 hi_tof_occ_edep_norm->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,(*tof_Edep)[i]/width);
@@ -420,7 +428,7 @@ int main() {
 	 if((*tof_pid)[i]==2112)    hi_tof_vz_n[nsect-1]->Fill((*tof_vz)[i]/10.);
 	 hi_tof_origin[nsect-1]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
      hi_tof_origin_temp[nsect-1]->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
-	 hi_tof_origin_all->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
+	 hi_tof_all_origin->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
      hi_tof_origin_all_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
     if((*tof_E)[i]>mass) hi_tof_origin_all_ene_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.), sqrt((*tof_E)[i]*(*tof_E)[i]-mass*mass) );
 	 if((*tof_Edep)[i]>Ethr) {
@@ -548,7 +556,10 @@ int main() {
    cout << "Trigger rate: " << ntrigger*1./(ngoodentries*trigger_window/1000.) << " MHz" << endl;
 
    // normalizing rate histogram to 10^35 luminosity
-   hi_tof_occ->Scale(1/time);
+   hi_tof_occ_all_sectors->Scale(1/time);
+   for(int i=0; i<6; i++){
+   	hi_tof_occ[i]->Scale(1/time);
+   }
    hi_tof_occ_norm->Scale(1/time);
    hi_tof_occ_edep->Scale(1/time);
    hi_tof_occ_edep_norm->Scale(1/time);
@@ -573,7 +584,7 @@ int main() {
    hi_tof_vz_n[i]->Scale(1/time);
    hi_tof_origin[i]->Scale(1/time);
    }
-   hi_tof_origin_all->Scale(1/time);
+   hi_tof_all_origin->Scale(1/time);
    hi_tof1a_vz->Scale(1/time);
    hi_tof1b_vz->Scale(1/time);
    hi_tof2_vz->Scale(1/time);
@@ -587,16 +598,37 @@ int main() {
    hi_tof1b_edep_5->Scale(1/time);
    hi_tof2_edep_5->Scale(1/time);
     
-    hi_tof_origin_all_ene->Divide(hi_tof_origin_all_ene_temp, hi_tof_origin_all_temp);
+   hi_tof_origin_all_ene->Divide(hi_tof_origin_all_ene_temp, hi_tof_origin_all_temp);
    
+   //TH1D * projhi_tof_occ = hi_tof_occ->ProjectionY();
 
    TCanvas *c_occ=new TCanvas("c_occ","Occupancy",750,1000);
    c_occ->SetTitle("Occupancy");
-   c_occ->Divide(1,2);
+   c_occ->Divide(2,4);
+   //c_occ->cd(1);
+   //hi_tof_occ->Draw("COLZ");
+   //c_occ->cd(2);
+   //hi_tof_occ_norm->Draw("COLZ");
    c_occ->cd(1);
-   hi_tof_occ->Draw("COLZ");
+   hi_tof_occ_all_sectors->Draw("COLZ");
    c_occ->cd(2);
-   hi_tof_occ_norm->Draw("COLZ");
+   gPad->SetLogy();
+   hi_tof_occ[0]->Draw("COLZ");
+   c_occ->cd(3);
+   gPad->SetLogy();
+   hi_tof_occ[1]->Draw("COLZ");
+   c_occ->cd(4);
+   gPad->SetLogy();
+   hi_tof_occ[2]->Draw("COLZ");
+   c_occ->cd(5);
+   gPad->SetLogy();
+   hi_tof_occ[3]->Draw("COLZ");
+   c_occ->cd(6);
+   gPad->SetLogy();
+   hi_tof_occ[4]->Draw("COLZ");
+   c_occ->cd(7);
+   gPad->SetLogy();
+   hi_tof_occ[5]->Draw("COLZ");
    c_occ->Print("tof_occupancy.pdf(");
 
    TCanvas *c_occ_cut=new TCanvas("c_occ_cut","Occupancy_Cuts",750,1000);
@@ -792,8 +824,8 @@ int main() {
     c_origin_e->Divide(1,2);
     c_origin_e->cd(1);
     gPad->SetLogz();
-    hi_tof_origin_all->SetMinimum(1E-3);
-    hi_tof_origin_all->Draw("COLZ");
+    hi_tof_all_origin->SetMinimum(1E-3);
+    hi_tof_all_origin->Draw("COLZ");
     c_origin_e->cd(2);
     gPad->SetLogz();
      hi_tof_origin_all_ene->Draw("COLZ");
@@ -864,3 +896,4 @@ int main() {
    gui.Run(1);
 
 }
+
