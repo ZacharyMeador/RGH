@@ -142,17 +142,25 @@ int main() {
    	hi_tof_occ[i] = new TH1F(Form("hi_tof_occ%i",i+1),Form("hi_tof_occ%i",i+1),120, 0.,120.);
    	hi_tof_occ[i]->GetXaxis()->SetTitle("Paddle");
    	hi_tof_occ[i]->GetYaxis()->SetTitle("MHz");
-   }
-
-   TH2F *hi_tof_occ_norm = new TH2F("hi_tof_occ_norm", "hi_tof_occ_norm",120, 0.,120.,6,1.,7.);
+    
+   	 }
+   TH2F*hi_tof_occ_norm = new TH2F("hi_tof_occ_norm", "hi_tof_occ_norm",120, 0.,120.,6,1.,7.);
    hi_tof_occ_norm->GetXaxis()->SetTitle("Paddle");
    hi_tof_occ_norm->GetYaxis()->SetTitle("Sector");
    hi_tof_occ_norm->GetZaxis()->SetTitle("MHz/cm");
+   
+   TH2F *hi_tof_occ_5_all = new TH2F("hi_tof_occ_5", "hi_tof_occ_5",120, 0.,120.,6,1.,7.);
+   hi_tof_occ_5_all->GetXaxis()->SetTitle("Paddle");
+   hi_tof_occ_5_all->GetYaxis()->SetTitle("Sector");
+   hi_tof_occ_5_all->GetZaxis()->SetTitle("MHz");
 
-   TH2F *hi_tof_occ_5 = new TH2F("hi_tof_occ_5", "hi_tof_occ_5",120, 0.,120.,6,1.,7.);
-   hi_tof_occ_5->GetXaxis()->SetTitle("Paddle");
-   hi_tof_occ_5->GetYaxis()->SetTitle("Sector");
-   hi_tof_occ_5->GetZaxis()->SetTitle("MHz");
+   TH1F *hi_tof_occ_5[6];
+
+   for(int i=0; i<6; i++){
+        hi_tof_occ_5[i] = new TH1F(Form("hi_tof_occ_5_sec%i",i+1),Form("hi_tof_occ_5_sec%i",i+1),120, 0.,120.);
+        hi_tof_occ_5[i]->GetXaxis()->SetTitle("Paddle");
+        hi_tof_occ_5[i]->GetYaxis()->SetTitle("MHz");
+   }
     
    TH2F *hi_tof_occ_norm_5 = new TH2F("hi_tof_occ_norm_5", "hi_tof_occ_norm_5",120, 0.,120.,6,1.,7.);
    hi_tof_occ_norm_5->GetXaxis()->SetTitle("Paddle");
@@ -296,22 +304,43 @@ int main() {
    hi_tof2_edep_5->GetXaxis()->SetTitle("E(MeV)");
    hi_tof2_edep_5->GetYaxis()->SetTitle("Rate (MHz/50keV)");
    hi_tof2_edep_5->SetLineColor(2);
+   
+   TH1F *hi_tof_occ_edep[6];
+   
+   for(int i=0; i<6; i++){
+       hi_tof_occ_edep[i] = new TH1F(Form("hi_tof_occ_edep%i (MeV/us)",i+1), Form("hi_tof_occ_edep%i (MeV/us)",i+1),120, 0.,120.);
+       hi_tof_occ_edep[i]->GetXaxis()->SetTitle("Paddle");
+       hi_tof_occ_edep[i]->GetYaxis()->SetTitle("Sector");
+   }
 
-   TH2F *hi_tof_occ_edep = new TH2F("hi_tof_occ_edep (MeV/us)", "hi_tof_occ_edep (MeV/us)",120, 0.,120.,6,1.,7.);
-   hi_tof_occ_edep->GetXaxis()->SetTitle("Paddle");
-   hi_tof_occ_edep->GetYaxis()->SetTitle("Sector");
+   TH2F *hi_tof_occ_edep_all = new TH2F("hi_tof_occ_edep (MeV/us)", "hi_tof_occ_edep (MeV/us)",120, 0.,120.,6,1.,7.);
+   hi_tof_occ_edep_all->GetXaxis()->SetTitle("Paddle");
+   hi_tof_occ_edep_all->GetYaxis()->SetTitle("Sector");
 
    TH2F *hi_tof_occ_edep_norm = new TH2F("hi_tof_occ_edep_norm (MeV/us)", "hi_tof_occ_edep_norm (MeV/us)",120, 0.,120.,6,1.,7.);
    hi_tof_occ_edep_norm->GetXaxis()->SetTitle("Paddle");
    hi_tof_occ_edep_norm->GetYaxis()->SetTitle("Sector");
    
-   TH2F *hi_tof_occ_curr = new TH2F("hi_tof_occ_curr (uA)", "hi_tof_occ_curr (uA)",120, 0.,120.,6,1.,7.);
-   hi_tof_occ_curr->GetXaxis()->SetTitle("Paddle");
-   hi_tof_occ_curr->GetYaxis()->SetTitle("Sector");
+   TH1F *hi_tof_occ_curr[6];
+   TH1F *hi_tof_occ_adc[6];
    
-   TH2F *hi_tof_occ_adc = new TH2F("hi_tof_occ_adc (uA)", "hi_tof_occ_adc (uA)",120, 0.,120.,6,1.,7.);
-   hi_tof_occ_adc->GetXaxis()->SetTitle("Paddle");
-   hi_tof_occ_adc->GetYaxis()->SetTitle("Sector");
+   for(int i=0; i<6; i++){
+       hi_tof_occ_curr[i] = new TH1F(Form("hi_tof_occ_curr%i (uA)",i+1), Form("hi_tof_occ_curr%i (uA)",i+1),120, 0.,120.);
+       hi_tof_occ_curr[i]->GetXaxis()->SetTitle("Paddle");
+       hi_tof_occ_curr[i]->GetYaxis()->SetTitle("Sector");
+
+       hi_tof_occ_adc[i] = new TH1F(Form("hi_tof_occ_adc%i (uA)",i+1), Form("hi_tof_occ_adc%i (uA)",i+1),120, 0.,120.);
+       hi_tof_occ_adc[i]->GetXaxis()->SetTitle("Paddle");
+       hi_tof_occ_adc[i]->GetYaxis()->SetTitle("Sector");
+   }
+
+   TH2F *hi_tof_occ_curr_all = new TH2F("hi_tof_occ_curr (uA)", "hi_tof_occ_curr (uA)",120, 0.,120.,6,1.,7.);
+   hi_tof_occ_curr_all->GetXaxis()->SetTitle("Paddle");
+   hi_tof_occ_curr_all->GetYaxis()->SetTitle("Sector");
+   
+   TH2F *hi_tof_occ_adc_all = new TH2F("hi_tof_occ_adc (uA)", "hi_tof_occ_adc (uA)",120, 0.,120.,6,1.,7.);
+   hi_tof_occ_adc_all->GetXaxis()->SetTitle("Paddle");
+   hi_tof_occ_adc_all->GetYaxis()->SetTitle("Sector");
    
    TH1F *hi_ntof = new TH1F("hi_ntof", "hi_ntof",10, 0.,10.);
    hi_ntof->GetXaxis()->SetTitle("Nhits");
@@ -416,10 +445,13 @@ int main() {
 	 hi_tof_occ[nsect-1]->Fill((*tof_paddle)[i]*1.+offset);
          hi_tof_occ_all_sectors->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
 	 hi_tof_occ_norm->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,1./width);
-	 hi_tof_occ_edep->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,(*tof_Edep)[i]);
+         hi_tof_occ_edep[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
+	 hi_tof_occ_edep_all->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,(*tof_Edep)[i]);
 	 hi_tof_occ_edep_norm->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,(*tof_Edep)[i]/width);
-	 hi_tof_occ_curr->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,weightCurrent); 
-	 hi_tof_occ_adc->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,weightADC);
+	 hi_tof_occ_curr_all->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,weightCurrent);
+         hi_tof_occ_curr[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,weightCurrent); 
+	 hi_tof_occ_adc_all->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,weightADC);
+         hi_tof_occ_adc[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,weightADC);
 	 hi_tof_pid->Fill((*tof_pid)[i]*1.);
 	 hi_tof_vz_all[nsect-1]->Fill((*tof_vz)[i]/10.);
 	 if(abs((*tof_pid)[i])==11) hi_tof_vz_e[nsect-1]->Fill((*tof_vz)[i]/10.);
@@ -432,7 +464,8 @@ int main() {
      hi_tof_origin_all_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.));
     if((*tof_E)[i]>mass) hi_tof_origin_all_ene_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.), sqrt((*tof_E)[i]*(*tof_E)[i]-mass*mass) );
 	 if((*tof_Edep)[i]>Ethr) {
-	   hi_tof_occ_5->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
+	   hi_tof_occ_5_all->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
+           hi_tof_occ_5[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
        hi_tof_occ_norm_5->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,1./width);
 	   if(charged) hi_tof_occ_5charged->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
 	   hi_tof_pid_5->Fill((*tof_pid)[i]*1.);
@@ -559,13 +592,17 @@ int main() {
    hi_tof_occ_all_sectors->Scale(1/time);
    for(int i=0; i<6; i++){
    	hi_tof_occ[i]->Scale(1/time);
+        hi_tof_occ_5[i]->Scale(1/time);
+        hi_tof_occ_edep[i]->Scale(1/time);
+        hi_tof_occ_curr[i]->Scale(1/time);
+        hi_tof_occ_adc[i]->Scale(1/time);
    }
    hi_tof_occ_norm->Scale(1/time);
-   hi_tof_occ_edep->Scale(1/time);
+   hi_tof_occ_edep_all->Scale(1/time);
    hi_tof_occ_edep_norm->Scale(1/time);
-   hi_tof_occ_curr->Scale(1E6/time);
-   hi_tof_occ_adc->Scale(1E6/time);
-   hi_tof_occ_5->Scale(1/time);
+   hi_tof_occ_curr_all->Scale(1E6/time);
+   hi_tof_occ_adc_all->Scale(1E6/time);
+   hi_tof_occ_5_all->Scale(1/time);
    hi_tof_occ_norm_5->Scale(1/time);
    hi_tof_occ_5charged->Scale(1/time);
    hi_tof_pid->Scale(1/time);
@@ -605,40 +642,58 @@ int main() {
    TCanvas *c_occ=new TCanvas("c_occ","Occupancy",750,1000);
    c_occ->SetTitle("Occupancy");
    c_occ->Divide(2,4);
-   //c_occ->cd(1);
-   //hi_tof_occ->Draw("COLZ");
-   //c_occ->cd(2);
-   //hi_tof_occ_norm->Draw("COLZ");
    c_occ->cd(1);
    hi_tof_occ_all_sectors->Draw("COLZ");
    c_occ->cd(2);
-   gPad->SetLogy();
-   hi_tof_occ[0]->Draw("COLZ");
+   hi_tof_occ_norm->Draw("COLZ");
    c_occ->cd(3);
    gPad->SetLogy();
-   hi_tof_occ[1]->Draw("COLZ");
+   hi_tof_occ[0]->Draw("COLZ");
    c_occ->cd(4);
    gPad->SetLogy();
-   hi_tof_occ[2]->Draw("COLZ");
+   hi_tof_occ[1]->Draw("COLZ");
    c_occ->cd(5);
    gPad->SetLogy();
-   hi_tof_occ[3]->Draw("COLZ");
+   hi_tof_occ[2]->Draw("COLZ");
    c_occ->cd(6);
    gPad->SetLogy();
-   hi_tof_occ[4]->Draw("COLZ");
+   hi_tof_occ[3]->Draw("COLZ");
    c_occ->cd(7);
+   gPad->SetLogy();
+   hi_tof_occ[4]->Draw("COLZ");
+   c_occ->cd(8);
    gPad->SetLogy();
    hi_tof_occ[5]->Draw("COLZ");
    c_occ->Print("tof_occupancy.pdf(");
+    
 
    TCanvas *c_occ_cut=new TCanvas("c_occ_cut","Occupancy_Cuts",750,1000);
-   c_occ_cut->Divide(1,2);
+   c_occ_cut->SetTitle("Occupancy Threshold");
+   c_occ_cut->Divide(2,4);
    c_occ_cut->cd(1);
-   hi_tof_occ_5->Draw("COLZ");
+   hi_tof_occ_5_all->Draw("COLZ");
    c_occ_cut->cd(2);
-  // hi_tof_occ_5charged->Draw("COLZ");
-    hi_tof_occ_norm_5->Draw("COLZ");
-   c_occ_cut->Print("tof_occupancy.pdf");
+   hi_tof_occ_norm_5->Draw("COLZ");
+   c_occ_cut->cd(3);
+   gPad->SetLogy();
+   hi_tof_occ_5[0]->Draw("COLZ");
+   c_occ_cut->cd(4);
+   gPad->SetLogy();
+   hi_tof_occ_5[1]->Draw("COLZ");
+   c_occ_cut->cd(5);
+   gPad->SetLogy();
+   hi_tof_occ_5[2]->Draw("COLZ");
+   c_occ_cut->cd(6);
+   gPad->SetLogy();
+   hi_tof_occ_5[3]->Draw("COLZ");
+   c_occ_cut->cd(7);
+   gPad->SetLogy();
+   hi_tof_occ_5[4]->Draw("COLZ");
+   c_occ_cut->cd(8);
+   gPad->SetLogy();
+   hi_tof_occ_5[5]->Draw("COLZ");
+   c_occ_cut->Print("tof_occupancy.pdf(");
+
 
    TCanvas *c_pid0=new TCanvas("c_pid0","PID0",750,1000);
    c_pid0->Divide(1,2);
@@ -864,20 +919,60 @@ int main() {
    c_edep->Print("tof_occupancy.pdf");
 
    TCanvas *c_occ_edep=new TCanvas("c_occ_edep","Occ_edep",750,1000);
-   c_occ_edep->Divide(1,2);
+   c_occ_edep->Divide(2,4);
    c_occ_edep->cd(1);
-   hi_tof_occ_edep->Draw("COLZ");
+   hi_tof_occ_edep_all->Draw("COLZ");
    c_occ_edep->cd(2);
    hi_tof_occ_edep_norm->Draw("COLZ");
+   c_occ_edep->cd(3);
+   hi_tof_occ_edep[0]->Draw("COLZ");
+   c_occ_edep->cd(4);
+   hi_tof_occ_edep[1]->Draw("COLZ");
+   c_occ_edep->cd(5);
+   hi_tof_occ_edep[2]->Draw("COLZ");
+   c_occ_edep->cd(6);
+   hi_tof_occ_edep[3]->Draw("COLZ");
+   c_occ_edep->cd(7);
+   hi_tof_occ_edep[4]->Draw("COLZ");
+   c_occ_edep->cd(8);
+   hi_tof_occ_edep[5]->Draw("COLZ");
    c_occ_edep->Print("tof_occupancy.pdf");
    
    TCanvas *c_occ_curr=new TCanvas("c_occ_curr","Occ_curr",750,1000);
-   c_occ_curr->Divide(1,2);
+   c_occ_curr->Divide(2,4);
    c_occ_curr->cd(1);
-   hi_tof_occ_curr->Draw("COLZ");
+   hi_tof_occ_curr_all->Draw("COLZ");
    c_occ_curr->cd(2);
-   hi_tof_occ_adc->Draw("COLZ");
+   hi_tof_occ_curr[0]->Draw("COLZ");
+   c_occ_curr->cd(3);
+   hi_tof_occ_curr[1]->Draw("COLZ");
+   c_occ_curr->cd(4);
+   hi_tof_occ_curr[2]->Draw("COLZ");
+   c_occ_curr->cd(5);
+   hi_tof_occ_curr[3]->Draw("COLZ");
+   c_occ_curr->cd(6);
+   hi_tof_occ_curr[4]->Draw("COLZ");
+   c_occ_curr->cd(7);
+   hi_tof_occ_curr[5]->Draw("COLZ");
    c_occ_curr->Print("tof_occupancy.pdf");
+
+   TCanvas *c_occ_adc=new TCanvas("c_occ_adc","Occ_adc",750,1000);
+   c_occ_adc->Divide(2,4);
+   c_occ_adc->cd(1);
+   hi_tof_occ_adc_all->Draw("COLZ");
+   c_occ_adc->cd(2);
+   hi_tof_occ_adc[0]->Draw("COLZ");
+   c_occ_adc->cd(3);
+   hi_tof_occ_adc[1]->Draw("COLZ");
+   c_occ_adc->cd(4);
+   hi_tof_occ_adc[2]->Draw("COLZ");
+   c_occ_adc->cd(5);
+   hi_tof_occ_adc[3]->Draw("COLZ");
+   c_occ_adc->cd(6);
+   hi_tof_occ_adc[4]->Draw("COLZ");
+   c_occ_adc->cd(7);
+   hi_tof_occ_adc[5]->Draw("COLZ");
+   c_occ_adc->Print("tof_occupancy.pdf");
    
    TCanvas *c3=new TCanvas("c3","HITS",250,250);
    hi_ntof->Draw();
@@ -886,14 +981,15 @@ int main() {
    TCanvas *c_occ_kpp=new TCanvas("c_occ_kpp","Occ_kpp",750,1000);
    c_occ_kpp->Divide(1,2);
    c_occ_kpp->cd(1);
-   TH2F *hi_tof_occ_kHz=(TH2F*)hi_tof_occ_5->Clone();
+   TH2F *hi_tof_occ_kHz=(TH2F*)hi_tof_occ_5_all->Clone();
    hi_tof_occ_kHz->Scale(1000.);
    hi_tof_occ_kHz->Draw("COLZ");
    c_occ_kpp->cd(2);
-   hi_tof_occ_adc->Draw("COLZ");
+   hi_tof_occ_adc_all->Draw("COLZ");
    c_occ_kpp->Print("tof_occupancy.pdf)");
    
    gui.Run(1);
 
 }
+
 
