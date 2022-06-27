@@ -108,7 +108,7 @@
 
 
 
-	<option name="INTEGRATEDRAW" value="dc"/>	
+	<option name="INTEGRATEDRAW" value="ec, pcal, ftof, dc"/>	
 	
 	<!-- beam conditions -->
 	<option name="BEAM_P"    value="e-, 10.6*GeV, 2.15*deg, 0*deg"/>
