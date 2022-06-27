@@ -53,7 +53,7 @@ int main() {
    int   ngen;
 
    const int NTOFMAX = 100000;
- pcal
+// pcal
    int npcalhit;
    vector<double> *pcal_sector=new vector<double>;
    vector<double> *pcal_layer=new vector<double>;
@@ -104,7 +104,7 @@ int main() {
 //   ec->Add("out*.root");
 
 
- PCAL
+// PCAL
    pcal->SetBranchAddress("sector" ,&pcal_sector);
    pcal->SetBranchAddress("module" ,&pcal_layer);
    pcal->SetBranchAddress("view"   ,&pcal_view);
@@ -148,8 +148,8 @@ int main() {
 
 
 
-   Long64_t nentries = ec->GetEntries();
-   cout << "N. entries:" << nentries << " " << ec->GetEntries() << endl;
+   Long64_t nentries = pcal->GetEntries();
+   cout << "N. entries:" << nentries << " " << pcal->GetEntries() << endl;
 
 
 
@@ -185,31 +185,31 @@ int main() {
    for(int i=0; i<6; i++) {
        int nstrip=68;
        if(i>0) nstrip=36;
-       hi_pcal_occ1[i] = new TH2F(Form("hi_pcal_occ_layer1 %d",i+1), Form("hi_pcal_occ_layer1 %d",i+1),nstrip, 1.,nstrip*1.+1.,3,1.,4.);
+       hi_pcal_occ1[i] = new TH2F(Form("hi_pcal_occ_layer1 %d",i+1), Form("hi_pcal_occ %d",i+1),nstrip, 1.,nstrip*1.+1.,3,1.,4.);
        hi_pcal_occ1[i]->GetXaxis()->SetTitle("Strip");
        hi_pcal_occ1[i]->GetYaxis()->SetTitle("View");
-       hi_pcal_occ_cut1[i] = new TH2F(Form("hi_pcal_occ_cut_layer1 %d",i+1), Form("hi_pcal_occ_cut_layer1 %d",i+1),nstrip, 1.,nstrip*1.+1.,3,1.,4.);
+       hi_pcal_occ_cut1[i] = new TH2F(Form("hi_pcal_occ_cut_layer1 %d",i+1), Form("hi_pcal_occ_cut %d",i+1),nstrip, 1.,nstrip*1.+1.,3,1.,4.);
        hi_pcal_occ_cut1[i]->GetXaxis()->SetTitle("Strip");
        hi_pcal_occ_cut1[i]->GetYaxis()->SetTitle("View");
-       hi_pcal_vz_all1[i] = new TH1F(Form("hi_pcal_vz_all_layer1 %d",i+1), Form("hi_pcal_vz_all_layer1 %d",i+1),300, 0., 900.);
+       hi_pcal_vz_all1[i] = new TH1F(Form("hi_pcal_vz_all_layer1 %d",i+1), Form("hi_pcal_vz_all %d",i+1),300, 0., 900.);
        hi_pcal_vz_all1[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
        hi_pcal_vz_all1[i]->GetYaxis()->SetTitle("Rate (MHz/3cm)");
-       hi_pcal_vz_e1[i] = new TH1F(Form("hi_pcal_vz_e_layer1 %d",i+1), Form("hi_pcal_vz_e_layer1 %d",i+1),300, 0., 900.);
+       hi_pcal_vz_e1[i] = new TH1F(Form("hi_pcal_vz_e_layer1 %d",i+1), Form("hi_pcal_vz_e %d",i+1),300, 0., 900.);
        hi_pcal_vz_e1[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
        hi_pcal_vz_e1[i]->GetYaxis()->SetTitle("Rate (MHz/3cm)");
-       hi_pcal_vz_g1[i] = new TH1F(Form("hi_pcal_vz_g_layer1 %d",i+1), Form("hi_pcal_vz_g_layer1 %d",i+1),300, 0., 900.);
+       hi_pcal_vz_g1[i] = new TH1F(Form("hi_pcal_vz_g_layer1 %d",i+1), Form("hi_pcal_vz_g %d",i+1),300, 0., 900.);
        hi_pcal_vz_g1[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
        hi_pcal_vz_g1[i]->GetYaxis()->SetTitle("Rate (MHz/3cm)");
-       hi_pcal_vz_h1[i] = new TH1F(Form("hi_pcal_vz_h_layer1 %d",i+1), Form("hi_pcal_vz_h_layer1 %d",i+1),300, 0., 900.);
+       hi_pcal_vz_h1[i] = new TH1F(Form("hi_pcal_vz_h_layer1 %d",i+1), Form("hi_pcal_vz_h %d",i+1),300, 0., 900.);
        hi_pcal_vz_h1[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
        hi_pcal_vz_h1[i]->GetYaxis()->SetTitle("Rate (MHz/3cm)");
-       hi_pcal_vz_n1[i] = new TH1F(Form("hi_pcal_vz_n_layer1 %d",i+1), Form("hi_pcal_vz_n_layer1 %d",i+1),300, 0., 900.);
+       hi_pcal_vz_n1[i] = new TH1F(Form("hi_pcal_vz_n_layer1 %d",i+1), Form("hi_pcal_vz_n %d",i+1),300, 0., 900.);
        hi_pcal_vz_n1[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
        hi_pcal_vz_n1[i]->GetYaxis()->SetTitle("Rate (MHz/3cm)");
-       hi_pcal_origin_all1[i] = new TH2F(Form("hi_pcal_origin_all_layer1 %d",i+1), Form("hi_pcal_origin_all_layer1 %d",i+1),300, 0., 900.,200, 0., 600.);
+       hi_pcal_origin_all1[i] = new TH2F(Form("hi_pcal_origin_all_layer1 %d",i+1), Form("hi_pcal_origin_all %d",i+1),300, 0., 900.,200, 0., 600.);
        hi_pcal_origin_all1[i]->GetXaxis()->SetTitle("Z_{vertex} (cm)");
        hi_pcal_origin_all1[i]->GetYaxis()->SetTitle("R_{vertex} (cm)");
-       hi_pcal_edep1[i] = new TH1F(Form("hi_pcal_edep_layer1 %d",i+1), Form("hi_pcal_edep_layer1 %d",i+1),200, 0.,10.);
+       hi_pcal_edep1[i] = new TH1F(Form("hi_pcal_edep_layer1 %d",i+1), Form("hi_pcal_edep %d",i+1),200, 0.,10.);
        hi_pcal_edep1[i]->GetXaxis()->SetTitle("E(MeV)");
        hi_pcal_edep1[i]->GetYaxis()->SetTitle("Rate (MHz/50keV)");
        hi_pcal_occ2[i] = new TH2F(Form("hi_pcal_occ_layer2 %d",i+1), Form("hi_pcal_occ_layer2 %d",i+1),nstrip, 1.,nstrip*1.+1.,3,1.,4.);
@@ -339,7 +339,7 @@ int main() {
 //       nechit=ec_pid->size();
 
        for(int i=0; i<npcalhit; i++) {
-           phi = atan2((*ec_vy)[i],(*ec_vx)[i])*180/pi;
+           phi = atan2((*pcal_vy)[i],(*pcal_vx)[i])*180/pi;
            phi += (phi<0) ? 360:0;
            int nsect = floor((phi-30)/60) + 2;
 	   if(nsect == 7) nsect = 1;
@@ -347,7 +347,7 @@ int main() {
 	   hi_pcal_vz_all1[nsect-1]->Fill((*pcal_vz)[i]/10.);
 	   if(abs((*pcal_pid)[i])==11) hi_pcal_vz_e1[nsect-1]->Fill((*pcal_vz)[i]/10.);
 	   else if((*pcal_pid)[i]==22) hi_pcal_vz_g1[nsect-1]->Fill((*pcal_vz)[i]/10.);
-	   else                       hi_pcal_vz_h1[nsect1-1]->Fill((*pcal_vz)[i]/10.);
+	   else                       hi_pcal_vz_h1[nsect-1]->Fill((*pcal_vz)[i]/10.);
 	   if((*pcal_pid)[i]==2112)    hi_pcal_vz_n1[nsect-1]->Fill((*pcal_vz)[i]/10.);
 	   hi_pcal_origin_all1[nsect-1]->Fill((*pcal_vz)[i]/10.,sqrt((*pcal_vx)[i]*(*pcal_vx)[i]/100.+(*pcal_vy)[i]*(*pcal_vy)[i]/100.));
 	   hi_pcal_edep1[nsect-1]->Fill((*pcal_Edep)[i]);
@@ -465,41 +465,41 @@ int main() {
    fclose(fp);
    c_occ1->Print("ecal_occupancy.pdf(");
 
-   TCanvas *c_occ2=new TCanvas("c_occ2","Occupancy",750,1000);
-   c_occ2->Divide(3,2);
-   fp = fopen("ecal_occupancy.txt","w");
-   for(int i=0; i<6; i++) {
-       c_occ2->cd(i+1);
-       hi_pcal_occ2[i]->Draw("COLZ");
-       for(int iv=0; iv<hi_pcal_occ2[i]->GetNbinsY(); iv++) {
-           for(int is=0; is<hi_pcal_occ2[i]->GetNbinsX(); is++) {
-             int layer = i*3+iv+1;
-             int strip = is +1;
-             float value = hi_pcal_occ2[i]->GetBinContent(is+1,iv+1);
-             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
-           }
-       }
-   }
-   fclose(fp);
-   c_occ2->Print("ecal_occupancy.pdf(");
+//   TCanvas *c_occ2=new TCanvas("c_occ2","Occupancy",750,1000);
+//   c_occ2->Divide(3,2);
+//   fp = fopen("ecal_occupancy.txt","w");
+//   for(int i=0; i<6; i++) {
+//       c_occ2->cd(i+1);
+//       hi_pcal_occ2[i]->Draw("COLZ");
+//       for(int iv=0; iv<hi_pcal_occ2[i]->GetNbinsY(); iv++) {
+//           for(int is=0; is<hi_pcal_occ2[i]->GetNbinsX(); is++) {
+//             int layer = i*3+iv+1;
+//             int strip = is +1;
+//             float value = hi_pcal_occ2[i]->GetBinContent(is+1,iv+1);
+//             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
+//           }
+//       }
+//   }
+//   fclose(fp);
+//   c_occ2->Print("ecal_occupancy.pdf(");
 
-   TCanvas *c_occ3=new TCanvas("c_occ3","Occupancy",750,1000);
-   c_occ3->Divide(3,2);
-   fp = fopen("ecal_occupancy.txt","w");
-   for(int i=0; i<6; i++) {
-       c_occ3->cd(i+1);
-       hi_pcal_occ3[i]->Draw("COLZ");
-       for(int iv=0; iv<hi_pcal_occ3[i]->GetNbinsY(); iv++) {
-           for(int is=0; is<hi_pcal_occ3[i]->GetNbinsX(); is++) {
-             int layer = i*3+iv+1;
-             int strip = is +1;
-             float value = hi_pcal_occ3[i]->GetBinContent(is+1,iv+1);
-             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
-           }
-       }
-   }
-   fclose(fp);
-   c_occ3->Print("ecal_occupancy.pdf");
+//  TCanvas *c_occ3=new TCanvas("c_occ3","Occupancy",750,1000);
+//   c_occ3->Divide(3,2);
+//   fp = fopen("ecal_occupancy.txt","w");
+//   for(int i=0; i<6; i++) {
+//       c_occ3->cd(i+1);
+//       hi_pcal_occ3[i]->Draw("COLZ");
+//       for(int iv=0; iv<hi_pcal_occ3[i]->GetNbinsY(); iv++) {
+//           for(int is=0; is<hi_pcal_occ3[i]->GetNbinsX(); is++) {
+//             int layer = i*3+iv+1;
+//             int strip = is +1;
+//             float value = hi_pcal_occ3[i]->GetBinContent(is+1,iv+1);
+//             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
+//           }
+//       }
+//   }
+//   fclose(fp);
+//   c_occ3->Print("ecal_occupancy.pdf");
 
 
    TCanvas *c_occ_cut1=new TCanvas("c_occ_cut1","Occupancy_Cuts",750,1000);
@@ -520,41 +520,41 @@ int main() {
    fclose(fp);
    c_occ_cut1->Print("ecal_occupancy.pdf");
 
-   TCanvas *c_occ_cut2=new TCanvas("c_occ_cut2","Occupancy_Cuts",750,1000);
-   c_occ_cut2->Divide(3,2);
-   fp = fopen("ecal_occupancy_cut.txt","w");
-   for(int i=0; i<6; i++) {
-       c_occ_cut2->cd(i+1);
-       hi_pcal_occ_cut2[i]->Draw("COLZ");
-       for(int iv=0; iv<hi_pcal_occ_cut2[i]->GetNbinsY(); iv++) {
-           for(int is=0; is<hi_pcal_occ_cut2[i]->GetNbinsX(); is++) {
-             int layer = i*3+iv+1;
-             int strip = is +1;
-             float value = hi_pcal_occ_cut2[i]->GetBinContent(is+1,iv+1);
-             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
-           }
-       }
-   }
-   fclose(fp);
-   c_occ_cut2->Print("ecal_occupancy.pdf");
+//   TCanvas *c_occ_cut2=new TCanvas("c_occ_cut2","Occupancy_Cuts",750,1000);
+//   c_occ_cut2->Divide(3,2);
+//   fp = fopen("ecal_occupancy_cut.txt","w");
+//   for(int i=0; i<6; i++) {
+//       c_occ_cut2->cd(i+1);
+//       hi_pcal_occ_cut2[i]->Draw("COLZ");
+//       for(int iv=0; iv<hi_pcal_occ_cut2[i]->GetNbinsY(); iv++) {
+//           for(int is=0; is<hi_pcal_occ_cut2[i]->GetNbinsX(); is++) {
+//             int layer = i*3+iv+1;
+//             int strip = is +1;
+//             float value = hi_pcal_occ_cut2[i]->GetBinContent(is+1,iv+1);
+//             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
+//           }
+//       }
+//   }
+//   fclose(fp);
+//   c_occ_cut2->Print("ecal_occupancy.pdf");
 
-   TCanvas *c_occ_cut3=new TCanvas("c_occ_cut3","Occupancy_Cuts",750,1000);
-   c_occ_cut3->Divide(3,2);
-   fp = fopen("ecal_occupancy_cut.txt","w");
-   for(int i=0; i<6; i++) {
-       c_occ_cut3->cd(i);
-       hi_pcal_occ_cut3[i]->Draw("COLZ");
-       for(int iv=0; iv<hi_pcal_occ_cut3[i]->GetNbinsY(); iv++) {
-	   for(int is=0; is<hi_pcal_occ_cut3[i]->GetNbinsX(); is++) {
-             int layer = i*3+iv+1;
-             int strip = is +1;
-             float value = hi_pcal_occ_cut3[i]->GetBinContent(is+1,iv+1);
-             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
-           }
-       }
-   }
-   fclose(fp);
-   c_occ_cut3->Print("ecal_occupancy.pdf");
+//   TCanvas *c_occ_cut3=new TCanvas("c_occ_cut3","Occupancy_Cuts",750,1000);
+//   c_occ_cut3->Divide(3,2);
+//   fp = fopen("ecal_occupancy_cut.txt","w");
+//   for(int i=0; i<6; i++) {
+//       c_occ_cut3->cd(i+1);
+//       hi_pcal_occ_cut3[i]->Draw("COLZ");
+//       for(int iv=0; iv<hi_pcal_occ_cut3[i]->GetNbinsY(); iv++) {
+//	   for(int is=0; is<hi_pcal_occ_cut3[i]->GetNbinsX(); is++) {
+//             int layer = i*3+iv+1;
+//             int strip = is +1;
+//             float value = hi_pcal_occ_cut3[i]->GetBinContent(is+1,iv+1);
+//             fprintf(fp,"%d\t%d\t%8.1f\n",layer,strip,value);
+//           }
+//       }
+//   }
+//   fclose(fp);
+//   c_occ_cut3->Print("ecal_occupancy.pdf");
 
    TCanvas *c_origin1=new TCanvas("c_origin1","Origin",750,1000);
    c_origin1->Divide(3,2);
@@ -565,23 +565,23 @@ int main() {
    }
    c_origin1->Print("ecal_occupancy.pdf");
 
-   TCanvas *c_origin2=new TCanvas("c_origin2","Origin",750,1000);
-   c_origin2->Divide(3,2);
-   for(int i=0; i<6; i++) {
-       c_origin2->cd(i+1);
-       gPad->SetLogz();
-       hi_pcal_origin_all2[i]->Draw("COLZ");
-   }
-   c_origin2->Print("ecal_occupancy.pdf");
+//  TCanvas *c_origin2=new TCanvas("c_origin2","Origin",750,1000);
+//   c_origin2->Divide(3,2);
+//   for(int i=0; i<6; i++) {
+//       c_origin2->cd(i+1);
+//       gPad->SetLogz();
+//       hi_pcal_origin_all2[i]->Draw("COLZ");
+//   }
+//   c_origin2->Print("ecal_occupancy.pdf");
 
-   TCanvas *c_origin3=new TCanvas("c_origin3","Origin",750,1000);
-   c_origin3->Divide(3,2);
-   for(int i=0; i<6; i++) {
-       c_origin3->cd(i+1);
-       gPad->SetLogz();
-       hi_pcal_origin_all3[i]->Draw("COLZ");
-   }
-   c_origin3->Print("ecal_occupancy.pdf");
+//   TCanvas *c_origin3=new TCanvas("c_origin3","Origin",750,1000);
+//   c_origin3->Divide(3,2);
+//   for(int i=0; i<6; i++) {
+//       c_origin3->cd(i+1);
+//       gPad->SetLogz();
+//       hi_pcal_origin_all3[i]->Draw("COLZ");
+//   }
+//   c_origin3->Print("ecal_occupancy.pdf");
 
    TCanvas *c_vz1=new TCanvas("c_vz1","VZ",750,1000);
    c_vz1->Divide(3,2);
@@ -712,274 +712,272 @@ int main() {
      leg6->Draw();
    c_vz1->Print("ecal_occupancy.pdf");
 
-   TCanvas *c_vz2=new TCanvas("c_vz2","VZ",750,1000);
-   c_vz2->Divide(3,2);
-   c_vz2->cd(1);
-   hi_pcal_vz_all2[0]->SetMinimum(0.001);
-   hi_pcal_vz_all2[0]->Draw("H");
-   hi_pcal_vz_e2[0]->SetLineColor(2);
-   hi_pcal_vz_e2[0]->Draw("SAME");
-   hi_pcal_vz_g2[0]->SetLineColor(4);
-   hi_pcal_vz_g2[0]->Draw("SAME");
-   hi_pcal_vz_h2[0]->SetLineColor(kGreen);
-   hi_pcal_vz_h2[0]->Draw("SAME");
-   hi_pcal_vz_n2[0]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n2[0]->Draw("SAME");
+//   TCanvas *c_vz2=new TCanvas("c_vz2","VZ",750,1000);
+//   c_vz2->Divide(3,2);
+//   c_vz2->cd(1);
+//   hi_pcal_vz_all2[0]->SetMinimum(0.001);
+//   hi_pcal_vz_all2[0]->Draw("H");
+//   hi_pcal_vz_e2[0]->SetLineColor(2);
+//   hi_pcal_vz_e2[0]->Draw("SAME");
+//   hi_pcal_vz_g2[0]->SetLineColor(4);
+//   hi_pcal_vz_g2[0]->Draw("SAME");
+//   hi_pcal_vz_h2[0]->SetLineColor(kGreen);
+//   hi_pcal_vz_h2[0]->Draw("SAME");
+//   hi_pcal_vz_n2[0]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n2[0]->Draw("SAME");
 
-    TLegend *leg21 = new TLegend(0.7,0.75,0.96,0.96);
-     leg21->SetTextSize(.04);
-     leg21->AddEntry(hi_pcal_vz_all2[0],"All","l");
-     leg21->AddEntry(hi_pcal_vz_e2[0],"electrons","l");
-     leg21->AddEntry(hi_pcal_vz_g2[0],"photons","l");
-     leg21->AddEntry(hi_pcal_vz_n2[0],"neutron","l");
-     leg21->AddEntry(hi_pcal_vz_h2[0],"hadron","l");
-     leg21->Draw();
+//    TLegend *leg21 = new TLegend(0.7,0.75,0.96,0.96);
+//    leg21->SetTextSize(.04);
+//     leg21->AddEntry(hi_pcal_vz_all2[0],"All","l");
+//     leg21->AddEntry(hi_pcal_vz_e2[0],"electrons","l");
+//     leg21->AddEntry(hi_pcal_vz_g2[0],"photons","l");
+//     leg21->AddEntry(hi_pcal_vz_n2[0],"neutron","l");
+//     leg21->AddEntry(hi_pcal_vz_h2[0],"hadron","l");
+//     leg21->Draw();
 
-   c_vz2->cd(2);
-   hi_pcal_vz_all2[1]->SetMinimum(0.001);
-   hi_pcal_vz_all2[1]->Draw("H");
-   hi_pcal_vz_e2[1]->SetLineColor(2);
-   hi_pcal_vz_e2[1]->Draw("SAME");
-   hi_pcal_vz_g2[1]->SetLineColor(4);
-   hi_pcal_vz_g2[1]->Draw("SAME");
-   hi_pcal_vz_h2[1]->SetLineColor(kGreen);
-   hi_pcal_vz_h2[1]->Draw("SAME");
-   hi_pcal_vz_n2[1]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n2[1]->Draw("SAME");
+//   c_vz2->cd(2);
+//   hi_pcal_vz_all2[1]->SetMinimum(0.001);
+//   hi_pcal_vz_all2[1]->Draw("H");
+//   hi_pcal_vz_e2[1]->SetLineColor(2);
+//   hi_pcal_vz_e2[1]->Draw("SAME");
+//   hi_pcal_vz_g2[1]->SetLineColor(4);
+//   hi_pcal_vz_g2[1]->Draw("SAME");
+//   hi_pcal_vz_h2[1]->SetLineColor(kGreen);
+//   hi_pcal_vz_h2[1]->Draw("SAME");
+//   hi_pcal_vz_n2[1]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n2[1]->Draw("SAME");
 
-    TLegend *leg22 = new TLegend(0.7,0.75,0.96,0.96);
-     leg22->SetTextSize(.04);
-     leg22->AddEntry(hi_pcal_vz_all2[1],"All","l");
-     leg22->AddEntry(hi_pcal_vz_e2[1],"electrons","l");
-     leg22->AddEntry(hi_pcal_vz_g2[1],"photons","l");
-     leg22->AddEntry(hi_pcal_vz_n2[1],"neutron","l");
-     leg22->AddEntry(hi_pcal_vz_h2[1],"hadron","l");
-     leg22->Draw();
+//    TLegend *leg22 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg22->SetTextSize(.04);
+//     leg22->AddEntry(hi_pcal_vz_all2[1],"All","l");
+//     leg22->AddEntry(hi_pcal_vz_e2[1],"electrons","l");
+//     leg22->AddEntry(hi_pcal_vz_g2[1],"photons","l");
+//     leg22->AddEntry(hi_pcal_vz_n2[1],"neutron","l");
+//     leg22->AddEntry(hi_pcal_vz_h2[1],"hadron","l");
+//     leg22->Draw();
 
-   c_vz2->cd(3);
-   hi_pcal_vz_all2[2]->SetMinimum(0.001);
-   hi_pcal_vz_all2[2]->Draw("H");
-   hi_pcal_vz_e2[2]->SetLineColor(2);
-   hi_pcal_vz_e2[2]->Draw("SAME");
-   hi_pcal_vz_g2[2]->SetLineColor(4);
-   hi_pcal_vz_g2[2]->Draw("SAME");
-   hi_pcal_vz_h2[2]->SetLineColor(kGreen);
-   hi_pcal_vz_h2[2]->Draw("SAME");
-   hi_pcal_vz_n2[2]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n2[2]->Draw("SAME");
+//   c_vz2->cd(3);
+//   hi_pcal_vz_all2[2]->SetMinimum(0.001);
+//   hi_pcal_vz_all2[2]->Draw("H");
+//   hi_pcal_vz_e2[2]->SetLineColor(2);
+//   hi_pcal_vz_e2[2]->Draw("SAME");
+//   hi_pcal_vz_g2[2]->SetLineColor(4);
+//   hi_pcal_vz_g2[2]->Draw("SAME");
+//   hi_pcal_vz_h2[2]->SetLineColor(kGreen);
+//   hi_pcal_vz_h2[2]->Draw("SAME");
+//   hi_pcal_vz_n2[2]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n2[2]->Draw("SAME");
 
-    TLegend *leg23 = new TLegend(0.7,0.75,0.96,0.96);
-     leg23->SetTextSize(.04);
-     leg23->AddEntry(hi_pcal_vz_all2[2],"All","l");
-     leg23->AddEntry(hi_pcal_vz_e2[2],"electrons","l");
-     leg23->AddEntry(hi_pcal_vz_g2[2],"photons","l");
-     leg23->AddEntry(hi_pcal_vz_n2[2],"neutron","l");
-     leg23->AddEntry(hi_pcal_vz_h2[2],"hadron","l");
-     leg23->Draw();
+//    TLegend *leg23 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg23->SetTextSize(.04);
+//    leg23->AddEntry(hi_pcal_vz_all2[2],"All","l");
+//     leg23->AddEntry(hi_pcal_vz_e2[2],"electrons","l");
+//     leg23->AddEntry(hi_pcal_vz_g2[2],"photons","l");
+//     leg23->AddEntry(hi_pcal_vz_n2[2],"neutron","l");
+//     leg23->AddEntry(hi_pcal_vz_h2[2],"hadron","l");
+//     leg23->Draw();
 
-   c_vz2->cd(4);
-   hi_pcal_vz_all2[3]->SetMinimum(0.001);
-   hi_pcal_vz_all2[3]->Draw("H");
-   hi_pcal_vz_e2[3]->SetLineColor(2);
-   hi_pcal_vz_e2[3]->Draw("SAME");
-   hi_pcal_vz_g2[3]->SetLineColor(4);
-   hi_pcal_vz_g2[3]->Draw("SAME");
-   hi_pcal_vz_h2[3]->SetLineColor(kGreen);
-   hi_pcal_vz_h2[3]->Draw("SAME");
-   hi_pcal_vz_n2[3]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n2[3]->Draw("SAME");
+//   c_vz2->cd(4);
+//   hi_pcal_vz_all2[3]->SetMinimum(0.001);
+//   hi_pcal_vz_all2[3]->Draw("H");
+//   hi_pcal_vz_e2[3]->SetLineColor(2);
+//   hi_pcal_vz_e2[3]->Draw("SAME");
+//   hi_pcal_vz_g2[3]->SetLineColor(4);
+//   hi_pcal_vz_g2[3]->Draw("SAME");
+//   hi_pcal_vz_h2[3]->SetLineColor(kGreen);
+//   hi_pcal_vz_h2[3]->Draw("SAME");
+//   hi_pcal_vz_n2[3]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n2[3]->Draw("SAME");
 
-    TLegend *leg24 = new TLegend(0.7,0.75,0.96,0.96);
-     leg24->SetTextSize(.04);
-     leg24->AddEntry(hi_pcal_vz_all2[3],"All","l");
-     leg24->AddEntry(hi_pcal_vz_e2[3],"electrons","l");
-     leg24->AddEntry(hi_pcal_vz_g2[3],"photons","l");
-     leg24->AddEntry(hi_pcal_vz_n2[3],"neutron","l");
-     leg24->AddEntry(hi_pcal_vz_h2[3],"hadron","l");
-     leg24->Draw();
+//    TLegend *leg24 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg24->SetTextSize(.04);
+//     leg24->AddEntry(hi_pcal_vz_all2[3],"All","l");
+//     leg24->AddEntry(hi_pcal_vz_e2[3],"electrons","l");
+//     leg24->AddEntry(hi_pcal_vz_g2[3],"photons","l");
+//     leg24->AddEntry(hi_pcal_vz_n2[3],"neutron","l");
+//     leg24->AddEntry(hi_pcal_vz_h2[3],"hadron","l");
+//     leg24->Draw();
 
-   c_vz2->cd(5);
-   hi_pcal_vz_all2[4]->SetMinimum(0.001);
-   hi_pcal_vz_all2[4]->Draw("H");
-   hi_pcal_vz_e2[4]->SetLineColor(2);
-   hi_pcal_vz_e2[4]->Draw("SAME");
-   hi_pcal_vz_g2[4]->SetLineColor(4);
-   hi_pcal_vz_g2[4]->Draw("SAME");
-   hi_pcal_vz_h2[4]->SetLineColor(kGreen);
-   hi_pcal_vz_h2[4]->Draw("SAME");
-   hi_pcal_vz_n2[4]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n2[4]->Draw("SAME");
+//   c_vz2->cd(5);
+//   hi_pcal_vz_all2[4]->SetMinimum(0.001);
+//   hi_pcal_vz_all2[4]->Draw("H");
+//   hi_pcal_vz_e2[4]->SetLineColor(2);
+//   hi_pcal_vz_e2[4]->Draw("SAME");
+//   hi_pcal_vz_g2[4]->SetLineColor(4);
+//   hi_pcal_vz_g2[4]->Draw("SAME");
+//   hi_pcal_vz_h2[4]->SetLineColor(kGreen);
+//   hi_pcal_vz_h2[4]->Draw("SAME");
+//   hi_pcal_vz_n2[4]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n2[4]->Draw("SAME");
 
-    TLegend *leg25 = new TLegend(0.7,0.75,0.96,0.96);
-     leg25->SetTextSize(.04);
-     leg25->AddEntry(hi_pcal_vz_all2[4],"All","l");
-     leg25->AddEntry(hi_pcal_vz_e2[4],"electrons","l");
-     leg25->AddEntry(hi_pcal_vz_g2[4],"photons","l");
-     leg25->AddEntry(hi_pcal_vz_n2[4],"neutron","l");
-     leg25->AddEntry(hi_pcal_vz_h2[4],"hadron","l");
-     leg25->Draw();
+//    TLegend *leg25 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg25->SetTextSize(.04);
+//     leg25->AddEntry(hi_pcal_vz_all2[4],"All","l");
+//     leg25->AddEntry(hi_pcal_vz_e2[4],"electrons","l");
+//     leg25->AddEntry(hi_pcal_vz_g2[4],"photons","l");
+//     leg25->AddEntry(hi_pcal_vz_n2[4],"neutron","l");
+//     leg25->AddEntry(hi_pcal_vz_h2[4],"hadron","l");
+//     leg25->Draw();
 
-   c_vz2->cd(6);
-   hi_pcal_vz_all2[5]->SetMinimum(0.001);
-   hi_pcal_vz_all2[5]->Draw("H");
-   hi_pcal_vz_e2[5]->SetLineColor(2);
-   hi_pcal_vz_e2[5]->Draw("SAME");
-   hi_pcal_vz_g2[5]->SetLineColor(4);
-   hi_pcal_vz_g2[5]->Draw("SAME");
-   hi_pcal_vz_h2[5]->SetLineColor(kGreen);
-   hi_pcal_vz_h2[5]->Draw("SAME");
-   hi_pcal_vz_n2[5]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n2[5]->Draw("SAME");
+//   c_vz2->cd(6);
+//   hi_pcal_vz_all2[5]->SetMinimum(0.001);
+//   hi_pcal_vz_all2[5]->Draw("H");
+//   hi_pcal_vz_e2[5]->SetLineColor(2);
+//   hi_pcal_vz_e2[5]->Draw("SAME");
+//   hi_pcal_vz_g2[5]->SetLineColor(4);
+//   hi_pcal_vz_g2[5]->Draw("SAME");
+//   hi_pcal_vz_h2[5]->SetLineColor(kGreen);
+//   hi_pcal_vz_h2[5]->Draw("SAME");
+//   hi_pcal_vz_n2[5]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n2[5]->Draw("SAME");
 
-    TLegend *leg26 = new TLegend(0.7,0.75,0.96,0.96);
-     leg26->SetTextSize(.04);
-     leg26->AddEntry(hi_pcal_vz_all2[5],"All","l");
-     leg26->AddEntry(hi_pcal_vz_e2[5],"electrons","l");
-     leg26->AddEntry(hi_pcal_vz_g2[5],"photons","l");
-     leg26->AddEntry(hi_pcal_vz_n2[5],"neutron","l");
-     leg26->AddEntry(hi_pcal_vz_h2[5],"hadron","l");
-     leg26->Draw();
-   c_vz2->Print("ecal_occupancy.pdf)");
+//   TLegend *leg26 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg26->SetTextSize(.04);
+//     leg26->AddEntry(hi_pcal_vz_all2[5],"All","l");
+//     leg26->AddEntry(hi_pcal_vz_e2[5],"electrons","l");
+//     leg26->AddEntry(hi_pcal_vz_g2[5],"photons","l");
+//     leg26->AddEntry(hi_pcal_vz_n2[5],"neutron","l");
+//     leg26->AddEntry(hi_pcal_vz_h2[5],"hadron","l");
+//     leg26->Draw();
+//   c_vz2->Print("ecal_occupancy.pdf");
 
-   TCanvas *c_vz3=new TCanvas("c_vz3","VZ",750,1000);
-   c_vz3->Divide(3,2);
-   c_vz3->cd(1);
-   hi_pcal_vz_all3[0]->SetMinimum(0.001);
-   hi_pcal_vz_all3[0]->Draw("H");
-   hi_pcal_vz_e3[0]->SetLineColor(2);
-   hi_pcal_vz_e3[0]->Draw("SAME");
-   hi_pcal_vz_g3[0]->SetLineColor(4);
-   hi_pcal_vz_g3[0]->Draw("SAME");
-   hi_pcal_vz_h3[0]->SetLineColor(kGreen);
-   hi_pcal_vz_h3[0]->Draw("SAME");
-   hi_pcal_vz_n3[0]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n3[0]->Draw("SAME");
+//   TCanvas *c_vz3=new TCanvas("c_vz3","VZ",750,1000);
+//   c_vz3->Divide(3,2);
+//   c_vz3->cd(1);
+//   hi_pcal_vz_all3[0]->SetMinimum(0.001);
+//   hi_pcal_vz_all3[0]->Draw("H");
+//   hi_pcal_vz_e3[0]->SetLineColor(2);
+//   hi_pcal_vz_e3[0]->Draw("SAME");
+//   hi_pcal_vz_g3[0]->SetLineColor(4);
+//   hi_pcal_vz_g3[0]->Draw("SAME");
+//   hi_pcal_vz_h3[0]->SetLineColor(kGreen);
+//   hi_pcal_vz_h3[0]->Draw("SAME");
+//   hi_pcal_vz_n3[0]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n3[0]->Draw("SAME");
 
-    TLegend *leg31 = new TLegend(0.7,0.75,0.96,0.96);
-     leg31->SetTextSize(.04);
-     leg31->AddEntry(hi_pcal_vz_all3[0],"All","l");
-     leg31->AddEntry(hi_pcal_vz_e3[0],"electrons","l");
-     leg31->AddEntry(hi_pcal_vz_g3[0],"photons","l");
-     leg31->AddEntry(hi_pcal_vz_n3[0],"neutron","l");
-     leg31->AddEntry(hi_pcal_vz_h3[0],"hadron","l");
-     leg31->Draw();
+//    TLegend *leg31 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg31->SetTextSize(.04);
+//     leg31->AddEntry(hi_pcal_vz_all3[0],"All","l");
+//     leg31->AddEntry(hi_pcal_vz_e3[0],"electrons","l");
+//     leg31->AddEntry(hi_pcal_vz_g3[0],"photons","l");
+//     leg31->AddEntry(hi_pcal_vz_n3[0],"neutron","l");
+//     leg31->AddEntry(hi_pcal_vz_h3[0],"hadron","l");
+//     leg31->Draw();
 
-   c_vz3->cd(2);
-   hi_pcal_vz_all3[1]->SetMinimum(0.001);
-   hi_pcal_vz_all3[1]->Draw("H");
-   hi_pcal_vz_e3[1]->SetLineColor(2);
-   hi_pcal_vz_e3[1]->Draw("SAME");
-   hi_pcal_vz_g3[1]->SetLineColor(4);
-   hi_pcal_vz_g3[1]->Draw("SAME");
-   hi_pcal_vz_h3[1]->SetLineColor(kGreen);
-   hi_pcal_vz_h3[1]->Draw("SAME");
-   hi_pcal_vz_n3[1]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n3[1]->Draw("SAME");
+//   c_vz3->cd(2);
+//   hi_pcal_vz_all3[1]->SetMinimum(0.001);
+//   hi_pcal_vz_all3[1]->Draw("H");
+//   hi_pcal_vz_e3[1]->SetLineColor(2);
+//   hi_pcal_vz_e3[1]->Draw("SAME");
+//   hi_pcal_vz_g3[1]->SetLineColor(4);
+//   hi_pcal_vz_g3[1]->Draw("SAME");
+//   hi_pcal_vz_h3[1]->SetLineColor(kGreen);
+//   hi_pcal_vz_h3[1]->Draw("SAME");
+//   hi_pcal_vz_n3[1]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n3[1]->Draw("SAME");
 
-    TLegend *leg32 = new TLegend(0.7,0.75,0.96,0.96);
-     leg32->SetTextSize(.04);
-     leg32->AddEntry(hi_pcal_vz_all3[1],"All","l");
-     leg32->AddEntry(hi_pcal_vz_e3[1],"electrons","l");
-     leg32->AddEntry(hi_pcal_vz_g3[1],"photons","l");
-     leg32->AddEntry(hi_pcal_vz_n3[1],"neutron","l");
-     leg32->AddEntry(hi_pcal_vz_h3[1],"hadron","l");
-    leg32->Draw();
+//    TLegend *leg32 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg32->SetTextSize(.04);
+//     leg32->AddEntry(hi_pcal_vz_all3[1],"All","l");
+//     leg32->AddEntry(hi_pcal_vz_e3[1],"electrons","l");
+//     leg32->AddEntry(hi_pcal_vz_g3[1],"photons","l");
+//     leg32->AddEntry(hi_pcal_vz_n3[1],"neutron","l");
+//     leg32->AddEntry(hi_pcal_vz_h3[1],"hadron","l");
+//    leg32->Draw();
 
-   c_vz3->cd(3);
-   hi_pcal_vz_all3[2]->SetMinimum(0.001);
-   hi_pcal_vz_all3[2]->Draw("H");
-   hi_pcal_vz_e3[2]->SetLineColor(2);
-   hi_pcal_vz_e3[2]->Draw("SAME");
-   hi_pcal_vz_g3[2]->SetLineColor(4);
-   hi_pcal_vz_g3[2]->Draw("SAME");
-   hi_pcal_vz_h3[2]->SetLineColor(kGreen);
-   hi_pcal_vz_h3[2]->Draw("SAME");
-   hi_pcal_vz_n3[2]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n3[2]->Draw("SAME");
+//   c_vz3->cd(3);
+//   hi_pcal_vz_all3[2]->SetMinimum(0.001);
+//   hi_pcal_vz_all3[2]->Draw("H");
+//   hi_pcal_vz_e3[2]->SetLineColor(2);
+//   hi_pcal_vz_e3[2]->Draw("SAME");
+//   hi_pcal_vz_g3[2]->SetLineColor(4);
+//   hi_pcal_vz_g3[2]->Draw("SAME");
+//   hi_pcal_vz_h3[2]->SetLineColor(kGreen);
+//  hi_pcal_vz_h3[2]->Draw("SAME");
+//   hi_pcal_vz_n3[2]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n3[2]->Draw("SAME");
 
-   TLegend *leg33 = new TLegend(0.7,0.75,0.96,0.96);
-    leg33->SetTextSize(.04);
-    leg33->AddEntry(hi_pcal_vz_all3[2],"All","l");
-    leg33->AddEntry(hi_pcal_vz_e3[2],"electrons","l");
-     leg33->AddEntry(hi_pcal_vz_g3[2],"photons","l");
-     leg33->AddEntry(hi_pcal_vz_n3[2],"neutron","l");
-     leg33->AddEntry(hi_pcal_vz_h3[2],"hadron","l");
-     leg33->Draw();
+//  TLegend *leg33 = new TLegend(0.7,0.75,0.96,0.96);
+//    leg33->SetTextSize(.04);
+//    leg33->AddEntry(hi_pcal_vz_all3[2],"All","l");
+//    leg33->AddEntry(hi_pcal_vz_e3[2],"electrons","l");
+//     leg33->AddEntry(hi_pcal_vz_g3[2],"photons","l");
+//     leg33->AddEntry(hi_pcal_vz_n3[2],"neutron","l");
+//     leg33->AddEntry(hi_pcal_vz_h3[2],"hadron","l");
+//     leg33->Draw();
 
-   c_vz3->cd(4);
-   hi_pcal_vz_all3[3]->SetMinimum(0.001);
-   hi_pcal_vz_all3[3]->Draw("H");
-   hi_pcal_vz_e3[3]->SetLineColor(2);
-   hi_pcal_vz_e3[3]->Draw("SAME");
-   hi_pcal_vz_g3[3]->SetLineColor(4);
-   hi_pcal_vz_g3[3]->Draw("SAME");
-   hi_pcal_vz_h3[3]->SetLineColor(kGreen);
-   hi_pcal_vz_h3[3]->Draw("SAME");
-   hi_pcal_vz_n3[3]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n3[3]->Draw("SAME");
+//   c_vz3->cd(4);
+//   hi_pcal_vz_all3[3]->SetMinimum(0.001);
+//   hi_pcal_vz_all3[3]->Draw("H");
+//   hi_pcal_vz_e3[3]->SetLineColor(2);
+//   hi_pcal_vz_e3[3]->Draw("SAME");
+//   hi_pcal_vz_g3[3]->SetLineColor(4);
+//   hi_pcal_vz_g3[3]->Draw("SAME");
+//   hi_pcal_vz_h3[3]->SetLineColor(kGreen);
+//   hi_pcal_vz_h3[3]->Draw("SAME");
+//   hi_pcal_vz_n3[3]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n3[3]->Draw("SAME");
 
-    TLegend *leg34 = new TLegend(0.7,0.75,0.96,0.96);
-     leg34->SetTextSize(.04);
-     leg34->AddEntry(hi_pcal_vz_all3[3],"All","l");
-     leg34->AddEntry(hi_pcal_vz_e3[3],"electrons","l");
-     leg34->AddEntry(hi_pcal_vz_g3[3],"photons","l");
-     leg34->AddEntry(hi_pcal_vz_n3[3],"neutron","l");
-     leg34->AddEntry(hi_pcal_vz_h3[3],"hadron","l");
-     leg34->Draw();
+//    TLegend *leg34 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg34->SetTextSize(.04);
+//     leg34->AddEntry(hi_pcal_vz_all3[3],"All","l");
+//     leg34->AddEntry(hi_pcal_vz_e3[3],"electrons","l");
+//     leg34->AddEntry(hi_pcal_vz_g3[3],"photons","l");
+//     leg34->AddEntry(hi_pcal_vz_n3[3],"neutron","l");
+//     leg34->AddEntry(hi_pcal_vz_h3[3],"hadron","l");
+//     leg34->Draw();
 
-   c_vz3->cd(5);
-   hi_pcal_vz_all3[4]->SetMinimum(0.001);
-   hi_pcal_vz_all3[4]->Draw("H");
-   hi_pcal_vz_e3[4]->SetLineColor(2);
-   hi_pcal_vz_e3[4]->Draw("SAME");
-   hi_pcal_vz_g3[4]->SetLineColor(4);
-   hi_pcal_vz_g3[4]->Draw("SAME");
-   hi_pcal_vz_h3[4]->SetLineColor(kGreen);
-   hi_pcal_vz_h3[4]->Draw("SAME");
-   hi_pcal_vz_n3[4]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n3[4]->Draw("SAME");
+//   c_vz3->cd(5);
+//   hi_pcal_vz_all3[4]->SetMinimum(0.001);
+//   hi_pcal_vz_all3[4]->Draw("H");
+//   hi_pcal_vz_e3[4]->SetLineColor(2);
+//   hi_pcal_vz_e3[4]->Draw("SAME");
+//   hi_pcal_vz_g3[4]->SetLineColor(4);
+//   hi_pcal_vz_g3[4]->Draw("SAME");
+//   hi_pcal_vz_h3[4]->SetLineColor(kGreen);
+//   hi_pcal_vz_h3[4]->Draw("SAME");
+//   hi_pcal_vz_n3[4]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n3[4]->Draw("SAME");
 
-    TLegend *leg35 = new TLegend(0.7,0.75,0.96,0.96);
-     leg35->SetTextSize(.04);
-     leg35->AddEntry(hi_pcal_vz_all3[4],"All","l");
-     leg35->AddEntry(hi_pcal_vz_e3[4],"electrons","l");
-     leg35->AddEntry(hi_pcal_vz_g3[4],"photons","l");
-     leg35->AddEntry(hi_pcal_vz_n3[4],"neutron","l");
-     leg35->AddEntry(hi_pcal_vz_h3[4],"hadron","l");
-     leg35->Draw();
+//    TLegend *leg35 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg35->SetTextSize(.04);
+//     leg35->AddEntry(hi_pcal_vz_all3[4],"All","l");
+//     leg35->AddEntry(hi_pcal_vz_e3[4],"electrons","l");
+//     leg35->AddEntry(hi_pcal_vz_g3[4],"photons","l");
+//     leg35->AddEntry(hi_pcal_vz_n3[4],"neutron","l");
+//     leg35->AddEntry(hi_pcal_vz_h3[4],"hadron","l");
+//     leg35->Draw();
 
-   c_vz3->cd(6);
-   hi_pcal_vz_all3[5]->SetMinimum(0.001);
-   hi_pcal_vz_all3[5]->Draw("H");
-   hi_pcal_vz_e3[5]->SetLineColor(2);
-   hi_pcal_vz_e3[5]->Draw("SAME");
-   hi_pcal_vz_g3[5]->SetLineColor(4);
-   hi_pcal_vz_g3[5]->Draw("SAME");
-   hi_pcal_vz_h3[5]->SetLineColor(kGreen);
-   hi_pcal_vz_h3[5]->Draw("SAME");
-   hi_pcal_vz_n3[5]->SetLineColor(kGreen+2);
-   hi_pcal_vz_n3[5]->Draw("SAME");
+//   c_vz3->cd(6);
+//   hi_pcal_vz_all3[5]->SetMinimum(0.001);
+//   hi_pcal_vz_all3[5]->Draw("H");
+//   hi_pcal_vz_e3[5]->SetLineColor(2);
+//   hi_pcal_vz_e3[5]->Draw("SAME");
+//   hi_pcal_vz_g3[5]->SetLineColor(4);
+//   hi_pcal_vz_g3[5]->Draw("SAME");
+//   hi_pcal_vz_h3[5]->SetLineColor(kGreen);
+//   hi_pcal_vz_h3[5]->Draw("SAME");
+//   hi_pcal_vz_n3[5]->SetLineColor(kGreen+2);
+//   hi_pcal_vz_n3[5]->Draw("SAME");
 
-    TLegend *leg36 = new TLegend(0.7,0.75,0.96,0.96);
-     leg36->SetTextSize(.04);
-     leg36->AddEntry(hi_pcal_vz_all3[5],"All","l");
-     leg36->AddEntry(hi_pcal_vz_e3[5],"electrons","l");
-     leg36->AddEntry(hi_pcal_vz_g3[5],"photons","l");
-     leg36->AddEntry(hi_pcal_vz_n3[5],"neutron","l");
-     leg36->AddEntry(hi_pcal_vz_h3[5],"hadron","l");
-     leg36->Draw();
-   c_vz3->Print("ecal_occupancy.pdf)");
+//    TLegend *leg36 = new TLegend(0.7,0.75,0.96,0.96);
+//     leg36->SetTextSize(.04);
+//     leg36->AddEntry(hi_pcal_vz_all3[5],"All","l");
+//     leg36->AddEntry(hi_pcal_vz_e3[5],"electrons","l");
+//     leg36->AddEntry(hi_pcal_vz_g3[5],"photons","l");
+//     leg36->AddEntry(hi_pcal_vz_n3[5],"neutron","l");
+//     leg36->AddEntry(hi_pcal_vz_h3[5],"hadron","l");
+//     leg36->Draw();
+//   c_vz3->Print("ecal_occupancy.pdf");
 	
    TCanvas *c_edep=new TCanvas("c_edep","Deposited Energy",750,1000);
-   c_edep->Divide(3,2);
    for(int i=0; i<1; i++) {
        c_edep->cd(i+1);
        gPad->SetLogy();
        hi_pcal_edep1[i]->Draw();
    }
-   c_edep->Print("pcal_occupancy.pdf)");
+   c_edep->Print("ecal_occupancy.pdf)");
 
    gui.Run(1);
 
-}  
-
+}
