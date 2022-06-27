@@ -453,6 +453,7 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ1->cd(i+1);
        hi_ecal_occ1[i]->Draw("COLZ");
+       hi_ecal_occ1[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ1[i]->GetNbinsY(); iv++) {
   	   for(int is=0; is<hi_ecal_occ1[i]->GetNbinsX(); is++) {
   	     int layer = i*3+iv+1;
@@ -471,6 +472,7 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ2->cd(i+1);
        hi_ecal_occ2[i]->Draw("COLZ");
+       hi_ecal_occ2[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ2[i]->GetNbinsY(); iv++) {
            for(int is=0; is<hi_ecal_occ2[i]->GetNbinsX(); is++) {
              int layer = i*3+iv+1;
@@ -508,6 +510,7 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ_cut1->cd(i+1);
        hi_ecal_occ_cut1[i]->Draw("COLZ");
+       hi_ecal_occ_cut1[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ_cut1[i]->GetNbinsY(); iv++) {
 	   for(int is=0; is<hi_ecal_occ_cut1[i]->GetNbinsX(); is++) {
 	     int layer = i*3+iv+1;
@@ -526,6 +529,7 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ_cut2->cd(i+1);
        hi_ecal_occ_cut2[i]->Draw("COLZ");
+       hi_ecal_occ_cut2[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ_cut2[i]->GetNbinsY(); iv++) {
            for(int is=0; is<hi_ecal_occ_cut2[i]->GetNbinsX(); is++) {
              int layer = i*3+iv+1;
@@ -972,5 +976,5 @@ int main() {
 
    gui.Run(1);
 
-}  
+}    
   
