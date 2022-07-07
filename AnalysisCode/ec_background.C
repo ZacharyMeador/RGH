@@ -183,8 +183,7 @@ int main() {
    TH1F *hi_ecal_edep3[6]; 
 
    for(int i=0; i<6; i++) {
-       int nstrip=68;
-       if(i>0) nstrip=36;
+       int nstrip=36;
        hi_ecal_occ1[i] = new TH2F(Form("hi_ecal_occ_layer1 %d",i+1), Form("hi_ecal_occ_layer1 %d",i+1),nstrip, 1.,nstrip*1.+1.,3,1.,4.);
        hi_ecal_occ1[i]->GetXaxis()->SetTitle("Strip");
        hi_ecal_occ1[i]->GetYaxis()->SetTitle("View");
@@ -267,8 +266,12 @@ int main() {
        hi_ecal_edep3[i]->GetXaxis()->SetTitle("E(MeV)");
        hi_ecal_edep3[i]->GetYaxis()->SetTitle("Rate (MHz/50keV)");
    }
-
-
+   TH2F *hi_ecal_y_vs_x [2];
+   for(int i=0; i<2; i++){
+   	hi_ecal_y_vs_x[i] = new TH2F(Form("ecal_y_vs_x%i",i+1),Form("ecal_y_vs_x%1",i+1),200, -5000.,5000., 200, -5000.,5000.);
+   	hi_ecal_y_vs_x[i]->GetXaxis()->SetTitle("x(mm)");
+   	hi_ecal_y_vs_x[i]->GetYaxis()->SetTitle("y(mm)");
+   }
 // in standard run mode (1 electron at a time)
 //   float lumi=nentries*5.*0.07*0.602/1000; // (mbarn^-1 or 10^27 cm^-2)
 // in luminosity mode (50*2300 or 118600 electrons in 250ns window)
@@ -361,6 +364,7 @@ int main() {
 	   phi += (phi<0) ? 360:0;
 	   int nsect = floor((phi-30)/60) + 2;
 	   if(nsect == 7) nsect = 1;
+           hi_ecal_y_vs_x[istack-1]->Fill((*ec_vx)[i],(*ec_vy)[i]);
            if(istack == 1){
   	      hi_ecal_occ1[nsect-1]->Fill((*ec_strip)[i]*1.,(*ec_view)[i]*1.);
 	      hi_ecal_vz_all1[nsect-1]->Fill((*ec_vz)[i]/10.);
@@ -453,7 +457,6 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ1->cd(i+1);
        hi_ecal_occ1[i]->Draw("COLZ");
-       hi_ecal_occ1[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ1[i]->GetNbinsY(); iv++) {
   	   for(int is=0; is<hi_ecal_occ1[i]->GetNbinsX(); is++) {
   	     int layer = i*3+iv+1;
@@ -472,7 +475,6 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ2->cd(i+1);
        hi_ecal_occ2[i]->Draw("COLZ");
-       hi_ecal_occ2[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ2[i]->GetNbinsY(); iv++) {
            for(int is=0; is<hi_ecal_occ2[i]->GetNbinsX(); is++) {
              int layer = i*3+iv+1;
@@ -510,7 +512,6 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ_cut1->cd(i+1);
        hi_ecal_occ_cut1[i]->Draw("COLZ");
-       hi_ecal_occ_cut1[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ_cut1[i]->GetNbinsY(); iv++) {
 	   for(int is=0; is<hi_ecal_occ_cut1[i]->GetNbinsX(); is++) {
 	     int layer = i*3+iv+1;
@@ -529,7 +530,6 @@ int main() {
    for(int i=0; i<6; i++) {
        c_occ_cut2->cd(i+1);
        hi_ecal_occ_cut2[i]->Draw("COLZ");
-       hi_ecal_occ_cut2[i]->GetXaxis()->SetRangeUser(1., 37.);
        for(int iv=0; iv<hi_ecal_occ_cut2[i]->GetNbinsY(); iv++) {
            for(int is=0; is<hi_ecal_occ_cut2[i]->GetNbinsX(); is++) {
              int layer = i*3+iv+1;
@@ -843,8 +843,17 @@ int main() {
      leg26->AddEntry(hi_ecal_vz_n2[5],"neutron","l");
      leg26->AddEntry(hi_ecal_vz_h2[5],"hadron","l");
      leg26->Draw();
-   c_vz2->Print("ecal_occupancy.pdf)");
-
+   c_vz2->Print("ecal_occupancy.pdf");
+   
+   TCanvas *c_vx_vy=new TCanvas("c_vx_vy","VX_VY",750,1000);
+   c_vx_vy->Divide(1,2);
+   c_vx_vy->cd(1);
+   gPad->SetLogz();
+   hi_ecal_y_vs_x[0]->Draw("COLZ");
+   c_vx_vy->cd(2);
+   gPad->SetLogz();
+   hi_ecal_y_vs_x[1]->Draw("COLZ");
+   c_vx_vy->Print("ecal_occupancy.pdf)");
  //  TCanvas *c_vz3=new TCanvas("c_vz3","VZ",750,1000);
  //  c_vz3->Divide(3,2);
  //  c_vz3->cd(1);
@@ -976,5 +985,4 @@ int main() {
 
    gui.Run(1);
 
-}    
-  
+}  
