@@ -184,7 +184,6 @@ int main() {
 
    for(int i=0; i<6; i++) {
        int nstrip=68;
-       if(i>0) nstrip=36;
        hi_pcal_occ1[i] = new TH2F(Form("hi_pcal_occ_layer1 %d",i+1), Form("hi_pcal_occ %d",i+1),nstrip, 1.,nstrip*1.+1.,3,1.,4.);
        hi_pcal_occ1[i]->GetXaxis()->SetTitle("Strip");
        hi_pcal_occ1[i]->GetYaxis()->SetTitle("View");
