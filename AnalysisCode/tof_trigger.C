@@ -137,17 +137,22 @@ int main() {
    hi_tof_occ_all_sectors->GetYaxis()->SetTitle("Sector");
    hi_tof_occ_all_sectors->GetZaxis()->SetTitle("MHz/cm");
    TH1F *hi_tof_occ[6];
+   TH1F *hi_tof_occ_norm[6];
 
    for(int i=0; i<6; i++){ 
    	hi_tof_occ[i] = new TH1F(Form("hi_tof_occ%i",i+1),Form("hi_tof_occ%i",i+1),120, 0.,120.);
    	hi_tof_occ[i]->GetXaxis()->SetTitle("Paddle");
    	hi_tof_occ[i]->GetYaxis()->SetTitle("MHz");
+
+        hi_tof_occ_norm[i] = new TH1F(Form("hi_tof_occ_norm_sec%i",i+1),Form("hi_tof_occ_norm_sec%i",i+1),120, 0.,120.);
+        hi_tof_occ_norm[i]->GetXaxis()->SetTitle("Paddle");
+        hi_tof_occ_norm[i]->GetYaxis()->SetTitle("MHz");
     
    	 }
-   TH2F*hi_tof_occ_norm = new TH2F("hi_tof_occ_norm", "hi_tof_occ_norm",120, 0.,120.,6,1.,7.);
-   hi_tof_occ_norm->GetXaxis()->SetTitle("Paddle");
-   hi_tof_occ_norm->GetYaxis()->SetTitle("Sector");
-   hi_tof_occ_norm->GetZaxis()->SetTitle("MHz/cm");
+   TH2F*hi_tof_occ_norm_all = new TH2F("hi_tof_occ_norm_all", "hi_tof_occ_norm_all",120, 0.,120.,6,1.,7.);
+   hi_tof_occ_norm_all->GetXaxis()->SetTitle("Paddle");
+   hi_tof_occ_norm_all->GetYaxis()->SetTitle("Sector");
+   hi_tof_occ_norm_all->GetZaxis()->SetTitle("MHz/cm");
    
    TH2F *hi_tof_occ_5_all = new TH2F("hi_tof_occ_5", "hi_tof_occ_5",120, 0.,120.,6,1.,7.);
    hi_tof_occ_5_all->GetXaxis()->SetTitle("Paddle");
@@ -155,17 +160,21 @@ int main() {
    hi_tof_occ_5_all->GetZaxis()->SetTitle("MHz");
 
    TH1F *hi_tof_occ_5[6];
-
+   TH1F *hi_tof_occ_norm_5[6];
    for(int i=0; i<6; i++){
         hi_tof_occ_5[i] = new TH1F(Form("hi_tof_occ_5_sec%i",i+1),Form("hi_tof_occ_5_sec%i",i+1),120, 0.,120.);
         hi_tof_occ_5[i]->GetXaxis()->SetTitle("Paddle");
         hi_tof_occ_5[i]->GetYaxis()->SetTitle("MHz");
+
+        hi_tof_occ_norm_5[i] = new TH1F(Form("hi_tof_occ_norm_5_sec%i",i+1),Form("hi_tof_occ_norm_5_sec%i",i+1),120, 0.,120.);
+        hi_tof_occ_norm_5[i]->GetXaxis()->SetTitle("Paddle");
+        hi_tof_occ_norm_5[i]->GetYaxis()->SetTitle("MHz");
    }
     
-   TH2F *hi_tof_occ_norm_5 = new TH2F("hi_tof_occ_norm_5", "hi_tof_occ_norm_5",120, 0.,120.,6,1.,7.);
-   hi_tof_occ_norm_5->GetXaxis()->SetTitle("Paddle");
-   hi_tof_occ_norm_5->GetYaxis()->SetTitle("Sector");
-   hi_tof_occ_norm_5->GetZaxis()->SetTitle("MHz/cm");
+   TH2F *hi_tof_occ_norm_all_5 = new TH2F("hi_tof_occ_norm_all_5", "hi_tof_occ_norm_all_5",120, 0.,120.,6,1.,7.);
+   hi_tof_occ_norm_all_5->GetXaxis()->SetTitle("Paddle");
+   hi_tof_occ_norm_all_5->GetYaxis()->SetTitle("Sector");
+   hi_tof_occ_norm_all_5->GetZaxis()->SetTitle("MHz/cm");
     
 
    TH2F *hi_tof_occ_5charged = new TH2F("hi_tof_occ_5charged", "hi_tof_occ_5charged",120, 0.,120.,6,1.,7.);
@@ -444,7 +453,8 @@ int main() {
 		      && ((*tof_pid)[i]==22 || (*tof_pid)[i]==2112));
 	 hi_tof_occ[nsect-1]->Fill((*tof_paddle)[i]*1.+offset);
          hi_tof_occ_all_sectors->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
-	 hi_tof_occ_norm->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,1./width);
+	 hi_tof_occ_norm_all->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,1./width);
+         hi_tof_occ_norm[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,1./width);
          hi_tof_occ_edep[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
 	 hi_tof_occ_edep_all->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,(*tof_Edep)[i]);
 	 hi_tof_occ_edep_norm->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,(*tof_Edep)[i]/width);
@@ -465,8 +475,9 @@ int main() {
     if((*tof_E)[i]>mass) hi_tof_origin_all_ene_temp->Fill((*tof_vz)[i]/10.,sqrt((*tof_vx)[i]*(*tof_vx)[i]/100.+(*tof_vy)[i]*(*tof_vy)[i]/100.), sqrt((*tof_E)[i]*(*tof_E)[i]-mass*mass) );
 	 if((*tof_Edep)[i]>Ethr) {
 	   hi_tof_occ_5_all->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
-           hi_tof_occ_5[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
-       hi_tof_occ_norm_5->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,1./width);
+           hi_tof_occ_5[nsect-1]->Fill((*tof_paddle)[i]*1.+offset);
+       hi_tof_occ_norm_5[nsect-1]->Fill((*tof_paddle)[i]*1.+offset,1./width);
+       hi_tof_occ_norm_all_5->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.,1./width);
 	   if(charged) hi_tof_occ_5charged->Fill((*tof_paddle)[i]*1.+offset,(*tof_sector)[i]*1.);
 	   hi_tof_pid_5->Fill((*tof_pid)[i]*1.);
 	 }
@@ -596,14 +607,16 @@ int main() {
         hi_tof_occ_edep[i]->Scale(1/time);
         hi_tof_occ_curr[i]->Scale(1/time);
         hi_tof_occ_adc[i]->Scale(1/time);
+        hi_tof_occ_norm_5[i]->Scale(1/time);
+        hi_tof_occ_norm[i]->Scale(1/time);
    }
-   hi_tof_occ_norm->Scale(1/time);
+   hi_tof_occ_norm_all->Scale(1/time);
    hi_tof_occ_edep_all->Scale(1/time);
    hi_tof_occ_edep_norm->Scale(1/time);
    hi_tof_occ_curr_all->Scale(1E6/time);
    hi_tof_occ_adc_all->Scale(1E6/time);
    hi_tof_occ_5_all->Scale(1/time);
-   hi_tof_occ_norm_5->Scale(1/time);
+   hi_tof_occ_norm_all_5->Scale(1/time);
    hi_tof_occ_5charged->Scale(1/time);
    hi_tof_pid->Scale(1/time);
    hi_tof_pid_5->Scale(1/time);
@@ -641,57 +654,118 @@ int main() {
 
    TCanvas *c_occ=new TCanvas("c_occ","Occupancy",750,1000);
    c_occ->SetTitle("Occupancy");
-   c_occ->Divide(2,4);
+   c_occ->Divide(1,4);
    c_occ->cd(1);
    hi_tof_occ_all_sectors->Draw("COLZ");
    c_occ->cd(2);
-   hi_tof_occ_norm->Draw("COLZ");
+   hi_tof_occ_norm_all->Draw("COLZ");
    c_occ->cd(3);
    gPad->SetLogy();
-   hi_tof_occ[0]->Draw("COLZ");
+   hi_tof_occ[0]->SetMinimum(0.001);
+   hi_tof_occ[0]->SetLineColor(1);
+   hi_tof_occ[0]->Draw("H");
+   hi_tof_occ[1]->SetLineColor(2);
+   hi_tof_occ[1]->Draw("SAME");
+   hi_tof_occ[2]->SetLineColor(4);
+   hi_tof_occ[2]->Draw("SAME");
+   hi_tof_occ[3]->SetLineColor(kGreen);
+   hi_tof_occ[3]->Draw("SAME");
+   hi_tof_occ[4]->SetLineColor(kGreen+2);
+   hi_tof_occ[4]->Draw("SAME");
+   hi_tof_occ[5]->SetLineColor(7);
+   hi_tof_occ[5]->Draw("SAME");
+    TLegend *leg18 = new TLegend(0.8,0.75,0.96,0.96);
+     leg18->SetTextSize(.04);
+     leg18->AddEntry(hi_tof_occ[0],"Sector 1","l");
+     leg18->AddEntry(hi_tof_occ[1],"Sector 2","l");
+     leg18->AddEntry(hi_tof_occ[2],"Sector 3","l");
+     leg18->AddEntry(hi_tof_occ[3],"Sector 4","l");
+     leg18->AddEntry(hi_tof_occ[4],"Sector 5","l");
+     leg18->AddEntry(hi_tof_occ[5],"Sector 6","l");
+     leg18->Draw();
    c_occ->cd(4);
    gPad->SetLogy();
-   hi_tof_occ[1]->Draw("COLZ");
-   c_occ->cd(5);
-   gPad->SetLogy();
-   hi_tof_occ[2]->Draw("COLZ");
-   c_occ->cd(6);
-   gPad->SetLogy();
-   hi_tof_occ[3]->Draw("COLZ");
-   c_occ->cd(7);
-   gPad->SetLogy();
-   hi_tof_occ[4]->Draw("COLZ");
-   c_occ->cd(8);
-   gPad->SetLogy();
-   hi_tof_occ[5]->Draw("COLZ");
+   hi_tof_occ_norm[0]->SetMinimum(0.001);
+   hi_tof_occ_norm[0]->SetLineColor(1);
+   hi_tof_occ_norm[0]->Draw("H");
+   hi_tof_occ_norm[1]->SetLineColor(2);
+   hi_tof_occ_norm[1]->Draw("SAME");
+   hi_tof_occ_norm[2]->SetLineColor(4);
+   hi_tof_occ_norm[2]->Draw("SAME");
+   hi_tof_occ_norm[3]->SetLineColor(kGreen);
+   hi_tof_occ_norm[3]->Draw("SAME");
+   hi_tof_occ_norm[4]->SetLineColor(kGreen+2);
+   hi_tof_occ_norm[4]->Draw("SAME");
+   hi_tof_occ_norm[5]->SetLineColor(7);
+   hi_tof_occ_norm[5]->Draw("SAME");
+    TLegend *leg19 = new TLegend(0.8,0.75,0.96,0.96);
+     leg19->SetTextSize(.04);
+     leg19->AddEntry(hi_tof_occ_norm[0],"Sector 1","l");
+     leg19->AddEntry(hi_tof_occ_norm[1],"Sector 2","l");
+     leg19->AddEntry(hi_tof_occ_norm[2],"Sector 3","l");
+     leg19->AddEntry(hi_tof_occ_norm[3],"Sector 4","l");
+     leg19->AddEntry(hi_tof_occ_norm[4],"Sector 5","l");
+     leg19->AddEntry(hi_tof_occ_norm[5],"Sector 6","l");
+     leg19->Draw();
    c_occ->Print("tof_occupancy.pdf(");
     
 
    TCanvas *c_occ_cut=new TCanvas("c_occ_cut","Occupancy_Cuts",750,1000);
    c_occ_cut->SetTitle("Occupancy Threshold");
-   c_occ_cut->Divide(2,4);
+   c_occ_cut->Divide(1,4);
    c_occ_cut->cd(1);
    hi_tof_occ_5_all->Draw("COLZ");
    c_occ_cut->cd(2);
-   hi_tof_occ_norm_5->Draw("COLZ");
+   hi_tof_occ_norm_all_5->Draw("COLZ");
    c_occ_cut->cd(3);
    gPad->SetLogy();
-   hi_tof_occ_5[0]->Draw("COLZ");
+   hi_tof_occ_5[0]->SetMinimum(0.001);
+   hi_tof_occ_5[0]->SetLineColor(1);
+   hi_tof_occ_5[0]->Draw("H");
+   hi_tof_occ_5[1]->SetLineColor(2);
+   hi_tof_occ_5[1]->Draw("SAME");
+   hi_tof_occ_5[2]->SetLineColor(4);
+   hi_tof_occ_5[2]->Draw("SAME");
+   hi_tof_occ_5[3]->SetLineColor(kGreen);
+   hi_tof_occ_5[3]->Draw("SAME");
+   hi_tof_occ_5[4]->SetLineColor(kGreen+2);
+   hi_tof_occ_5[4]->Draw("SAME");
+   hi_tof_occ_5[5]->SetLineColor(7);
+   hi_tof_occ_5[5]->Draw("SAME");
+    TLegend *leg28 = new TLegend(0.8,0.75,0.96,0.96);
+     leg28->SetTextSize(.04);
+     leg28->AddEntry(hi_tof_occ_5[0],"Sector 1","l");
+     leg28->AddEntry(hi_tof_occ_5[1],"Sector 2","l");
+     leg28->AddEntry(hi_tof_occ_5[2],"Sector 3","l");
+     leg28->AddEntry(hi_tof_occ_5[3],"Sector 4","l");
+     leg28->AddEntry(hi_tof_occ_5[4],"Sector 5","l");
+     leg28->AddEntry(hi_tof_occ_5[5],"Sector 6","l");
+     leg28->Draw();
    c_occ_cut->cd(4);
    gPad->SetLogy();
-   hi_tof_occ_5[1]->Draw("COLZ");
-   c_occ_cut->cd(5);
-   gPad->SetLogy();
-   hi_tof_occ_5[2]->Draw("COLZ");
-   c_occ_cut->cd(6);
-   gPad->SetLogy();
-   hi_tof_occ_5[3]->Draw("COLZ");
-   c_occ_cut->cd(7);
-   gPad->SetLogy();
-   hi_tof_occ_5[4]->Draw("COLZ");
-   c_occ_cut->cd(8);
-   gPad->SetLogy();
-   hi_tof_occ_5[5]->Draw("COLZ");
+   hi_tof_occ_norm_5[0]->SetMinimum(0.001);
+   hi_tof_occ_norm_5[0]->SetLineColor(1);
+   hi_tof_occ_norm_5[0]->Draw("H");
+   hi_tof_occ_norm_5[1]->SetLineColor(2);
+   hi_tof_occ_norm_5[1]->Draw("SAME");
+   hi_tof_occ_norm_5[2]->SetLineColor(4);
+   hi_tof_occ_norm_5[2]->Draw("SAME");
+   hi_tof_occ_norm_5[3]->SetLineColor(kGreen);
+   hi_tof_occ_norm_5[3]->Draw("SAME");
+   hi_tof_occ_norm_5[4]->SetLineColor(kGreen+2);
+   hi_tof_occ_norm_5[4]->Draw("SAME");
+   hi_tof_occ_norm_5[5]->SetLineColor(7);
+   hi_tof_occ_norm_5[5]->Draw("SAME");
+    TLegend *leg29 = new TLegend(0.8,0.75,0.96,0.96);
+     leg29->SetTextSize(.04);
+     leg29->AddEntry(hi_tof_occ_norm_5[0],"Sector 1","l");
+     leg29->AddEntry(hi_tof_occ_norm_5[1],"Sector 2","l");
+     leg29->AddEntry(hi_tof_occ_norm_5[2],"Sector 3","l");
+     leg29->AddEntry(hi_tof_occ_norm_5[3],"Sector 4","l");
+     leg29->AddEntry(hi_tof_occ_norm_5[4],"Sector 5","l");
+     leg29->AddEntry(hi_tof_occ_norm_5[5],"Sector 6","l");
+     leg29->Draw();
+ 
    c_occ_cut->Print("tof_occupancy.pdf(");
 
 
@@ -991,5 +1065,4 @@ int main() {
    gui.Run(1);
 
 }
-
 
