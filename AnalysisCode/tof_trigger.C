@@ -152,7 +152,7 @@ int main() {
    TH2F*hi_tof_occ_norm_all = new TH2F("hi_tof_occ_norm_all", "hi_tof_occ_norm_all",120, 0.,120.,6,1.,7.);
    hi_tof_occ_norm_all->GetXaxis()->SetTitle("Paddle");
    hi_tof_occ_norm_all->GetYaxis()->SetTitle("Sector");
-   hi_tof_occ_norm_all->GetZaxis()->SetTitle("MHz/cm");
+   hi_tof_occ_norm_all->GetZaxis()->SetTitle("MHz");
    
    TH2F *hi_tof_occ_5_all = new TH2F("hi_tof_occ_5", "hi_tof_occ_5",120, 0.,120.,6,1.,7.);
    hi_tof_occ_5_all->GetXaxis()->SetTitle("Paddle");
