@@ -1,1 +1,23 @@
 A collection of gcards.
+
+All RGH gcards must use beamline__material_name.txt or GEMC won't recognize W material:
+    -Replace <name> with the same name in beamline__geometry_name.txt
+    -Examples beamline__geometry_downstreamCone.txt -> beamline__materials_downstreamCone.txt
+
+If using gcard, replace the option in gcard corresponding to beamline. Below is an example line
+from ELMO_downstreamCone.gcard:
+  - <detector name="/volatile/clas12/zachjj/RGH/Apr2022/DownstreamCone/beamline"     factory="TEXT" variation="DownstreamCone"/>
+  - Change the path in detector name from "/volatile/clas12/zachjj/RGH/Apr2022/DownstreamCone/beamline" to new path
+  - Change the option variation DownstreamCone to match the name in beamline__geometry_name.gcard
+
+Relevant Gcards and txt files:
+1) tr_ELMO.gcard:
+  - Used in RGH simulations before any ELMO modifications.
+2) ELMO_downstreamCone.gcard coupled with beamline__geometry_downstreamCone.txt:
+  - Used in RGH simulations after ELMO was modified completely but before engineering team
+    finalized design.
+  - Was used to study the background of DC only
+3) RGH_FTOF_Cal.gcard coupled with beamline__geometry_downstreamCone.txt:
+  - Same as ELMO_downstreamCone.gcard; now includes DC, FTOF, PCAL, and ECAL.
+  - CAn be used to analyze all subsystems individually.
+  
